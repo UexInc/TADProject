@@ -36,6 +36,7 @@ public class EntryPanel extends JFrame implements ActionListener {
 		setLocationAndSize();
 		setLayoutManager();
 		addComponentsToPanel();
+		Styles.setStyleModelPanel(panel);
 	}
 
 	private void renderComponents(String[] texts) {
@@ -48,7 +49,7 @@ public class EntryPanel extends JFrame implements ActionListener {
 			fields[i] = new JTextField();
 			fields[i].setDocument(new Filters.JTextFieldLimit(25));
 			fields[i].setHorizontalAlignment(JTextField.CENTER);
-			if (Types.stripAccents(texts[i].toLowerCase()).contains("indice"))
+			if (Types.stripAccents(texts[i].toLowerCase()).contains("Índice"))
 				Filters.limitNumbers(fields[i]);
 			labels[i].setLabelFor(fields[i]);
 			Styles.setStyleLabel(labels[i]);

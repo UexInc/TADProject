@@ -52,9 +52,9 @@ public class Types {
 		switch (option) {
 		case 0:
 			if (action == 1)
-				return new String[] { "Índice:", "Valor:" };
+				return new String[] { "Ã­ndice:", "Valor:" };
 			else
-				return new String[] { "Índice:" };
+				return new String[] { "Ã­ndice:" };
 		case 1:
 			if (action == 1)
 				return new String[] { "Valor para colocar na pilha: " };
