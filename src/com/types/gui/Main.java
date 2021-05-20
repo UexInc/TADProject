@@ -13,9 +13,9 @@ public class Main extends JFrame {
 
 	// ID da janela
 	private static final long serialVersionUID = 7820860139321930055L;
-	
+
 	public static Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
-	
+
 	public MenuPanel menu;
 
 	// Construtor
@@ -28,7 +28,7 @@ public class Main extends JFrame {
 		menu = new MenuPanel(this);
 	}
 
-	// Definição padrão da janela
+	// Definiï¿½ï¿½o padrï¿½o da janela
 	private void setShowFrame() {
 		this.setPreferredSize(SIZE);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -42,7 +42,10 @@ public class Main extends JFrame {
 
 	// Rodando a janela
 	public static void main(String[] args) {
-		try { Thread.sleep(5); } catch (InterruptedException e1) { }
+		try {
+			Thread.sleep(5);
+		} catch (InterruptedException e1) {
+		}
 		new Main("Tipos Abstratos de Dados");
 	}
 }

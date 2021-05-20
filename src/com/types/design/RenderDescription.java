@@ -1,5 +1,6 @@
 package com.types.design;
 
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 
 import javax.swing.JScrollPane;
@@ -43,7 +44,7 @@ public class RenderDescription {
 		desc = new JTextPane();
 		desc.setContentType("text/html");
 		desc.setEditable(false);
-		desc.setBackground(m.getBackground());
+		desc.setBackground(new Color(245, 239, 240));
 		desc.setText(content);
 		JScrollPane scroll = new JScrollPane(desc);
 		scroll.setBorder(null);

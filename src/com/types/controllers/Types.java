@@ -13,49 +13,60 @@ public class Types {
 	public static Object[] data;
 	public static Object type;
 	private static int option;
-	
+
 	public Types(int option) {
 		Types.option = option;
 		switch (option) {
-			case 0: type = new ArrayIndexList<Object>(); break;
-			case 1: type = new ArrayStack<Object>(); break;
+		case 0:
+			type = new ArrayIndexList<Object>();
+			break;
+		case 1:
+			type = new ArrayStack<Object>();
+			break;
 		}
 	}
-	
+
 	@SuppressWarnings("rawtypes")
-	public static void execute(Object obj, String name, Class[] parameterTypes, Object[] data, DefaultTableModel model) {
+	public static void execute(Object obj, String name, Class[] parameterTypes, Object[] data,
+			DefaultTableModel model) {
 		java.lang.reflect.Method m;
 		try {
 			String result = name + "(";
 			for (Object d : data) {
 				result += d.toString() + ", ";
 			}
-			if (data.length != 0) result = result.substring(0, result.length() - 2) + ")";
-			else result += ")";
+			if (data.length != 0)
+				result = result.substring(0, result.length() - 2) + ")";
+			else
+				result += ")";
 			try {
 				m = obj.getClass().getMethod(name, parameterTypes);
-				model.addRow(new Object[] { result, m.invoke(obj, data)});
-				
-			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) { }
-		} catch (NoSuchMethodException | SecurityException e) { }
+				model.addRow(new Object[] { result, m.invoke(obj, data) });
+
+			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			}
+		} catch (NoSuchMethodException | SecurityException e) {
+		}
 	}
-	
+
 	public static String[] getTexts(int action) {
 		switch (option) {
-			case 0: 
-				if(action == 1) return new String[] { "IndÌce:", "Valor:" };
-				else return new String[] { "IndÌce:" };
-			case 1:
-				if(action == 1) return new String[] { "Valor para colocar na pilha: " };
+		case 0:
+			if (action == 1)
+				return new String[] { "√çndice:", "Valor:" };
+			else
+				return new String[] { "√çndice:" };
+		case 1:
+			if (action == 1)
+				return new String[] { "Valor para colocar na pilha: " };
 		}
 		return null;
 	}
-	
-	public static String stripAccents(String s) 
-	{
-	    s = Normalizer.normalize(s, Normalizer.Form.NFD);
-	    s = s.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
-	    return s;
+
+	public static String stripAccents(String s) {
+		s = Normalizer.normalize(s, Normalizer.Form.NFD);
+		s = s.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
+		return s;
 	}
 
 }

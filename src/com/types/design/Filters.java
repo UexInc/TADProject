@@ -139,7 +139,8 @@ public final class Filters {
 				setBorder(getNoFocusBorder());
 			}
 
-			label.setText(value == null ? "" : Styles.rowRender("<html>" + value.toString() + "</html>"));
+//			label.setPreferredSize(getPreferredSize());
+			label.setText(value == null ? "" : Styles.rowRender(value.toString()));
 			return this;
 		}
 

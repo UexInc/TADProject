@@ -60,6 +60,7 @@ public class ManagementPanel extends JPanel implements PanelConfig, ActionListen
 		backButton = new JButton("Voltar");
 		buttons = new JButton[] { insertButton, remotionButton, viewButton, backButton };
 		
+		
 		this.buttonEvents();
 		
 		selectedPanel(this.option);
@@ -102,18 +103,19 @@ public class ManagementPanel extends JPanel implements PanelConfig, ActionListen
 				GridBagConstraints.RELATIVE, GridBagConstraints.RELATIVE, 1, 0);
 		layout.cons.gridwidth = GridBagConstraints.REMAINDER;
 		if (c instanceof JButton) {
-			Styles.setStyleButton((JButton) c);
+			Styles.setStyleButtonLateral((JButton) c);
 			lateral.add(c, layout.cons);
 		} else if (c instanceof JTable) {
 			layout.cons.weighty = 1;
 			JScrollPane scroll = new JScrollPane(c);
+			Styles.setStyleScrollPanel(scroll);
 			Styles.setStyleTable((JTable) c);
 			lateral.add(scroll, layout.cons);
 		}
 	}
 
 	public void config() {
-		this.setBackground(Color.orange);
+		this.setBackground(new Color(245, 239, 240));
 		this.setLayout(layout);
 		this.setVisible(true);
 	}

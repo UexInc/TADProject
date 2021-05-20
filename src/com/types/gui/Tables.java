@@ -4,6 +4,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import com.types.design.Filters;
+import com.types.design.Styles;
 import com.types.panels.MenuPanel;
 
 public class Tables {
@@ -17,8 +18,8 @@ public class Tables {
 	private DefaultTableModel viewModel;
 
 	public Tables(int option) {
-		insertModel = createModelTable(new String[] { "Entrada", "Saída" });
-		removeModel = createModelTable(new String[] { "Entrada", "Saída" });
+		insertModel = createModelTable(new String[] { "Entrada", "SaÃ­da" });
+		removeModel = createModelTable(new String[] { "Entrada", "SaÃ­da" });
 		viewModel = createModelTable(
 				new String[] { MenuPanel.textButtons[option].substring(4, MenuPanel.textButtons[option].length()) });
 
@@ -36,7 +37,7 @@ public class Tables {
 
 		setResizeTable(new JTable[] { this.insertTable, this.removeTable, this.viewTable });
 	}
-	
+
 	@SuppressWarnings("serial")
 	private DefaultTableModel createModelTable(Object[] columns) {
 		return new DefaultTableModel(columns, 0) {
@@ -53,15 +54,15 @@ public class Tables {
 			table.getTableHeader().setResizingAllowed(false);
 		}
 	}
-	
+
 	public JTable getInsertTable() {
 		return insertTable;
 	}
-	
+
 	public JTable getRemoveTable() {
 		return removeTable;
 	}
-	
+
 	public JTable getViewTable() {
 		return viewTable;
 	}
