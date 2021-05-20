@@ -12,6 +12,8 @@ import javax.swing.JTextField;
 import com.types.gui.Main;
 
 public final class Styles {
+	public static Color darkRed = new Color(125, 28, 43);
+	public static Color text_lightRed = new Color(246, 213, 218);
 
 	public static void setStyleTable(JTable table) {
 		table.getTableHeader().setDefaultRenderer(new Filters.HeaderRenderer());
@@ -20,8 +22,8 @@ public final class Styles {
 			table.getColumnModel().getColumn(i).setCellRenderer(new Filters.HTMLRenderer());
 		}
 
-		table.setBackground(new Color(125, 28, 43));
-		table.setForeground(new Color(246, 213, 218));
+		table.setBackground(darkRed);
+		table.setForeground(text_lightRed);
 		table.setBorder(BorderFactory.createLineBorder(null));
 		table.setGridColor(new Color(166, 38, 57));
 	}
