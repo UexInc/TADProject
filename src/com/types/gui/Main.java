@@ -28,7 +28,6 @@ public class Main extends JFrame {
 		menu = new MenuPanel(this);
 	}
 
-	// Defini��o padr�o da janela
 	private void setShowFrame() {
 		this.setPreferredSize(SIZE);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);

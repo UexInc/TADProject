@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -158,6 +159,20 @@ public final class Filters {
 			return noFocusBorder;
 		}
 
+	}
+	
+	@SuppressWarnings("serial")
+	public static class HeaderRenderer extends JLabel implements TableCellRenderer {
+		@Override
+		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
+				int row, int column) {
+			
+			setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+			setHorizontalAlignment(CENTER);
+			setText(value.toString());
+			
+			return this;
+		}
 	}
 
 }

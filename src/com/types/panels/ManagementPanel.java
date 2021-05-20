@@ -6,6 +6,7 @@ import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -110,6 +111,7 @@ public class ManagementPanel extends JPanel implements PanelConfig, ActionListen
 			JScrollPane scroll = new JScrollPane(c);
 			Styles.setStyleScrollPanel(scroll);
 			Styles.setStyleTable((JTable) c);
+			scroll.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 			lateral.add(scroll, layout.cons);
 		}
 	}

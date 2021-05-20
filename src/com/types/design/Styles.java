@@ -1,25 +1,20 @@
 package com.types.design;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Insets;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.UIManager;
-import javax.swing.border.Border;
 
 import com.types.gui.Main;
 
 public final class Styles {
 
 	public static void setStyleTable(JTable table) {
+		table.getTableHeader().setDefaultRenderer(new Filters.HeaderRenderer());
 		table.getTableHeader().setBackground(new Color(251, 234, 236));
 		for (int i = 0; i < table.getColumnCount(); i++) {
 			table.getColumnModel().getColumn(i).setCellRenderer(new Filters.HTMLRenderer());

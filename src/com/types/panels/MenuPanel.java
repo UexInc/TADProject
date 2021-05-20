@@ -25,10 +25,10 @@ public class MenuPanel extends JPanel implements PanelConfig {
 	private final Frame frame;
 
 	public final static String[] textButtons = { "TAD-Lista Arranjo", "TAD-Pilha", "TAD-Fila", "TAD-Lista de Nodos",
-			"TAD-Ã¡rvore GenÃ©rica", "TAD-Ã¡rvore BinÃ¡ria", "TAD-Fila de Prioridade", "TAD-Mapa", "TAD-DicionÃ¡rio",
+			"TAD-Árvore Genérica", "TAD-Árvore Binária", "TAD-Fila de Prioridade", "TAD-Mapa", "TAD-Dicionário",
 			"TAD-Mapa Ordenado - ABB", "TAD-Mapa Ordenado - AVL", "TAD-Grafos", };
 	
-	/* Criaï¿½ï¿½o do Menu */
+	/* Criação do Menu */
 	public MenuPanel(Frame frame) {
 		this.frame = frame;
 		this.config();
@@ -36,7 +36,7 @@ public class MenuPanel extends JPanel implements PanelConfig {
 		this.frame.add(this);
 	}
 
-	/* Menu geral de opï¿½es */
+	/* Menu geral de opções */
 	private void putComponents() {
 		
 		GridBagConstraints cons = this.getConstraint(0, 0, 2);

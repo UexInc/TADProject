@@ -58,14 +58,9 @@ public class ControlType {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	public static void view() {
 		if (option < MenuPanel.textButtons.length) {
-			if (Types.type instanceof ArrayIndexList) {
-				model[2].addRow(new Object[] {((ArrayIndexList<Object>) Types.type).toString() });
-			} else if(Types.type instanceof ArrayStack) {
-				model[2].addRow(new Object[] {((ArrayStack<Object>) Types.type).toString() });
-			}
+			model[2].addRow(new Object[] {Types.type.toString() });
 		}
 	}
 
@@ -116,7 +111,7 @@ public class ControlType {
 	
 	private boolean specialCases() {
 		switch (option) {
-			case 1: remove(new Object[] {}); 
+			case 1: remove(new Object[] {});
 				Styles.setButtonsEnable(ManagementPanel.getButtons(), true); return true;
 		}
 		return false;

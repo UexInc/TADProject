@@ -4,7 +4,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import com.types.design.Filters;
-import com.types.design.Styles;
 import com.types.panels.MenuPanel;
 
 public class Tables {
@@ -18,8 +17,8 @@ public class Tables {
 	private DefaultTableModel viewModel;
 
 	public Tables(int option) {
-		insertModel = createModelTable(new String[] { "Entrada", "SaÃ­da" });
-		removeModel = createModelTable(new String[] { "Entrada", "SaÃ­da" });
+		insertModel = createModelTable(new String[] { "Entrada", "Saída" });
+		removeModel = createModelTable(new String[] { "Entrada", "Saída" });
 		viewModel = createModelTable(
 				new String[] { MenuPanel.textButtons[option].substring(4, MenuPanel.textButtons[option].length()) });
 

@@ -1,6 +1,7 @@
 package com.types.controllers;
 
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.text.Normalizer;
 
 import javax.swing.table.DefaultTableModel;
@@ -29,7 +30,7 @@ public class Types {
 	@SuppressWarnings("rawtypes")
 	public static void execute(Object obj, String name, Class[] parameterTypes, Object[] data,
 			DefaultTableModel model) {
-		java.lang.reflect.Method m;
+		Method m;
 		try {
 			String result = name + "(";
 			for (Object d : data) {
@@ -43,19 +44,17 @@ public class Types {
 				m = obj.getClass().getMethod(name, parameterTypes);
 				model.addRow(new Object[] { result, m.invoke(obj, data) });
 
-			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-			}
-		} catch (NoSuchMethodException | SecurityException e) {
-		}
+			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) { }
+		} catch (NoSuchMethodException | SecurityException e) { }
 	}
 
 	public static String[] getTexts(int action) {
 		switch (option) {
 		case 0:
 			if (action == 1)
-				return new String[] { "√çndice:", "Valor:" };
+				return new String[] { "Õndice:", "Valor:" };
 			else
-				return new String[] { "√çndice:" };
+				return new String[] { "Õndice:" };
 		case 1:
 			if (action == 1)
 				return new String[] { "Valor para colocar na pilha: " };
