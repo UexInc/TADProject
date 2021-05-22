@@ -4,7 +4,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import com.types.design.Filters;
-import com.types.design.Styles;
 import com.types.panels.MenuPanel;
 
 public class Tables {

@@ -81,4 +81,14 @@ public class ArrayIndexList<T> implements IndexList<T> {
 			toReturn += A[i].toString() + ", ";
 		return toReturn.substring(0, toReturn.length() - 2) + ")";
 	}
+
+	@Override
+	public int indexOf(T e) throws IndexOutOfBoundsException {
+		for (int i = 0; i < A.length; i++) {
+			if (A[i] == e) {
+				return i;
+			}
+		}
+		return -1;
+	}
 }

@@ -13,7 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import com.types.controllers.ControlType;
-import com.types.controllers.Types;
 import com.types.design.Filters;
 import com.types.design.Styles;
 import com.types.gui.Main;
@@ -44,12 +43,12 @@ public class EntryPanel extends JFrame implements ActionListener {
 		fields = new JTextField[texts.length];
 
 		for (int i = 0; i < texts.length; i++) {
-			labels[i] = new JLabel(texts[i]);
+			labels[i] = new JLabel(texts[i].substring(0, texts[i].length() - 2));
 			labels[i].setHorizontalAlignment(JLabel.CENTER);
 			fields[i] = new JTextField();
 			fields[i].setDocument(new Filters.JTextFieldLimit(25));
 			fields[i].setHorizontalAlignment(JTextField.CENTER);
-			if (Types.stripAccents(texts[i].toLowerCase()).contains("Índice"))
+			if (texts[i].charAt(texts[i].length() - 1) == '0')
 				Filters.limitNumbers(fields[i]);
 			labels[i].setLabelFor(fields[i]);
 			Styles.setStyleLabel(labels[i]);

@@ -7,6 +7,7 @@ import com.types.panels.EntryPanel;
 import com.types.panels.ManagementPanel;
 import com.types.panels.MenuPanel;
 import com.types.tads.ArrayIndexList;
+import com.types.tads.ArrayQueue;
 import com.types.tads.ArrayStack;
 
 public class ControlType {
@@ -24,9 +25,12 @@ public class ControlType {
 	public static void insert(Object[] data) {
 		data = filterObjects(data);
 		switch (option) {
-		case 0: Types.execute(((ArrayIndexList<Object>) Types.type), "add", new Class[] { int.class, java.lang.Object.class }, data, model[0]); break;
-		case 1: Types.execute(((ArrayStack<Object>) Types.type), "push", new Class[] { java.lang.Object.class }, data, model[0]); break;
-		case 2: break;
+		case 0: Types.execute(((ArrayIndexList<Object>) Types.type), "add", 
+				new Class[] { int.class, java.lang.Object.class }, data, model[0]); break;
+		case 1: Types.execute(((ArrayStack<Object>) Types.type), "push", 
+				new Class[] { java.lang.Object.class }, data, model[0]); break;
+		case 2: Types.execute(((ArrayQueue<Object>) Types.type), "enqueue", 
+				new Class[] { java.lang.Object.class }, data, model[0]); break;
 		case 3: break;
 		case 4: break;
 		case 5: break;
@@ -42,10 +46,14 @@ public class ControlType {
 	@SuppressWarnings("unchecked")
 	public static void remove(Object[] data) {
 		data = filterObjects(data);
-		switch (option) {
-		case 0: Types.execute(((ArrayIndexList<Object>) Types.type), "remove", new Class[] { int.class }, data, model[1]); break;
-		case 1:	Types.execute(((ArrayStack<Object>) Types.type), "pop", new Class[] { }, data, model[1]); break;
-		case 2: break;
+		switch (option) 
+		{
+		case 0: Types.execute(((ArrayIndexList<Object>) Types.type), "remove", 
+				new Class[] { int.class }, data, model[1]); break;
+		case 1:	Types.execute(((ArrayStack<Object>) Types.type), "pop", 
+				new Class[] { }, data, model[1]); break;
+		case 2: Types.execute(((ArrayQueue<Object>) Types.type), "dequeue", 
+				new Class[] { }, data, model[1]); break;
 		case 3: break;
 		case 4: break;
 		case 5: break;
@@ -111,8 +119,10 @@ public class ControlType {
 	
 	private boolean specialCases() {
 		switch (option) {
-			case 1: remove(new Object[] {});
-				Styles.setButtonsEnable(ManagementPanel.getButtons(), true); return true;
+			case 1: case 2:
+				remove(new Object[] {});
+				Styles.setButtonsEnable(ManagementPanel.getButtons(), true); 
+				return true;
 		}
 		return false;
 	}

@@ -7,6 +7,7 @@ import java.text.Normalizer;
 import javax.swing.table.DefaultTableModel;
 
 import com.types.tads.ArrayIndexList;
+import com.types.tads.ArrayQueue;
 import com.types.tads.ArrayStack;
 
 public class Types {
@@ -18,12 +19,9 @@ public class Types {
 	public Types(int option) {
 		Types.option = option;
 		switch (option) {
-		case 0:
-			type = new ArrayIndexList<Object>();
-			break;
-		case 1:
-			type = new ArrayStack<Object>();
-			break;
+			case 0: type = new ArrayIndexList<Object>(); break;
+			case 1: type = new ArrayStack<Object>(); break;
+			case 2: type = new ArrayQueue<Object>(); break;
 		}
 	}
 
@@ -43,21 +41,16 @@ public class Types {
 			try {
 				m = obj.getClass().getMethod(name, parameterTypes);
 				model.addRow(new Object[] { result, m.invoke(obj, data) });
-
 			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) { }
 		} catch (NoSuchMethodException | SecurityException e) { }
 	}
 
 	public static String[] getTexts(int action) {
 		switch (option) {
-		case 0:
-			if (action == 1)
-				return new String[] { "índice:", "Valor:" };
-			else
-				return new String[] { "índice:" };
-		case 1:
-			if (action == 1)
-				return new String[] { "Valor para colocar na pilha: " };
+			case 0: if (action == 1) return new String[] { "índice: 0", "Valor: 1" };
+				else return new String[] { "índice: 0" };
+			case 1: if (action == 1) return new String[] { "Valor para colocar na pilha: 1" };
+			case 2: if (action == 1) return new String[] { "Valor para colocar na fila: 1" };
 		}
 		return null;
 	}
