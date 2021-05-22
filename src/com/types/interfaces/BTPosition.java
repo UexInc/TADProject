@@ -1,6 +1,6 @@
 package com.types.interfaces;
 
-public interface BTPosition<T> extends Position<T> {
+public interface BTPosition<T> extends Position<T>{
 
 	// Retorna o elemento armazenado nesta posição
 	public T element();
@@ -25,5 +25,4 @@ public interface BTPosition<T> extends Position<T> {
 
 	// Define o pai desta posição
 	public void setParent(BTPosition<T> v);
-
 }

@@ -65,8 +65,7 @@ public class LinkedBinaryTree<T> implements BinaryTree<T> {
 
 	// Retorna a raiz da árvore.
 	public Position<T> root() throws EmptyTreeException {
-		if (root == null)
-			throw new EmptyTreeException("The tree is empty");
+		if (root == null) throw new EmptyTreeException("The tree is empty");
 		return root;
 	}
 

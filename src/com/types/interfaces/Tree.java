@@ -25,10 +25,10 @@ public interface Tree<T> extends Iterable<T> {
 	public T replace(Position<T> v, T e) throws InvalidPositionException;
 
 	// Retorna a raiz da árvore.
-	public TreePosition<T> root() throws EmptyTreeException;
+	public Position<T> root() throws EmptyTreeException;
 
 	// Retorna o pai de um dado nodo.
-	public TreePosition<T> parent(Position<T> v) throws InvalidPositionException, BoundaryViolationException;
+	public Position<T> parent(Position<T> v) throws InvalidPositionException, BoundaryViolationException;
 
 	// Retorna uma coleção iterável dos filhos de um dado nodo.
 	public Iterable<Position<T>> children(Position<T> v) throws InvalidPositionException;
