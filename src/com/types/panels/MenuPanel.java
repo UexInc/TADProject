@@ -45,13 +45,13 @@ public class MenuPanel extends JPanel implements PanelConfig {
 		
 		for (int i = 0; i < textButtons.length / 2; i++) {
 			JButton b = createButton(textButtons[i]);
-			this.setAction(i, b, this);
+			this.setAction((byte) i, b, this);
 			this.add(b, getConstraint(0, 5 * i + 1, 1));
 		}
 		
 		for (int i = 0; i < textButtons.length / 2; i++) {
 			JButton b = createButton(textButtons[textButtons.length / 2 + i]);
-			this.setAction(textButtons.length / 2 + i, b, this);
+			this.setAction((byte) (textButtons.length / 2 + i), b, this);
 			this.add(b, getConstraint(1, 5 * i + 1, 1));
 		}
 		
@@ -65,7 +65,7 @@ public class MenuPanel extends JPanel implements PanelConfig {
 		b.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new Options(null, textButtons.length + 1, Main.getFrames());
+				new Options(null, (byte) (textButtons.length + 1), Main.getFrames());
 			}
 		});
 		this.add(b, cons);
@@ -100,7 +100,7 @@ public class MenuPanel extends JPanel implements PanelConfig {
 		return cons;
 	}
 	
-	private void setAction(final int index, final JButton button, final JPanel panelTo) {
+	private void setAction(final byte index, final JButton button, final JPanel panelTo) {
 		button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

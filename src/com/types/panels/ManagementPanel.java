@@ -37,10 +37,10 @@ public class ManagementPanel extends JPanel implements PanelConfig, ActionListen
 	private RenderDescription descriptions;
 	private ControlType control;
 
-	private final int option;
+	private final byte option;
 	private final MenuPanel menu;
 
-	public ManagementPanel(MenuPanel menu, final int option) {
+	public ManagementPanel(MenuPanel menu, final byte option) {
 		new Types(option);
 		
 		this.option = option;

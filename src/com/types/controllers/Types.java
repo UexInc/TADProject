@@ -6,9 +6,11 @@ import java.text.Normalizer;
 
 import javax.swing.table.DefaultTableModel;
 
+import com.types.interfaces.Position;
 import com.types.tads.ArrayIndexList;
 import com.types.tads.ArrayQueue;
 import com.types.tads.ArrayStack;
+import com.types.tads.NodePositionList;
 
 public class Types {
 
@@ -22,6 +24,7 @@ public class Types {
 			case 0: type = new ArrayIndexList<Object>(); break;
 			case 1: type = new ArrayStack<Object>(); break;
 			case 2: type = new ArrayQueue<Object>(); break;
+			case 3: type = new NodePositionList<Object>(); break;
 		}
 	}
 
@@ -32,7 +35,11 @@ public class Types {
 		try {
 			String result = name + "(";
 			for (Object d : data) {
-				result += d.toString() + ", ";
+				if (d instanceof Position<?>) {
+					result += ((Position) d).element().toString() + ", ";
+				} else {
+					result += d.toString() + ", ";
+				}
 			}
 			if (data.length != 0)
 				result = result.substring(0, result.length() - 2) + ")";
@@ -42,7 +49,7 @@ public class Types {
 				m = obj.getClass().getMethod(name, parameterTypes);
 				model.addRow(new Object[] { result, m.invoke(obj, data) });
 			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) { }
-		} catch (NoSuchMethodException | SecurityException e) { }
+		} catch (NoSuchMethodException | SecurityException e) {  }
 	}
 
 	public static String[] getTexts(int action) {
@@ -51,6 +58,9 @@ public class Types {
 				else return new String[] { "Ã­ndice: 0" };
 			case 1: if (action == 1) return new String[] { "Valor para colocar na pilha: 1" };
 			case 2: if (action == 1) return new String[] { "Valor para colocar na fila: 1" };
+			case 3: if (action == 1) return new String[] { "Opção: M", 
+					"Especificação: M", "Valor: 1" };
+					else return new String[] { "Posição para remover: M" };
 		}
 		return null;
 	}

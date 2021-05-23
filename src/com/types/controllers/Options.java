@@ -7,7 +7,7 @@ import com.types.panels.ManagementPanel;
 
 public class Options {
 
-	public Options(Frame renderOn, int option, Object obj) {
+	public Options(Frame renderOn, byte option, Object obj) {
 		switch (option) {
 		case 13:
 			Frame[] f = (Frame[]) obj;

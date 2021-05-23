@@ -3,19 +3,21 @@ package com.types.controllers;
 import javax.swing.table.DefaultTableModel;
 
 import com.types.design.Styles;
+import com.types.interfaces.Position;
 import com.types.panels.EntryPanel;
 import com.types.panels.ManagementPanel;
 import com.types.panels.MenuPanel;
 import com.types.tads.ArrayIndexList;
 import com.types.tads.ArrayQueue;
 import com.types.tads.ArrayStack;
+import com.types.tads.NodePositionList;
 
 public class ControlType {
 
 	private static DefaultTableModel[] model;
-	private static int option;
+	private static byte option;
 
-	public ControlType(DefaultTableModel[] model, int option) {
+	public ControlType(DefaultTableModel[] model, byte option) {
 		ControlType.model = model;
 		ControlType.option = option;
 	}
@@ -31,7 +33,7 @@ public class ControlType {
 				new Class[] { java.lang.Object.class }, data, model[0]); break;
 		case 2: Types.execute(((ArrayQueue<Object>) Types.type), "enqueue", 
 				new Class[] { java.lang.Object.class }, data, model[0]); break;
-		case 3: break;
+		case 3: selectExecute(data); break;
 		case 4: break;
 		case 5: break;
 		case 6: break;
@@ -54,7 +56,9 @@ public class ControlType {
 				new Class[] { }, data, model[1]); break;
 		case 2: Types.execute(((ArrayQueue<Object>) Types.type), "dequeue", 
 				new Class[] { }, data, model[1]); break;
-		case 3: break;
+		case 3: Types.execute(((NodePositionList<Object>) Types.type), "remove", 
+				new Class[] { Position.class }, 
+				new Object[] { getPos(data[0]) }, model[1]); break;
 		case 4: break;
 		case 5: break;
 		case 6: break;
@@ -70,6 +74,45 @@ public class ControlType {
 		if (option < MenuPanel.textButtons.length) {
 			model[2].addRow(new Object[] {Types.type.toString() });
 		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	private static void selectExecute(Object[] data) {
+		if (data[0] == "No ínicio") {
+			try { Types.execute(((NodePositionList<Object>) Types.type), "addFirst", 
+					new Class[] { java.lang.Object.class }, 
+					new Object[] { data[2] }, model[0]);
+			} catch(Exception e) { }
+		} else if (data[0] == "No final") {
+			try { Types.execute(((NodePositionList<Object>) Types.type), "addLast", 
+					new Class[] { java.lang.Object.class }, 
+					new Object[] { data[2] }, model[0]);
+			} catch(Exception e) { }
+		} else if (data[0] == "Antes de (Especificação)") {
+			try { Types.execute(((NodePositionList<Object>) Types.type), "addBefore", 
+					new Class[] { Position.class, java.lang.Object.class }, 
+					new Object[] { getPos(data[1]), data[2] }, model[0]);
+			} catch(Exception e) { }
+		} else if (data[0] == "Depois de (Especificação)") {
+			try { Types.execute(((NodePositionList<Object>) Types.type), "addAfter", 
+					new Class[] { Position.class, java.lang.Object.class }, 
+					new Object[] { getPos(data[1]), data[2] }, model[0]);
+			} catch(Exception e) { }
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	private static Position<Object> getPos(Object element) {
+		NodePositionList<Object> nodes = ((NodePositionList<Object>) Types.type);
+		Position<Object> pos = nodes.first();
+		for (@SuppressWarnings("unused") Object actual : nodes) {
+			if (pos.element().toString().equalsIgnoreCase(element.toString())) {
+				return pos;
+			} else {
+				pos = nodes.next(pos);
+			}
+		}
+		return null;
 	}
 
 	private static Object[] filterObjects(Object[] data) {
@@ -109,10 +152,10 @@ public class ControlType {
 
 	public void renderBy(int action) {
 		if (action == 1) {
-			new EntryPanel(Types.getTexts(action), action);
+			new EntryPanel(Types.getTexts(action), option, action);
 		} else if (action == 2) {
 			if (!specialCases()) {				
-				new EntryPanel(Types.getTexts(action), action);
+				new EntryPanel(Types.getTexts(action), option, action);
 			}
 		}
 	}
