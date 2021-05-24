@@ -10,6 +10,7 @@ import com.types.interfaces.Position;
 import com.types.tads.ArrayIndexList;
 import com.types.tads.ArrayQueue;
 import com.types.tads.ArrayStack;
+import com.types.tads.LinkedTree;
 import com.types.tads.NodePositionList;
 
 public class Types {
@@ -25,6 +26,7 @@ public class Types {
 			case 1: type = new ArrayStack<Object>(); break;
 			case 2: type = new ArrayQueue<Object>(); break;
 			case 3: type = new NodePositionList<Object>(); break;
+			case 4: type = new LinkedTree<Object>(); break;
 		}
 	}
 
@@ -61,6 +63,8 @@ public class Types {
 			case 3: if (action == 1) return new String[] { "Opção: M", 
 					"Especificação: M", "Valor: 1" };
 					else return new String[] { "Posição para remover: M" };
+			case 4: if (action == 1) return new String[] { "Nó pai: M", 
+					"Valor: 1" };
 		}
 		return null;
 	}

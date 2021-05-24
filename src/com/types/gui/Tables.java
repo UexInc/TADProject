@@ -33,7 +33,7 @@ public class Tables {
 		viewTable = new JTable(viewModel);
 		viewTable.setDefaultRenderer(Object.class, new Filters.HTMLRenderer());
 		viewTable.setRowHeight(viewTable.getFont().getSize() * 2);
-
+		
 		setResizeTable(new JTable[] { this.insertTable, this.removeTable, this.viewTable });
 	}
 

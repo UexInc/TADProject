@@ -26,6 +26,7 @@ public class RenderDescription {
 			case 1: this.descriptionStack(); break;
 			case 2: this.descriptionQueue(); break;
 			case 3: this.descriptionNodePositionList();
+			case 4: this.descriptionGenericTree();
 		}
 	}
 	
@@ -50,6 +51,12 @@ public class RenderDescription {
 	private void descriptionNodePositionList() {
 		setDescription(
 			"<style> h1 { text-align: center; } </style><h1>TAD - Lista de Nodos</h1>"
+		);
+	}
+	
+	private void descriptionGenericTree() {
+		setDescription(
+			"<style> h1 { text-align: center; } </style><h1>TAD - Arvore Generica</h1>"
 		);
 	}
 	

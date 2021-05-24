@@ -4,13 +4,16 @@ import javax.swing.table.DefaultTableModel;
 
 import com.types.design.Styles;
 import com.types.interfaces.Position;
+import com.types.nodes.TreeNode;
 import com.types.panels.EntryPanel;
 import com.types.panels.ManagementPanel;
 import com.types.panels.MenuPanel;
 import com.types.tads.ArrayIndexList;
 import com.types.tads.ArrayQueue;
 import com.types.tads.ArrayStack;
+import com.types.tads.LinkedTree;
 import com.types.tads.NodePositionList;
+import com.types.util.AuxTAD;
 
 public class ControlType {
 
@@ -34,7 +37,7 @@ public class ControlType {
 		case 2: Types.execute(((ArrayQueue<Object>) Types.type), "enqueue", 
 				new Class[] { java.lang.Object.class }, data, model[0]); break;
 		case 3: selectExecute(data); break;
-		case 4: break;
+		case 4: selectExecute(data); break;
 		case 5: break;
 		case 6: break;
 		case 7: break;
@@ -58,7 +61,7 @@ public class ControlType {
 				new Class[] { }, data, model[1]); break;
 		case 3: Types.execute(((NodePositionList<Object>) Types.type), "remove", 
 				new Class[] { Position.class }, 
-				new Object[] { getPos(data[0]) }, model[1]); break;
+				new Object[] { AuxTAD.getPos(data[0]) }, model[1]); break;
 		case 4: break;
 		case 5: break;
 		case 6: break;
@@ -91,28 +94,24 @@ public class ControlType {
 		} else if (data[0] == "Antes de (Especificação)") {
 			try { Types.execute(((NodePositionList<Object>) Types.type), "addBefore", 
 					new Class[] { Position.class, java.lang.Object.class }, 
-					new Object[] { getPos(data[1]), data[2] }, model[0]);
+					new Object[] { AuxTAD.getPos(data[1]), data[2] }, model[0]);
 			} catch(Exception e) { }
 		} else if (data[0] == "Depois de (Especificação)") {
 			try { Types.execute(((NodePositionList<Object>) Types.type), "addAfter", 
 					new Class[] { Position.class, java.lang.Object.class }, 
-					new Object[] { getPos(data[1]), data[2] }, model[0]);
+					new Object[] { AuxTAD.getPos(data[1]), data[2] }, model[0]);
 			} catch(Exception e) { }
-		}
-	}
-	
-	@SuppressWarnings("unchecked")
-	private static Position<Object> getPos(Object element) {
-		NodePositionList<Object> nodes = ((NodePositionList<Object>) Types.type);
-		Position<Object> pos = nodes.first();
-		for (@SuppressWarnings("unused") Object actual : nodes) {
-			if (pos.element().toString().equalsIgnoreCase(element.toString())) {
-				return pos;
+		} else {
+			Position<Object> posFind = AuxTAD.getPos(((LinkedTree<Object>) Types.type), data[0]);
+			if (posFind != null) {				
+				AuxTAD.createChild((TreeNode<Object>) posFind, data[1]);
+				((LinkedTree<Object>) Types.type).increaseSize();
 			} else {
-				pos = nodes.next(pos);
+				((LinkedTree<Object>) Types.type).addRoot(data[1]);
+				((LinkedTree<Object>) Types.type).root().
+				setChildren(new NodePositionList<Position<Object>>());
 			}
 		}
-		return null;
 	}
 
 	private static Object[] filterObjects(Object[] data) {
@@ -162,7 +161,7 @@ public class ControlType {
 	
 	private boolean specialCases() {
 		switch (option) {
-			case 1: case 2:
+			case 1: case 2: case 4:
 				remove(new Object[] {});
 				Styles.setButtonsEnable(ManagementPanel.getButtons(), true); 
 				return true;
