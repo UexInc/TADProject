@@ -107,6 +107,13 @@ public class Entry extends JFrame implements IRender {
 		cancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { dispose(); } 
 		});
+		send.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				for (JComponent comp : components) {
+					if (comp instanceof JTextField) ((JTextField) comp).setText("");
+				}
+			}
+		});
 	}
 
 	// Instanciando painel

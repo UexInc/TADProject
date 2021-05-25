@@ -6,10 +6,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JComponent;
 
 import com.types.main.Main;
-import com.types.panels.Menu;
 import com.types.panels.managments.ArrayIndexListPanel;
 import com.types.panels.managments.ArrayQueuePanel;
 import com.types.panels.managments.ArrayStackPanel;
+import com.types.panels.managments.LinkedBinaryTreePanel;
 import com.types.panels.managments.LinkedTreePanel;
 import com.types.panels.managments.NodePositionListPanel;
 
@@ -17,36 +17,21 @@ public class Options implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String option = ((JComponent) e.getSource()).getName();
+		int option = Integer.parseInt(((JComponent) e.getSource()).getName());
 		
-		if (option.equals(String.valueOf(0))) {
-			Main.menu.setVisible(false);
-			Main.mainFrame.add(new ArrayIndexListPanel());
+		switch (option) {
+			case 0: disableMenu(); Main.mainFrame.add(new ArrayIndexListPanel()); break;
+			case 1: disableMenu(); Main.mainFrame.add(new ArrayStackPanel()); break;
+			case 2: disableMenu(); Main.mainFrame.add(new ArrayQueuePanel()); break;
+			case 3: disableMenu(); Main.mainFrame.add(new NodePositionListPanel()); break;
+			case 4: disableMenu(); Main.mainFrame.add(new LinkedTreePanel()); break;
+			case 5: disableMenu(); Main.mainFrame.add(new LinkedBinaryTreePanel()); break;
+			case 14: Main.mainFrame.dispose(); break;
 		}
-		
-		else if (option.equals(String.valueOf(1))) {
-			Main.menu.setVisible(false);
-			Main.mainFrame.add(new ArrayStackPanel());
-		}
-		
-		else if (option.equals(String.valueOf(2))) {
-			Main.menu.setVisible(false);
-			Main.mainFrame.add(new ArrayQueuePanel());
-		}
-		
-		else if (option.equals(String.valueOf(3))) {
-			Main.menu.setVisible(false);
-			Main.mainFrame.add(new NodePositionListPanel());
-		}
-		
-		else if (option.equals(String.valueOf(4))) {
-			Main.menu.setVisible(false);
-			Main.mainFrame.add(new LinkedTreePanel());
-		}
-		
-		else if (option.equals(String.valueOf(Menu.texts.length + 2))) {
-			Main.mainFrame.dispose();
-		}
+	}
+	
+	private void disableMenu() {
+		Main.menu.setVisible(false);
 	}
 
 }

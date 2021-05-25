@@ -50,6 +50,14 @@ public final class Descriptions {
 		);
 	}
 	
+
+	public static void descriptionBinaryTree(JPanel panel) {
+		setDescription(
+			"<style> h1 { text-align: center; } </style><h1>TAD - Arvore Binaria</h1>", 
+			panel
+		);
+	}
+	
 	private static void setDescription(String content, JPanel panel) {
 		layout.setConstraints(0, 0, 1, 1, 
 				GridBagConstraints.CENTER, GridBagConstraints.BOTH);

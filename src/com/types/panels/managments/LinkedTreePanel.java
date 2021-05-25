@@ -61,7 +61,7 @@ public class LinkedTreePanel extends StandartPanel {
 		insertEntry.getSend().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					if (whereUser.getSelectedItem() != null) {
+					if (!tree.isEmpty()) {
 						tables.getInsertModel().addRow(new Object[] { "createLeaf(" + whereUser.getSelectedItem() + ", " + valueUser.getText() + ")",
 								createLeaf(getPos(whereUser.getSelectedItem()), valueUser.getText()).element().toString() });
 					} else {

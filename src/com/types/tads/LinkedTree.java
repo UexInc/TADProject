@@ -209,7 +209,7 @@ public class LinkedTree<T> implements Tree<T> {
 					s += " (\n" + tabs + parentheticRepresentation(T, w);
 					firstTime = false;
 				} else {
-					s += ",\n" + tabs + parentheticRepresentation(T, w);
+					s += "\n" + tabs + parentheticRepresentation(T, w);
 				}
 			}
 			if (!firstTime)

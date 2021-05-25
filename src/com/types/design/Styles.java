@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import com.types.main.Main;
@@ -31,16 +32,15 @@ public final class Styles {
 	public static Color colorTheme_tooDark = new Color(38, 0, 69);
 	public static Color colorTheme_light = new Color(115, 0, 209);
 	public static Color colorTheme_tooLight = new Color(221, 179, 255);
+	
 	// Cores TEMA - texto
 	public static Color colorTheme_textLight = new Color(221, 179, 255);
+	
 	// Outras cores
 
 	public static void setStyleTable(JTable table) {
 		table.getTableHeader().setDefaultRenderer(new Filters.HeaderRenderer());
 		table.getTableHeader().setBackground(colorTheme_tooLight);
-		for (int i = 0; i < table.getColumnCount(); i++) {
-			table.getColumnModel().getColumn(i).setCellRenderer(new Filters.HTMLRenderer());
-		}
 		table.setBackground(colorTheme);
 		table.setForeground(colorTheme_textLight);
 		table.setBorder(BorderFactory.createLineBorder(null));
@@ -66,6 +66,13 @@ public final class Styles {
 		button.setBackground(colorTheme_dark); // cor do botão
 		button.setForeground(colorTheme_textLight); // cor do texto
 		button.setBorder(null);
+	}
+	
+	public static void setStyleTextArea(JTextArea area) {
+		area.setFont(new Font("Impact", Font.PLAIN, Main.SIZE.height / 50)); // fonte
+		area.setBackground(colorTheme_dark); // cor do botão
+		area.setForeground(colorTheme_textLight); // cor do texto
+		area.setBorder(null);
 	}
 
 	public static void setButtonsEnable(JButton[] buttons, boolean en) {

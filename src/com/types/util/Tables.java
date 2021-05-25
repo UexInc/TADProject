@@ -19,25 +19,24 @@ public class Tables {
 	public Tables(int option) {
 		insertModel = createModelTable(new String[] { "Entrada", "Saída" });
 		removeModel = createModelTable(new String[] { "Entrada", "Saída" });
-		viewModel = createModelTable(
-				new String[] { Menu.texts[option].substring(4, Menu.texts[option].length()) });
+		viewModel = createModelTable(new String[] { Menu.texts[option].substring(4, Menu.texts[option].length()) });
 
 		insertTable = new JTable(insertModel);
 		insertTable.setDefaultRenderer(Object.class, new Filters.HTMLRenderer());
 		insertTable.setRowHeight(insertTable.getFont().getSize() * 2);
-		
-		if (option != 4) {			
+
+		if (option != 4) {
 			removeTable = new JTable(removeModel);
 			removeTable.setDefaultRenderer(Object.class, new Filters.HTMLRenderer());
 			removeTable.setRowHeight(removeTable.getFont().getSize() * 2);
 		} else {
 			removeTable = null;
 		}
-
+		
 		viewTable = new JTable(viewModel);
 		viewTable.setDefaultRenderer(Object.class, new Filters.HTMLRenderer());
 		viewTable.setRowHeight(viewTable.getFont().getSize() * 2);
-		
+
 		setResizeTable(new JTable[] { this.insertTable, this.removeTable, this.viewTable });
 	}
 
@@ -54,10 +53,14 @@ public class Tables {
 	private void setResizeTable(JTable[] tables) {
 		for (JTable table : tables) {
 			if (table != null) {
-				table.getTableHeader().setReorderingAllowed(false);				
+				table.getTableHeader().setReorderingAllowed(false);
 				table.getTableHeader().setResizingAllowed(false);
 			}
 		}
+	}
+	
+	public void setModel(JTable table) {
+		table.setDefaultRenderer(Object.class, new Filters.HTMLRenderer());
 	}
 
 	/* Getters & Setters */

@@ -30,19 +30,6 @@ public class LinkedBinaryTree<T> implements BinaryTree<T> {
 	public int size() {
 		return size;
 	}
-	
-	// Seta o número de nodos da árvore
-	public void setSizeTree() {
-		int c = 0;
-		for (Position<T> i : positions()) {
-			if (this.checkPosition(i) != null)
-				c++;
-		}
-		if(this.size > c) this.size = 0;
-		while (this.size < c) {
-			this.size++;
-		}
-	}
 
 	// Retorna se um nodo é interno.
 	public boolean isInternal(Position<T> v) throws InvalidPositionException {
@@ -380,21 +367,30 @@ public class LinkedBinaryTree<T> implements BinaryTree<T> {
 	}
 	
 	// Desenha a árvore. (exercício 5 letra g)
-	public void drawBinaryTree(LinkedBinaryTree<T> a, Position<T> p) {
+	public String drawBinaryTree(LinkedBinaryTree<T> a, Position<T> p) {
+		if (isEmpty())
+			return "";
+			
 		@SuppressWarnings("unchecked")
 		T[][] m = (T[][]) new Object[height(a, p) + 1][a.size()];
 
 		toDraw(m, a.root(), 0, 0);
 
+		String s = "";
 		for (int i = 0; i < m.length; i++) {
 			for (int j = 0; j < m[0].length; j++) {
 				if (m[i][j] == null)
-					System.out.printf(" ");
+					s += "		";
 				else
-					System.out.printf(m[i][j] + "");
+					s += m[i][j] + "";
 			}
-			System.out.println(); // quebra de linha
+			s += "\n";
 		}
+		return s.substring(0, s.length() - 1);
+	}
+	
+	public String toString() {
+		return drawBinaryTree(this, root);
 	}
 
 	// 5. h) eulerTour conforme slide 51.
