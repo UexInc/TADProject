@@ -6,9 +6,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JComponent;
 import javax.swing.JTextField;
 
-import com.types.design.Filters;
 import com.types.panels.Entry;
 import com.types.panels.StandartPanel;
+import com.types.panels.UserEntries;
 import com.types.tads.ArrayQueue;
 import com.types.util.Descriptions;
 import com.types.util.Tables;
@@ -37,15 +37,12 @@ public class ArrayQueuePanel extends StandartPanel {
 		buttonEvents(queue);
 		Descriptions.descriptionQueue(this);
 		generateLateral(true);
+		
+		valueUser = UserEntries.createField("Adicionar:", 20, JTextField.CENTER, Object.class);
 	}
 
 	// Gerar entrada de inserção
 	protected Entry insertEntry() {
-		valueUser = new JTextField();
-		valueUser.setName("Adicionar:");
-		valueUser.setDocument(new Filters.JTextFieldLimit(25));
-		valueUser.setHorizontalAlignment(JTextField.CENTER);
-
 		return new Entry(new JComponent[] { valueUser });
 	}
 
@@ -74,7 +71,6 @@ public class ArrayQueuePanel extends StandartPanel {
 		}
 	}
 
-	// Gerar entrada de remoção
 	protected Entry removeEntry() {
 		return null;
 	}

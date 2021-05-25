@@ -4,15 +4,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListCellRenderer;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JTextField;
 
-import com.types.design.Filters;
 import com.types.interfaces.Position;
 import com.types.panels.Entry;
 import com.types.panels.StandartPanel;
+import com.types.panels.UserEntries;
 import com.types.tads.NodePositionList;
 import com.types.util.Descriptions;
 import com.types.util.Tables;
@@ -26,7 +25,7 @@ public class NodePositionListPanel extends StandartPanel {
 	private NodePositionList<Object> nodesList = new NodePositionList<Object>();
 
 	// Campos
-	private JComboBox<String> whereUser, listNodes;
+	private JComboBox<Object> whereUser, listNodes;
 	private JTextField valueUser;
 
 	// Construtor
@@ -43,40 +42,24 @@ public class NodePositionListPanel extends StandartPanel {
 		Descriptions.descriptionNodePositionList(this);
 		generateLateral(true);
 		
-		DefaultListCellRenderer listRenderer = new DefaultListCellRenderer();
-		listRenderer.setHorizontalAlignment(DefaultListCellRenderer.CENTER);
-
-		listNodes = new JComboBox<String>(generateList());
-		listNodes.setName("Do nó:");
-		listNodes.setRenderer(listRenderer);
-		listNodes.setAutoscrolls(true);
-		listNodes.setLightWeightPopupEnabled(true);
-		listNodes.setMaximumRowCount(4);
+		listNodes = UserEntries.createComboBox("Do nó:", generateList());
 		
 		String[] options = { "No ínicio", "No final", 
 				"Antes (" + listNodes.getName().substring(0, listNodes.getName().length() - 1) + ")", 
 				"Depois (" + listNodes.getName().substring(0, listNodes.getName().length() - 1)  + ")" };
-		whereUser = new JComboBox<String>(options);
-		whereUser.setName("Colocar:");
-		whereUser.setRenderer(listRenderer);
-		whereUser.setAutoscrolls(true);
-		whereUser.setLightWeightPopupEnabled(true);
-		whereUser.setMaximumRowCount(4);
+		whereUser = UserEntries.createComboBox("Colocar:", options);
 		
-		valueUser = new JTextField();
-		valueUser.setName("Valor:");
-		valueUser.setDocument(new Filters.JTextFieldLimit(25));
-		valueUser.setHorizontalAlignment(JTextField.CENTER);
+		valueUser = UserEntries.createField("Valor:", 20, JTextField.CENTER, Object.class);
 	}
 
 	// Gerar entrada de inserção
 	protected Entry insertEntry() {
-		listNodes.setModel(new DefaultComboBoxModel<String>(generateList()));
+		listNodes.setModel(new DefaultComboBoxModel<Object>(generateList()));
 		return new Entry(new JComponent[] { whereUser, listNodes, valueUser });
 	}
 
 	protected Entry removeEntry() {
-		listNodes.setModel(new DefaultComboBoxModel<String>(generateList()));
+		listNodes.setModel(new DefaultComboBoxModel<Object>(generateList()));
 		return new Entry(new JComponent[] { listNodes });
 	}
 

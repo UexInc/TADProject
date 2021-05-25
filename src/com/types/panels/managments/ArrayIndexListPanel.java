@@ -6,9 +6,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JComponent;
 import javax.swing.JTextField;
 
-import com.types.design.Filters;
 import com.types.panels.Entry;
 import com.types.panels.StandartPanel;
+import com.types.panels.UserEntries;
 import com.types.tads.ArrayIndexList;
 import com.types.util.Descriptions;
 import com.types.util.Tables;
@@ -38,6 +38,9 @@ public class ArrayIndexListPanel extends StandartPanel {
 		buttonEvents(arrayList);
 		Descriptions.descriptionArrayList(this);
 		generateLateral(true);
+		
+		posUser = UserEntries.createField("Indice:", 20, JTextField.CENTER, Integer.class);
+		valueUser = UserEntries.createField("Elemento:", 20, JTextField.CENTER, Object.class);
 	}
 
 	// Adicionado no TAD
@@ -78,28 +81,11 @@ public class ArrayIndexListPanel extends StandartPanel {
 
 	// Gerar entrada de inserção
 	public Entry insertEntry() {
-		posUser = new JTextField();
-		posUser.setName("Indice:");
-		posUser.setDocument(new Filters.JTextFieldLimit(25));
-		posUser.setHorizontalAlignment(JTextField.CENTER);
-		Filters.limitNumbers(posUser);
-
-		valueUser = new JTextField();
-		valueUser.setName("Elemento:");
-		valueUser.setDocument(new Filters.JTextFieldLimit(25));
-		valueUser.setHorizontalAlignment(JTextField.CENTER);
-
 		return new Entry(new JComponent[] { posUser, valueUser });
 	}
 
 	// Gerar entrada de remoção
 	public Entry removeEntry() {
-		posUser = new JTextField();
-		posUser.setName("Indice:");
-		posUser.setDocument(new Filters.JTextFieldLimit(25));
-		posUser.setHorizontalAlignment(JTextField.CENTER);
-		Filters.limitNumbers(posUser);
-
 		return new Entry(new JComponent[] { posUser });
 	}
 

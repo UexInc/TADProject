@@ -4,17 +4,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListCellRenderer;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JTextField;
 
-import com.types.design.Filters;
 import com.types.interfaces.Position;
 import com.types.interfaces.PositionList;
 import com.types.nodes.TreeNode;
 import com.types.panels.Entry;
 import com.types.panels.StandartPanel;
+import com.types.panels.UserEntries;
 import com.types.tads.LinkedTree;
 import com.types.tads.NodePositionList;
 import com.types.util.Descriptions;
@@ -29,7 +28,7 @@ public class LinkedTreePanel extends StandartPanel {
 	private LinkedTree<Object> tree = new LinkedTree<Object>();
 
 	// Campos
-	private JComboBox<String> whereUser;
+	private JComboBox<Object> whereUser;
 	private JTextField valueUser;
 
 	// Construtor
@@ -46,26 +45,14 @@ public class LinkedTreePanel extends StandartPanel {
 		buttonEvents(tree);
 		Descriptions.descriptionGenericTree(this);
 		generateLateral(true);
-
-		DefaultListCellRenderer listRenderer = new DefaultListCellRenderer();
-		listRenderer.setHorizontalAlignment(DefaultListCellRenderer.CENTER);
-
-		whereUser = new JComboBox<String>(generateList());
-		whereUser.setName("Nó raiz:");
-		whereUser.setRenderer(listRenderer);
-		whereUser.setAutoscrolls(true);
-		whereUser.setLightWeightPopupEnabled(true);
-		whereUser.setMaximumRowCount(4);
-
-		valueUser = new JTextField();
-		valueUser.setName("Nó folha:");
-		valueUser.setDocument(new Filters.JTextFieldLimit(25));
-		valueUser.setHorizontalAlignment(JTextField.CENTER);
+		
+		whereUser = UserEntries.createComboBox("Nó raiz", generateList());
+		valueUser = UserEntries.createField("Nó folha:", 20, JTextField.CENTER, Object.class);
 	}
 
 	// Gerar entrada de inserção
 	protected Entry insertEntry() {
-		whereUser.setModel(new DefaultComboBoxModel<String>(generateList()));
+		whereUser.setModel(new DefaultComboBoxModel<Object>(generateList()));
 		return new Entry(new JComponent[] { whereUser, valueUser });
 	}
 
@@ -74,13 +61,13 @@ public class LinkedTreePanel extends StandartPanel {
 		insertEntry.getSend().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					if (whereUser.getSelectedItem() == null) {
+					if (whereUser.getSelectedItem() != null) {
+						tables.getInsertModel().addRow(new Object[] { "createLeaf(" + whereUser.getSelectedItem() + ", " + valueUser.getText() + ")",
+								createLeaf(getPos(whereUser.getSelectedItem()), valueUser.getText()).element().toString() });
+					} else {
 						tables.getInsertModel().addRow(new Object[] { "addRoot(" + valueUser.getText() + ")",
 								tree.addRoot(valueUser.getText()).element().toString() });
 						tree.root().setChildren(new NodePositionList<Position<Object>>());
-					} else {
-						tables.getInsertModel().addRow(new Object[] { "createLeaf(" + whereUser.getSelectedItem() + ", " + valueUser.getText() + ")",
-								createLeaf(getPos(whereUser.getSelectedItem()), valueUser.getText()).element().toString() });
 					}
 				} catch (Exception ex) {
 
@@ -91,13 +78,8 @@ public class LinkedTreePanel extends StandartPanel {
 		});
 	}
 
-	protected Entry removeEntry() {
-		return null;
-	}
-
-	protected void removeEvent() {
-
-	}
+	protected Entry removeEntry() { return null; }
+	protected void removeEvent() { }
 
 	// Pegar posição com base no elemento
 	private TreeNode<Object> getPos(Object element) {
