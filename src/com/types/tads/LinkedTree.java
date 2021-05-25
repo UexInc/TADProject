@@ -136,8 +136,9 @@ public class LinkedTree<T> implements Tree<T> {
 	// ordenado de acordo com a travessia das subárvores
 	protected void preorderPositions(Position<T> v, PositionList<Position<T>> pos) throws InvalidPositionException {
 		pos.addLast(v);
-		for (Position<T> w : children(v))
-			preorderPositions(w, pos);
+		if (children(v) != null)
+			for (Position<T> w : children(v))
+				preorderPositions(w, pos);
 	}
 
 	public String toString() {
@@ -193,6 +194,8 @@ public class LinkedTree<T> implements Tree<T> {
 
 	// parentheticRepresentation
 	public String parentheticRepresentation(Tree<T> T, Position<T> v) {
+		if (v == null)
+			return "()";
 		String s = v.element().toString();
 		String tabs = "";
 		int contTabs = depth(T, v);

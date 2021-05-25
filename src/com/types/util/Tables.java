@@ -25,10 +25,14 @@ public class Tables {
 		insertTable = new JTable(insertModel);
 		insertTable.setDefaultRenderer(Object.class, new Filters.HTMLRenderer());
 		insertTable.setRowHeight(insertTable.getFont().getSize() * 2);
-
-		removeTable = new JTable(removeModel);
-		removeTable.setDefaultRenderer(Object.class, new Filters.HTMLRenderer());
-		removeTable.setRowHeight(removeTable.getFont().getSize() * 2);
+		
+		if (option != 4) {			
+			removeTable = new JTable(removeModel);
+			removeTable.setDefaultRenderer(Object.class, new Filters.HTMLRenderer());
+			removeTable.setRowHeight(removeTable.getFont().getSize() * 2);
+		} else {
+			removeTable = null;
+		}
 
 		viewTable = new JTable(viewModel);
 		viewTable.setDefaultRenderer(Object.class, new Filters.HTMLRenderer());
@@ -49,8 +53,10 @@ public class Tables {
 
 	private void setResizeTable(JTable[] tables) {
 		for (JTable table : tables) {
-			table.getTableHeader().setReorderingAllowed(false);
-			table.getTableHeader().setResizingAllowed(false);
+			if (table != null) {
+				table.getTableHeader().setReorderingAllowed(false);				
+				table.getTableHeader().setResizingAllowed(false);
+			}
 		}
 	}
 

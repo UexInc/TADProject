@@ -39,15 +39,17 @@ public class ArrayStackPanel extends StandartPanel {
 		generateLateral(true);
 	}
 
+	// Gerar entrada de inserção
 	protected Entry insertEntry() {
 		valueUser = new JTextField();
-		valueUser.setName("Elemento:");
+		valueUser.setName("Empilhar:");
 		valueUser.setDocument(new Filters.JTextFieldLimit(25));
 		valueUser.setHorizontalAlignment(JTextField.CENTER);
 
 		return new Entry(new JComponent[] { valueUser });
 	}
 
+	// Adicionado no TAD
 	protected void insertEvent() {
 		insertEntry.getSend().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -64,7 +66,7 @@ public class ArrayStackPanel extends StandartPanel {
 		});
 	}
 
-
+	// Removendo no TAD
 	protected void removeEvent() {
 		try {
 			tables.getRemoveModel().addRow(new Object[] { "pop()", stack.pop() });
@@ -73,5 +75,6 @@ public class ArrayStackPanel extends StandartPanel {
 		}
 	}
 
+	// Gerar entrada de remoção
 	protected Entry removeEntry() { return null; }
 }

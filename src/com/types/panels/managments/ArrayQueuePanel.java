@@ -39,15 +39,17 @@ public class ArrayQueuePanel extends StandartPanel {
 		generateLateral(true);
 	}
 
+	// Gerar entrada de inserção
 	protected Entry insertEntry() {
 		valueUser = new JTextField();
-		valueUser.setName("Elemento:");
+		valueUser.setName("Adicionar:");
 		valueUser.setDocument(new Filters.JTextFieldLimit(25));
 		valueUser.setHorizontalAlignment(JTextField.CENTER);
 
 		return new Entry(new JComponent[] { valueUser });
 	}
 
+	// Adicionado no TAD
 	protected void insertEvent() {
 		insertEntry.getSend().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -63,6 +65,7 @@ public class ArrayQueuePanel extends StandartPanel {
 		});
 	}
 
+	// Removendo no TAD
 	protected void removeEvent() {
 		try {
 			tables.getRemoveModel().addRow(new Object[] { "dequeue()", queue.dequeue() });
@@ -71,6 +74,7 @@ public class ArrayQueuePanel extends StandartPanel {
 		}
 	}
 
+	// Gerar entrada de remoção
 	protected Entry removeEntry() {
 		return null;
 	}

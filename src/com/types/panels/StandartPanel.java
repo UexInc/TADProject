@@ -72,12 +72,18 @@ public abstract class StandartPanel extends JPanel implements IRender {
 		JPanel lateral = new JPanel(new GridBagLayout());
 
 		if (renderAll) {
-			createLateralComponent(insertButton, lateral);
-			createLateralComponent(tables.getInsertTable(), lateral);
-			createLateralComponent(remotionButton, lateral);
-			createLateralComponent(tables.getRemoveTable(), lateral);
-			createLateralComponent(viewButton, lateral);
-			createLateralComponent(tables.getViewTable(), lateral);
+			if (insertButton != null) {
+				createLateralComponent(insertButton, lateral);				
+				createLateralComponent(tables.getInsertTable(), lateral);
+			}
+			if (remotionButton != null) {
+				createLateralComponent(remotionButton, lateral);
+				createLateralComponent(tables.getRemoveTable(), lateral);
+			}
+			if (viewButton != null) {				
+				createLateralComponent(viewButton, lateral);
+				createLateralComponent(tables.getViewTable(), lateral);
+			}
 		}
 
 		createLateralComponent(backButton, lateral);
@@ -106,6 +112,7 @@ public abstract class StandartPanel extends JPanel implements IRender {
 		});
 
 		// Evento de inserção
+		if (insertButton != null)
 		insertButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				insertEntry = insertEntry();
@@ -114,6 +121,7 @@ public abstract class StandartPanel extends JPanel implements IRender {
 		});
 
 		// Evento de remoção
+		if (remotionButton != null)
 		remotionButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				removeEntry = removeEntry();
@@ -122,6 +130,7 @@ public abstract class StandartPanel extends JPanel implements IRender {
 		});
 
 		// Evento de mostrar o TAD
+		if (viewButton != null)
 		viewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				tables.getViewModel().addRow(new Object[] { tad.toString() });

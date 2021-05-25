@@ -10,6 +10,8 @@ import com.types.panels.Menu;
 import com.types.panels.managments.ArrayIndexListPanel;
 import com.types.panels.managments.ArrayQueuePanel;
 import com.types.panels.managments.ArrayStackPanel;
+import com.types.panels.managments.LinkedTreePanel;
+import com.types.panels.managments.NodePositionListPanel;
 
 public class Options implements ActionListener {
 
@@ -30,6 +32,16 @@ public class Options implements ActionListener {
 		else if (option.equals(String.valueOf(2))) {
 			Main.menu.setVisible(false);
 			Main.mainFrame.add(new ArrayQueuePanel());
+		}
+		
+		else if (option.equals(String.valueOf(3))) {
+			Main.menu.setVisible(false);
+			Main.mainFrame.add(new NodePositionListPanel());
+		}
+		
+		else if (option.equals(String.valueOf(4))) {
+			Main.menu.setVisible(false);
+			Main.mainFrame.add(new LinkedTreePanel());
 		}
 		
 		else if (option.equals(String.valueOf(Menu.texts.length + 2))) {
