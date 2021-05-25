@@ -1,25 +1,39 @@
 package com.types.controllers;
 
-import java.awt.Frame;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import com.types.panels.MenuPanel;
-import com.types.panels.ManagementPanel;
+import javax.swing.JComponent;
 
-public class Options {
+import com.types.main.Main;
+import com.types.panels.Menu;
+import com.types.panels.managments.ArrayIndexListPanel;
+import com.types.panels.managments.ArrayQueuePanel;
+import com.types.panels.managments.ArrayStackPanel;
 
-	public Options(Frame renderOn, byte option, Object obj) {
-		switch (option) {
-		case 13:
-			Frame[] f = (Frame[]) obj;
-			for (Frame frame : f) {
-				frame.dispose();
-			}
-			break;
-		default:
-			MenuPanel menu = (MenuPanel) obj;
-			menu.panelOff();
-			renderOn.add(new ManagementPanel(menu, option));
-			break;
+public class Options implements ActionListener {
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		String option = ((JComponent) e.getSource()).getName();
+		
+		if (option.equals(String.valueOf(0))) {
+			Main.menu.setVisible(false);
+			Main.mainFrame.add(new ArrayIndexListPanel());
+		}
+		
+		else if (option.equals(String.valueOf(1))) {
+			Main.menu.setVisible(false);
+			Main.mainFrame.add(new ArrayStackPanel());
+		}
+		
+		else if (option.equals(String.valueOf(2))) {
+			Main.menu.setVisible(false);
+			Main.mainFrame.add(new ArrayQueuePanel());
+		}
+		
+		else if (option.equals(String.valueOf(Menu.texts.length + 2))) {
+			Main.mainFrame.dispose();
 		}
 	}
 

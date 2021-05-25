@@ -1,6 +1,7 @@
 package com.types.design;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
@@ -11,9 +12,19 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-import com.types.gui.Main;
+import com.types.main.Main;
+import com.types.panels.Menu;
 
 public final class Styles {
+
+	public static void setButtonMenu(JButton button) {
+		button.setFont(new Font("Arial", Font.BOLD, 16));
+		button.setPreferredSize(
+				new Dimension(Main.SIZE.width / (Menu.texts.length / 4), Main.SIZE.height / Menu.texts.length));
+		button.setBackground(new Color(91, 94, 166));
+		button.setForeground(new Color(255, 255, 255));
+	}
+
 	// Cores TEMA - fundo
 	public static Color colorTheme = new Color(81, 0, 148);
 	public static Color colorTheme_dark = new Color(59, 0, 107);
