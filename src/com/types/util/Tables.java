@@ -3,7 +3,6 @@ package com.types.util;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import com.types.design.Filters;
 import com.types.panels.Menu;
 
 public class Tables {
@@ -22,20 +21,13 @@ public class Tables {
 		viewModel = createModelTable(new String[] { Menu.texts[option].substring(4, Menu.texts[option].length()) });
 
 		insertTable = new JTable(insertModel);
-		insertTable.setDefaultRenderer(Object.class, new Filters.HTMLRenderer());
-		insertTable.setRowHeight(insertTable.getFont().getSize() * 2);
 
-		if (option != 4) {
+		if (option != 4)
 			removeTable = new JTable(removeModel);
-			removeTable.setDefaultRenderer(Object.class, new Filters.HTMLRenderer());
-			removeTable.setRowHeight(removeTable.getFont().getSize() * 2);
-		} else {
+		else
 			removeTable = null;
-		}
 		
 		viewTable = new JTable(viewModel);
-		viewTable.setDefaultRenderer(Object.class, new Filters.HTMLRenderer());
-		viewTable.setRowHeight(viewTable.getFont().getSize() * 2);
 
 		setResizeTable(new JTable[] { this.insertTable, this.removeTable, this.viewTable });
 	}
@@ -57,10 +49,6 @@ public class Tables {
 				table.getTableHeader().setResizingAllowed(false);
 			}
 		}
-	}
-	
-	public void setModel(JTable table) {
-		table.setDefaultRenderer(Object.class, new Filters.HTMLRenderer());
 	}
 
 	/* Getters & Setters */

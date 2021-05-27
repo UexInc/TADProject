@@ -28,27 +28,25 @@ public final class Styles {
 
 	// Cores TEMA - fundo
 	public static Color colorTheme = new Color(81, 0, 148);
-	public static Color colorTheme_dark = new Color(59, 0, 107);
-	public static Color colorTheme_tooDark = new Color(38, 0, 69);
-	public static Color colorTheme_light = new Color(115, 0, 209);
-	public static Color colorTheme_tooLight = new Color(221, 179, 255);
+	public static Color colorThemeDark = new Color(59, 0, 107);
+	public static Color colorThemeTooDark = new Color(38, 0, 69);
+	public static Color colorThemeLight = new Color(115, 0, 209);
+	public static Color colorThemeTooLight = new Color(221, 179, 255);
 	
 	// Cores TEMA - texto
-	public static Color colorTheme_textLight = new Color(221, 179, 255);
+	public static Color colorThemeTextLight = new Color(221, 179, 255);
 	
 	// Outras cores
 
 	public static void setStyleTable(JTable table) {
-		table.getTableHeader().setDefaultRenderer(new Filters.HeaderRenderer());
-		table.getTableHeader().setBackground(colorTheme_tooLight);
+		table.getTableHeader().setBackground(colorThemeTooLight);
 		table.setBackground(colorTheme);
-		table.setForeground(colorTheme_textLight);
-		table.setBorder(BorderFactory.createLineBorder(null));
-		table.setGridColor(colorTheme_tooDark);
+		table.setForeground(colorThemeTextLight);
+		table.setGridColor(colorThemeTooDark);
 	}
 
 	public static void setStyleScrollPanel(JScrollPane scroll) {
-		scroll.getViewport().setBackground(colorTheme_tooLight);
+		scroll.getViewport().setBackground(colorThemeTooLight);
 	}
 
 	public static void setStyleModelPanel(JPanel panel) {
@@ -63,38 +61,27 @@ public final class Styles {
 
 	public static void setStyleButtonLateral(JButton button) {
 		button.setFont(new Font("Impact", Font.PLAIN, Main.SIZE.height / 50)); // fonte
-		button.setBackground(colorTheme_dark); // cor do botão
-		button.setForeground(colorTheme_textLight); // cor do texto
+		button.setBackground(colorThemeDark); // cor do botão
+		button.setForeground(colorThemeTextLight); // cor do texto
 		button.setBorder(null);
 	}
 	
 	public static void setStyleTextArea(JTextArea area) {
 		area.setFont(new Font("Impact", Font.PLAIN, Main.SIZE.height / 50)); // fonte
-		area.setBackground(colorTheme_dark); // cor do botão
-		area.setForeground(colorTheme_textLight); // cor do texto
+		area.setBackground(colorThemeDark); // cor do botão
+		area.setForeground(colorThemeTextLight); // cor do texto
 		area.setBorder(null);
-	}
-
-	public static void setButtonsEnable(JButton[] buttons, boolean en) {
-		for (JButton button : buttons) {
-			button.setEnabled(en);
-		}
 	}
 
 	public static void setStyleLabel(JLabel label) {
 		label.setFont(new Font("Arial", Font.BOLD, Main.SIZE.height / 60)); // fonte
-		label.setForeground(colorTheme_textLight);
+		label.setForeground(colorThemeTextLight);
 	}
 
 	public static void setStyleField(JTextField field) {
 		field.setFont(new Font("Arial", Font.BOLD, Main.SIZE.height / 60)); // fonte
 		field.setBorder(null);
 		field.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-	}
-
-	public static String rowRender(String r) {
-		String font = "<style>" + "p{" + "font-family:\"Impact\";" + "font-weight:normal;" + "}" + "</style>";
-		return "<html>" + font + "<p>" + r + "</p></html>";
 	}
 
 }

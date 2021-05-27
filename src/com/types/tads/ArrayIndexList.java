@@ -13,7 +13,7 @@ public class ArrayIndexList<T> implements IndexList<T> {
 	// Cria a lista indexada com capacidade de 16 elementos
 	@SuppressWarnings("unchecked")
 	public ArrayIndexList() {
-		A = (T[]) new Object[capacity]; // o comiplador pode gerar alerta aqui, mas está tudo ok.
+		A = (T[]) new Object[capacity]; // o compilador pode gerar alerta aqui, mas está tudo ok.
 	}
 
 	// Retorna o número de elementos da lista
