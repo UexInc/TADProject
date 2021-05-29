@@ -22,10 +22,10 @@ public class Tables {
 
 		insertTable = new JTable(insertModel);
 
-		if (option != 4)
-			removeTable = new JTable(removeModel);
-		else
+		if (Menu.texts[option] == "TAD-Árvore Genérica")
 			removeTable = null;
+		else
+			removeTable = new JTable(removeModel);
 		
 		viewTable = new JTable(viewModel);
 

@@ -203,7 +203,17 @@ public class HashTableMap<K, V> implements Map<K, V> {
 			if ((bucket[i] != null) && (bucket[i] != AVAILABLE))
 				values.addLast(bucket[i].getValue());
 		return values;
-
+	}
+	
+	public String toString() {
+		if (isEmpty()) {
+			return "{}";
+		}
+		String s = "";
+		for (Entry<K, V> entry : entrySet()) {
+			s += entry.toString() + ", ";
+		}
+		return "{ " + s.substring(0, s.length() - 2) + " }";
 	}
 
 }

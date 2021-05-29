@@ -6,27 +6,39 @@ import java.awt.event.ActionListener;
 import javax.swing.JComponent;
 
 import com.types.main.Main;
+import com.types.panels.managments.AVLTreeMapPanel;
 import com.types.panels.managments.ArrayIndexListPanel;
 import com.types.panels.managments.ArrayQueuePanel;
 import com.types.panels.managments.ArrayStackPanel;
+import com.types.panels.managments.BinarySearchTreePanel;
+import com.types.panels.managments.HashTableMapPanel;
+import com.types.panels.managments.HashTableMultiMapPanel;
 import com.types.panels.managments.LinkedBinaryTreePanel;
 import com.types.panels.managments.LinkedTreePanel;
 import com.types.panels.managments.NodePositionListPanel;
+import com.types.panels.managments.SortedListPriorityQueuePanel;
 
 public class Options implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		int option = Integer.parseInt(((JComponent) e.getSource()).getName());
+		String option = (String)((JComponent) e.getSource()).getName();
 		
 		switch (option) {
-			case 0: disableMenu(); Main.mainFrame.add(new ArrayIndexListPanel()); break;
-			case 1: disableMenu(); Main.mainFrame.add(new ArrayStackPanel()); break;
-			case 2: disableMenu(); Main.mainFrame.add(new ArrayQueuePanel()); break;
-			case 3: disableMenu(); Main.mainFrame.add(new NodePositionListPanel()); break;
-			case 4: disableMenu(); Main.mainFrame.add(new LinkedTreePanel()); break;
-			case 5: disableMenu(); Main.mainFrame.add(new LinkedBinaryTreePanel()); break;
-			case 14: Main.mainFrame.dispose(); break;
+			case "TAD-Lista Arranjo": disableMenu(); Main.mainFrame.add(new ArrayIndexListPanel()); break;
+			case "TAD-Pilha": disableMenu(); Main.mainFrame.add(new ArrayStackPanel()); break;
+			case "TAD-Fila": disableMenu(); Main.mainFrame.add(new ArrayQueuePanel()); break;
+			case "TAD-Lista de Nodos": disableMenu(); Main.mainFrame.add(new NodePositionListPanel()); break;
+			case "TAD-Árvore Genérica": disableMenu(); Main.mainFrame.add(new LinkedTreePanel()); break;
+			case "TAD-Árvore Binária": disableMenu(); Main.mainFrame.add(new LinkedBinaryTreePanel()); break;
+			case "TAD-Fila de Prioridade": disableMenu(); Main.mainFrame.add(new SortedListPriorityQueuePanel()); break;
+			case "TAD-Mapa": disableMenu(); Main.mainFrame.add(new HashTableMapPanel()); break;
+			case "TAD-Dicionário": disableMenu(); Main.mainFrame.add(new HashTableMultiMapPanel()); break;
+			case "TAD-Mapa Ordenado – ABB": disableMenu(); Main.mainFrame.add(new BinarySearchTreePanel()); break;
+			case "TAD-Mapa Ordenado – AVL": disableMenu(); Main.mainFrame.add(new AVLTreeMapPanel()); break;
+			case "TAD-Grafos": disableMenu(); Main.mainFrame.add(new HashTableMapPanel()); break;
+			case "Sobre": disableMenu(); Main.mainFrame.add(new HashTableMapPanel()); break;
+			case "Sair": Main.mainFrame.dispose(); break;
 		}
 	}
 	

@@ -11,6 +11,7 @@ import com.types.interfaces.Entry;
 import com.types.interfaces.Map;
 import com.types.interfaces.Position;
 import com.types.interfaces.PositionList;
+import com.types.util.BinaryPrinter;
 
 //Implementação de um dicionário com uma árvore binária de pesquisa
 
@@ -331,5 +332,9 @@ public class BinarySearchTree<K, V> extends LinkedBinaryTree<Entry<K, V>> implem
 		((BSTEntry<K, V>) b.element()).pos = b;
 		((BSTEntry<K, V>) c.element()).pos = c;
 		return b; // a nova raiz desta subárvore
+	}
+	
+	public String toString() {
+		return BinaryPrinter.print2D(root);
 	}
 }

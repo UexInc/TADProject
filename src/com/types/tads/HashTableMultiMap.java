@@ -82,6 +82,10 @@ public class HashTableMultiMap<K, V> implements MultiMap<K, V> {
 		} else
 			throw new IllegalArgumentException(); // e não estava em ll
 	}
+	
+	public Iterable<K> dictKeys() {
+		return m.keySet();
+	}
 
 	// Retorna um iterador contendo todas as entradas do dicionário.
 	public Iterable<Map.Entry<K, V>> entrySet() {
@@ -90,6 +94,10 @@ public class HashTableMultiMap<K, V> implements MultiMap<K, V> {
 		for (LinkedList<Map.Entry<K, V>> sub : m.values())
 			ll.addAll(sub);
 		return ll;
+	}
+	
+	public String toString() {
+		return entrySet().toString();
 	}
 
 }

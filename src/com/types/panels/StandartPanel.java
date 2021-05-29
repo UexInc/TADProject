@@ -88,7 +88,7 @@ public abstract class StandartPanel extends JPanel implements IRender {
 
 		createLateralComponent(backButton, lateral);
 
-		layout.setConstraints(1, 0, 1, 1, GridBagConstraints.EAST, GridBagConstraints.BOTH);
+		layout.setConstraints(1, 0, 1, 1, GridBagConstraints.SOUTH, GridBagConstraints.BOTH);
 		layout.weightx = layout.weighty = 1;
 		add(lateral, layout);
 	}

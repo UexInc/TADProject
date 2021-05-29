@@ -58,6 +58,44 @@ public final class Descriptions {
 		);
 	}
 	
+
+	public static void descriptionPriorityQueue(JPanel panel) {
+		setDescription(
+			"<style> h1 { text-align: center; } </style><h1>TAD - Fila de Prioridade</h1>", 
+			panel
+		);
+	}
+	
+
+	public static void descriptionMap(JPanel panel) {
+		setDescription(
+			"<style> h1 { text-align: center; } </style><h1>TAD - Mapa</h1>", 
+			panel
+		);
+	}
+	
+	public static void descriptionDictionary(JPanel panel) {
+		setDescription(
+			"<style> h1 { text-align: center; } </style><h1>TAD - Dicionário</h1>", 
+			panel
+		);
+	}
+	
+	public static void descriptionABB(JPanel panel) {
+		setDescription(
+			"<style> h1 { text-align: center; } </style><h1>TAD - Mapa Ordenado – ABB</h1>", 
+			panel
+		);
+	}
+	
+
+	public static void descriptionAVL(JPanel panel) {
+		setDescription(
+			"<style> h1 { text-align: center; } </style><h1>TAD - Mapa Ordenado – AVL</h1>", 
+			panel
+		);
+	}
+	
 	private static void setDescription(String content, JPanel panel) {
 		layout.setConstraints(0, 0, 1, 1, 
 				GridBagConstraints.CENTER, GridBagConstraints.BOTH);

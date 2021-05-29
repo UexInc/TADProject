@@ -77,7 +77,7 @@ public class Menu extends JPanel implements IRender {
 		// Opções dos TADs
 		for (int i = 0; i < texts.length / 2; i++) {			
 			JButton button = new JButton(texts[i]);
-			button.setName(String.valueOf(i));
+			button.setName(texts[i]);
 			button.addActionListener(new Options());
 			Styles.setButtonMenu(button);
 			layout.setConstraints(0, 5 * i + 1, 1, 1, 
@@ -89,6 +89,7 @@ public class Menu extends JPanel implements IRender {
 		for (int i = 0; i < texts.length / 2; i++) {			
 			JButton button = new JButton(texts[texts.length / 2 + i]);
 			button.setName(texts[texts.length / 2 + i]);
+			button.addActionListener(new Options());
 			Styles.setButtonMenu(button);
 			layout.setConstraints(1, 5 * i + 1, 1, 1,
 					GridBagConstraints.CENTER, GridBagConstraints.VERTICAL);
@@ -107,7 +108,7 @@ public class Menu extends JPanel implements IRender {
 		
 		// Opção de sair
 		button = new JButton("Sair");
-		button.setName(String.valueOf(texts.length + 2));
+		button.setName(button.getText());
 		layout.setConstraints(1, 5 * texts.length, 1, 1, 
 				GridBagConstraints.CENTER, GridBagConstraints.VERTICAL);
 		Styles.setButtonMenu(button);

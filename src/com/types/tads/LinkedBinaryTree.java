@@ -11,6 +11,7 @@ import com.types.interfaces.BinaryTree;
 import com.types.interfaces.Position;
 import com.types.interfaces.PositionList;
 import com.types.nodes.BTNode;
+import com.types.util.BinaryPrinter;
 
 //* Implementação da interface BinaryTree usando uma estrutura encadeada.
 
@@ -390,7 +391,7 @@ public class LinkedBinaryTree<T> implements BinaryTree<T> {
 	}
 	
 	public String toString() {
-		return drawBinaryTree(this, root);
+		return BinaryPrinter.print2D(root);
 	}
 
 	// 5. h) eulerTour conforme slide 51.
