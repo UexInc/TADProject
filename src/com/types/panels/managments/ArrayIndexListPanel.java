@@ -54,7 +54,7 @@ public class ArrayIndexListPanel extends StandartPanel {
 									"add(" + posUser.getText() + ", " + 
 											valueUser.getText() + ")", null });
 				} catch(Exception ex) {
-					showError("Erro na inserção (Indice inválido)");
+					showError(ex.getMessage());
 				} finally {
 					insertEntry.dispose();
 				}
@@ -71,7 +71,7 @@ public class ArrayIndexListPanel extends StandartPanel {
 						.addRow(new Object[] { "remove(" + posUser.getText() + ")", 
 								arrayList.remove(Integer.parseInt(posUser.getText())) });
 				} catch(Exception ex) {
-					showError("Erro na remoção (Indice inválido)");
+					showError(ex.getMessage());
 				} finally {
 					removeEntry.dispose();
 				}

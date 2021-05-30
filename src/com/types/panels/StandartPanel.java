@@ -30,10 +30,10 @@ public abstract class StandartPanel extends JPanel implements IRender {
 	protected Layout layout = new Layout();
 
 	// Botões na coluna lateral
-	protected JButton insertButton;
-	protected JButton remotionButton;
-	protected JButton viewButton;
-	protected JButton backButton;
+	protected static JButton insertButton;
+	protected static JButton remotionButton;
+	protected static JButton viewButton;
+	protected static JButton backButton;
 
 	// Tabelas da coluna lateral
 	protected Tables tables;
@@ -112,34 +112,39 @@ public abstract class StandartPanel extends JPanel implements IRender {
 		});
 
 		// Evento de inserção
-		if (insertButton != null)
-		insertButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				insertEntry = insertEntry();
-				insertEvent();
-			}
-		});
+		if (insertButton != null) {
+			insertButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					disableButtons(false);
+					insertEntry = insertEntry();
+					insertEvent();
+				}
+			});
+		}
 
 		// Evento de remoção
-		if (remotionButton != null)
-		remotionButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				removeEntry = removeEntry();
-				removeEvent();
-			}
-		});
+		if (remotionButton != null) {
+			remotionButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					disableButtons(false);
+					removeEntry = removeEntry();
+					removeEvent();
+				}
+			});
+		}
 
 		// Evento de mostrar o TAD
-		if (viewButton != null)
-		viewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				tables.getViewModel().addRow(new Object[] { tad.toString() });
-			}
-		});
+		if (viewButton != null) {
+			viewButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					tables.getViewModel().addRow(new Object[] { tad.toString() });
+				}
+			});
+		}
 	}
-
+	
 	// Habilitar/Desabilitar botões
-	protected void disableButtons(boolean status) {
+	public static void disableButtons(boolean status) {
 		insertButton.setEnabled(status);
 		remotionButton.setEnabled(status);
 		viewButton.setEnabled(status);

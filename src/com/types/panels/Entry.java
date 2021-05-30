@@ -105,10 +105,14 @@ public class Entry extends JFrame implements IRender {
 	// Eventos de click
 	protected void buttonEvents() {
 		cancel.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) { dispose(); } 
+			public void actionPerformed(ActionEvent e) { 
+				StandartPanel.disableButtons(true); 
+				dispose(); 
+			} 
 		});
 		send.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				StandartPanel.disableButtons(true);
 				for (JComponent comp : components) {
 					if (comp instanceof JTextField) ((JTextField) comp).setText("");
 				}

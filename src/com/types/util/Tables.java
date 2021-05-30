@@ -47,6 +47,7 @@ public class Tables {
 			if (table != null) {
 				table.getTableHeader().setReorderingAllowed(false);
 				table.getTableHeader().setResizingAllowed(false);
+				table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
 			}
 		}
 	}
