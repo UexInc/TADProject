@@ -8,6 +8,7 @@ import com.types.interfaces.Entry;
 import com.types.interfaces.Map;
 import com.types.interfaces.Position;
 import com.types.nodes.BTNode;
+import com.types.util.BinaryPrinter;
 
 public class AVLTreeMap<K, V> extends BinarySearchTree<K, V> implements Map<K, V> {
 
@@ -125,6 +126,10 @@ public class AVLTreeMap<K, V> extends BinarySearchTree<K, V> implements Map<K, V
 		if (toReturn != null) // nós realmente removemos algo
 			rebalance(actionPos); // rebalanceia a árvore
 		return toReturn;
+	}
+	
+	public String toString() {
+		return BinaryPrinter.traversePreOrder(root);
 	}
 }
 

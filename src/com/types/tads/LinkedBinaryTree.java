@@ -391,7 +391,7 @@ public class LinkedBinaryTree<T> implements BinaryTree<T> {
 	}
 	
 	public String toString() {
-		return BinaryPrinter.print2D(root);
+		return BinaryPrinter.traversePreOrder(root);
 	}
 
 	// 5. h) eulerTour conforme slide 51.

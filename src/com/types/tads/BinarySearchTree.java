@@ -335,6 +335,6 @@ public class BinarySearchTree<K, V> extends LinkedBinaryTree<Entry<K, V>> implem
 	}
 	
 	public String toString() {
-		return BinaryPrinter.print2D(root);
+		return BinaryPrinter.traversePreOrder(root);
 	}
 }

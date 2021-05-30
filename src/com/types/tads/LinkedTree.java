@@ -152,7 +152,11 @@ public class LinkedTree<T> implements Tree<T> {
 //		}
 //		s = (s.length() == 0 ? s : s.substring(2));
 //		return "[" + s + "]";
-		return this.parentheticRepresentation(this, root);
+//		return this.parentheticRepresentation(this, root);
+		String s = "";
+		for (E i : T) { s += ", " + i; }
+		s = (s.length() == 0 ? s : s.substring(2));
+		return "[" + s + "]";
 	}
 
 	// depth
