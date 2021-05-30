@@ -1,11 +1,15 @@
 package com.types.util;
 
+import java.awt.Component;
+
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 
 import com.types.panels.Menu;
 
-public class Tables {
+public class Tables implements TableCellRenderer {
 
 	private JTable insertTable;
 	private JTable removeTable;
@@ -47,7 +51,9 @@ public class Tables {
 			if (table != null) {
 				table.getTableHeader().setReorderingAllowed(false);
 				table.getTableHeader().setResizingAllowed(false);
-				table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+				for (int i = 0; i < table.getColumnCount(); i++) {
+					table.getColumnModel().getColumn(i).setCellRenderer(this);
+				}
 			}
 		}
 	}
@@ -77,4 +83,22 @@ public class Tables {
 		return viewModel;
 	}
 	/* */
+
+	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
+			int row, int column) {
+		JTextArea text = new JTextArea();
+		text.setLineWrap(true);
+		text.setWrapStyleWord(true);
+		
+		text.setText(value.toString());
+		text.setSize(table.getColumnModel().getColumn(column).getWidth(), table.getRowHeight(row));
+		
+		int preferredHeight = text.getPreferredSize().height;
+
+		if (table.getRowHeight(row) != preferredHeight) {
+			table.setRowHeight(row, preferredHeight);
+		}
+		
+		return text;
+	}
 }
