@@ -20,13 +20,13 @@ public class Tables implements TableCellRenderer {
 	private DefaultTableModel viewModel;
 
 	public Tables(int option) {
-		insertModel = createModelTable(new String[] { "Entrada", "Sa�da" });
-		removeModel = createModelTable(new String[] { "Entrada", "Sa�da" });
+		insertModel = createModelTable(new String[] { "Entrada", "Saida" });
+		removeModel = createModelTable(new String[] { "Entrada", "Saida" });
 		viewModel = createModelTable(new String[] { Menu.texts[option].substring(4, Menu.texts[option].length()) });
 
 		insertTable = new JTable(insertModel);
 
-		if (Menu.texts[option] == "TAD-�rvore Gen�rica")
+		if (Menu.texts[option] == "TAD-Árvore Genérica")
 			removeTable = null;
 		else
 			removeTable = new JTable(removeModel);
@@ -54,6 +54,7 @@ public class Tables implements TableCellRenderer {
 				for (int i = 0; i < table.getColumnCount(); i++) {
 					table.getColumnModel().getColumn(i).setCellRenderer(this);
 				}
+				table.getTableHeader().setDefaultRenderer(new HeaderRenderer());
 			}
 		}
 	}
@@ -92,6 +93,7 @@ public class Tables implements TableCellRenderer {
 		
 		text.setText(value == null ? "" : value.toString());
 		text.setSize(table.getColumnModel().getColumn(column).getWidth(), table.getRowHeight(row));
+
 		
 		int preferredHeight = text.getPreferredSize().height;
 
@@ -99,6 +101,11 @@ public class Tables implements TableCellRenderer {
 			table.setRowHeight(row, preferredHeight);
 		}
 		
+		table.setShowGrid(false);
+		table.setShowHorizontalLines(false);
+		table.setShowVerticalLines(false);
+		
+		table.setGridColor(text.getForeground());
 		return text;
 	}
 }
