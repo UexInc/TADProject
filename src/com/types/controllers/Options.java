@@ -26,20 +26,58 @@ public class Options implements ActionListener {
 		String option = (String)((JComponent) e.getSource()).getName();
 		
 		switch (option) {
-			case "TAD-Lista Arranjo": disableMenu(); Main.mainFrame.add(new ArrayIndexListPanel()); break;
-			case "TAD-Pilha": disableMenu(); Main.mainFrame.add(new ArrayStackPanel()); break;
-			case "TAD-Fila": disableMenu(); Main.mainFrame.add(new ArrayQueuePanel()); break;
-			case "TAD-Lista de Nodos": disableMenu(); Main.mainFrame.add(new NodePositionListPanel()); break;
-			case "TAD-Árvore Genérica": disableMenu(); Main.mainFrame.add(new LinkedTreePanel()); break;
-			case "TAD-Árvore Binária": disableMenu(); Main.mainFrame.add(new LinkedBinaryTreePanel()); break;
-			case "TAD-Fila de Prioridade": disableMenu(); Main.mainFrame.add(new SortedListPriorityQueuePanel()); break;
-			case "TAD-Mapa": disableMenu(); Main.mainFrame.add(new HashTableMapPanel()); break;
-			case "TAD-Dicionário": disableMenu(); Main.mainFrame.add(new HashTableMultiMapPanel()); break;
-			case "TAD-Mapa Ordenado - ABB": disableMenu(); Main.mainFrame.add(new BinarySearchTreePanel()); break;
-			case "TAD-Mapa Ordenado - AVL": disableMenu(); Main.mainFrame.add(new AVLTreeMapPanel()); break;
-			case "TAD-Grafos": disableMenu(); Main.mainFrame.add(new GraphPanel()); break;
+			case "TAD-Lista Arranjo": 
+				disableMenu();
+				Main.mainFrame.add(new ArrayIndexListPanel()); 
+				break;
+			case "TAD-Pilha": 
+				disableMenu(); 
+				Main.mainFrame.add(new ArrayStackPanel()); 
+				break;
+			case "TAD-Fila": 
+				disableMenu(); 
+				Main.mainFrame.add(new ArrayQueuePanel()); 
+				break;
+			case "TAD-Lista de Nodos": 
+				disableMenu(); 
+				Main.mainFrame.add(new NodePositionListPanel()); 
+				break;
+			case "TAD-Árvore Genérica": 
+				disableMenu(); 
+				Main.mainFrame.add(new LinkedTreePanel()); 
+				break;
+			case "TAD-Árvore Binária": 
+				disableMenu(); 
+				Main.mainFrame.add(new LinkedBinaryTreePanel()); 
+				break;
+			case "TAD-Fila de Prioridade": 
+				disableMenu(); 
+				Main.mainFrame.add(new SortedListPriorityQueuePanel()); 
+				break;
+			case "TAD-Mapa": 
+				disableMenu(); 
+				Main.mainFrame.add(new HashTableMapPanel()); 
+				break;
+			case "TAD-Dicionário": 
+				disableMenu(); 
+				Main.mainFrame.add(new HashTableMultiMapPanel()); 
+				break;
+			case "TAD-Mapa Ordenado - ABB": 
+				disableMenu(); 
+				Main.mainFrame.add(new BinarySearchTreePanel()); 
+				break;
+			case "TAD-Mapa Ordenado - AVL": 
+				disableMenu(); 
+				Main.mainFrame.add(new AVLTreeMapPanel()); 
+				break;
+			case "TAD-Grafos": 
+				disableMenu(); 
+				Main.mainFrame.add(new GraphPanel()); 
+				break;
 			case "Sobre": break;
-			case "Sair": Main.mainFrame.dispose(); break;
+			case "Sair": 
+				Main.mainFrame.dispose(); 
+				break;
 		}
 	}
 	

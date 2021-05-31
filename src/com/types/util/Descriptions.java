@@ -107,6 +107,7 @@ public final class Descriptions {
 		layout.setConstraints(0, 0, 1, 1, 
 				GridBagConstraints.CENTER, GridBagConstraints.BOTH);
 		layout.weightx = 3;
+		layout.weighty = 1;
 		desc = new JTextPane();
 		desc.setContentType("text/html");
 		desc.setEditable(false);

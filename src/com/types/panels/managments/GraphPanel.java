@@ -3,7 +3,6 @@ package com.types.panels.managments;
 import com.types.panels.Entry;
 import com.types.panels.StandartPanel;
 import com.types.util.Descriptions;
-import com.types.util.Tables;
 
 public class GraphPanel extends StandartPanel {
 
@@ -15,10 +14,9 @@ public class GraphPanel extends StandartPanel {
 	}
 	
 	public void renderComponents() {
-		tables = new Tables(11);
+		Descriptions.descriptionGraph(this);
 		instanceButton();
 		buttonEvents(null);
-		Descriptions.descriptionGraph(this);
 		generateLateral(false);
 	}
 	

@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -44,18 +45,11 @@ public abstract class StandartPanel extends JPanel implements IRender {
 
 	// Met�do de adi��o dos components na coluna lateral
 	protected void createLateralComponent(Component c, JPanel lateral) {
-
-		layout.setConstraints(GridBagConstraints.RELATIVE, GridBagConstraints.RELATIVE, 1, 1, GridBagConstraints.CENTER,
-				GridBagConstraints.BOTH);
-		layout.gridwidth = GridBagConstraints.REMAINDER;
-		layout.weightx = 1;
-		layout.weighty = 0;
-
+		defaultLayout();
 		if (c instanceof JButton) {
 			Styles.setStyleButtonLateral((JButton) c);
 			lateral.add(c, layout);
 		}
-
 		else if (c instanceof JTable) {
 			layout.weighty = 1;
 			JScrollPane scroll = new JScrollPane(c);
@@ -64,14 +58,13 @@ public abstract class StandartPanel extends JPanel implements IRender {
 			scroll.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 			lateral.add(scroll, layout);
 		}
-
 	}
 
-	// Renderiza��o da coluna lateral
+	// Renderizando da coluna lateral
 	protected void generateLateral(boolean renderAll) {
-		JPanel lateral = new JPanel(new GridBagLayout());
-
 		if (renderAll) {
+			JPanel lateral = new JPanel(new GridBagLayout());
+
 			if (insertButton != null) {
 				createLateralComponent(insertButton, lateral);				
 				createLateralComponent(tables.getInsertTable(), lateral);
@@ -84,13 +77,23 @@ public abstract class StandartPanel extends JPanel implements IRender {
 				createLateralComponent(viewButton, lateral);
 				createLateralComponent(tables.getViewTable(), lateral);
 			}
+			layout.insets = new Insets(1, 0, 0, 0);
+			createLateralComponent(backButton, lateral);
+			layout.insets = new Insets(0, 0, 0, 0);
+			add(lateral, layout);
+		} else {
+			layout.setConstraints(0, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
+			Styles.setStyleButtonLateral(backButton);
+			add(backButton, layout);
 		}
-
-		createLateralComponent(backButton, lateral);
-
-		layout.setConstraints(1, 0, 1, 1, GridBagConstraints.SOUTH, GridBagConstraints.BOTH);
-		layout.weightx = layout.weighty = 1;
-		add(lateral, layout);
+	}
+	
+	protected void defaultLayout() {
+		layout.setConstraints(GridBagConstraints.RELATIVE, GridBagConstraints.RELATIVE, 
+				1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
+		layout.gridwidth = GridBagConstraints.REMAINDER;
+		layout.weightx = 1;
+		layout.weighty = 0;
 	}
 
 	// Inicilizar os bot�es
@@ -160,7 +163,7 @@ public abstract class StandartPanel extends JPanel implements IRender {
 
 	// Renderiza��o padr�o
 	public void renderComponents() {
-		generateLateral(false);
+		generateLateral(true);
 	}
 
 	protected void showError(String msg) {

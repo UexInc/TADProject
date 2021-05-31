@@ -28,7 +28,7 @@ public class Main extends JFrame implements IRender {
 		init();
 	}
 	
-	// Renderização padrão
+	// Renderizaï¿½ï¿½o padrï¿½o
 	public void renderComponents() {
 		menu = new Menu();
 		add(menu);
