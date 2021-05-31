@@ -18,7 +18,7 @@ public class SortedListPriorityQueuePanel extends StandartPanel {
 	// ID da janela
 	private static final long serialVersionUID = 4389064271814175535L;
 
-	private SortedListPriorityQueue<Object, Object> priorityQueue = new SortedListPriorityQueue<Object, Object>();
+	private SortedListPriorityQueue<Object, Object> priorityQueue;
 	
 	private JTextField keyUser, valueUser;
 	
@@ -28,6 +28,7 @@ public class SortedListPriorityQueuePanel extends StandartPanel {
 	}
 	
 	public void renderComponents() {
+		priorityQueue = new SortedListPriorityQueue<Object, Object>();
 		tables = new Tables(6);
 		instanceButton();
 		buttonEvents(priorityQueue);

@@ -19,7 +19,7 @@ public class AVLTreeMapPanel extends StandartPanel {
 
 	private static final long serialVersionUID = -4234178847655292824L;
 
-	private AVLTreeMap<Object, Object> AVL = new AVLTreeMap<Object, Object>();
+	private AVLTreeMap<Object, Object> AVL;
 	
 	private JTextField keyUser, valueUser;
 	private JComboBox<Object> keys;
@@ -30,6 +30,7 @@ public class AVLTreeMapPanel extends StandartPanel {
 	}
 	
 	public void renderComponents() {
+		AVL = new AVLTreeMap<Object, Object>();
 		tables = new Tables(10);
 		instanceButton();
 		buttonEvents(AVL);

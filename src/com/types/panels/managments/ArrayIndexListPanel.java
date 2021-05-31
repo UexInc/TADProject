@@ -19,7 +19,7 @@ public class ArrayIndexListPanel extends StandartPanel {
 	private static final long serialVersionUID = 1515352884479601080L;
 
 	// TAD respectivo
-	ArrayIndexList<Object> arrayList = new ArrayIndexList<Object>();
+	ArrayIndexList<Object> arrayList;
 
 	// Campos
 	private JTextField posUser;
@@ -31,8 +31,9 @@ public class ArrayIndexListPanel extends StandartPanel {
 		renderComponents();
 	}
 
-	// Renderização padrão
+	// Renderizaï¿½ï¿½o padrï¿½o
 	public void renderComponents() {
+		arrayList = new ArrayIndexList<Object>();
 		tables = new Tables(0);
 		instanceButton();
 		buttonEvents(arrayList);
@@ -79,12 +80,12 @@ public class ArrayIndexListPanel extends StandartPanel {
 		});
 	}
 
-	// Gerar entrada de inserção
+	// Gerar entrada de inserï¿½ï¿½o
 	public Entry insertEntry() {
 		return new Entry(new JComponent[] { posUser, valueUser });
 	}
 
-	// Gerar entrada de remoção
+	// Gerar entrada de remoï¿½ï¿½o
 	public Entry removeEntry() {
 		return new Entry(new JComponent[] { posUser });
 	}

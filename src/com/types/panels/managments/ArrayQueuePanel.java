@@ -19,7 +19,7 @@ public class ArrayQueuePanel extends StandartPanel {
 	private static final long serialVersionUID = 7000372001620939944L;
 
 	// TAD respectivo
-	private ArrayQueue<Object> queue = new ArrayQueue<Object>();
+	private ArrayQueue<Object> queue;
 
 	// Campos
 	private JTextField valueUser;
@@ -30,8 +30,9 @@ public class ArrayQueuePanel extends StandartPanel {
 		renderComponents();
 	}
 
-	// Renderização padrão
+	// Renderizaï¿½ï¿½o padrï¿½o
 	public void renderComponents() {
+		queue = new ArrayQueue<Object>();
 		tables = new Tables(2);
 		instanceButton();
 		buttonEvents(queue);
@@ -41,7 +42,7 @@ public class ArrayQueuePanel extends StandartPanel {
 		valueUser = UserEntries.createField("Adicionar:", 20, JTextField.CENTER, Object.class);
 	}
 
-	// Gerar entrada de inserção
+	// Gerar entrada de inserï¿½ï¿½o
 	protected Entry insertEntry() {
 		return new Entry(new JComponent[] { valueUser });
 	}
@@ -67,7 +68,7 @@ public class ArrayQueuePanel extends StandartPanel {
 		try {
 			tables.getRemoveModel().addRow(new Object[] { "dequeue()", queue.dequeue() });
 		} catch (Exception ex) {
-			showError("Erro na remoção (Fila vazia)");
+			showError("Erro na remoï¿½ï¿½o (Fila vazia)");
 		}
 	}
 

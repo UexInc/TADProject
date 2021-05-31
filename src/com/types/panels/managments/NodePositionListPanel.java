@@ -22,7 +22,7 @@ public class NodePositionListPanel extends StandartPanel {
 	private static final long serialVersionUID = 5046594777285996932L;
 
 	// TAD respectivo
-	private NodePositionList<Object> nodesList = new NodePositionList<Object>();
+	private NodePositionList<Object> nodesList;
 
 	// Campos
 	private JComboBox<Object> whereUser, listNodes;
@@ -36,6 +36,7 @@ public class NodePositionListPanel extends StandartPanel {
 
 	// Renderiza��o padr�o
 	public void renderComponents() {
+		nodesList = new NodePositionList<Object>();
 		tables = new Tables(3);
 		instanceButton();
 		buttonEvents(nodesList);

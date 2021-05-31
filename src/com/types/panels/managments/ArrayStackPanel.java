@@ -19,7 +19,7 @@ public class ArrayStackPanel extends StandartPanel {
 	private static final long serialVersionUID = -189390063017820972L;
 
 	// TAD respectivo
-	private ArrayStack<Object> stack = new ArrayStack<Object>();
+	private ArrayStack<Object> stack;
 
 	// Campos
 	private JTextField valueUser;
@@ -30,8 +30,9 @@ public class ArrayStackPanel extends StandartPanel {
 		renderComponents();
 	}
 
-	// Renderização padrão
+	// Renderizaï¿½ï¿½o padrï¿½o
 	public void renderComponents() {
+		stack = new ArrayStack<Object>();
 		tables = new Tables(1);
 		instanceButton();
 		buttonEvents(stack);
@@ -41,7 +42,7 @@ public class ArrayStackPanel extends StandartPanel {
 		valueUser = UserEntries.createField("Empilhar:", 20, JTextField.CENTER, Object.class);
 	}
 
-	// Gerar entrada de inserção
+	// Gerar entrada de inserï¿½ï¿½o
 	protected Entry insertEntry() {
 		return new Entry(new JComponent[] { valueUser });
 	}
@@ -68,10 +69,10 @@ public class ArrayStackPanel extends StandartPanel {
 		try {
 			tables.getRemoveModel().addRow(new Object[] { "pop()", stack.pop() });
 		} catch (Exception ex) {
-			showError("Erro na remoção (Pilha vazia)");
+			showError("Erro na remoï¿½ï¿½o (Pilha vazia)");
 		}
 	}
 
-	// Gerar entrada de remoção
+	// Gerar entrada de remoï¿½ï¿½o
 	protected Entry removeEntry() { return null; }
 }

@@ -22,7 +22,7 @@ public class LinkedBinaryTreePanel extends StandartPanel {
 	private static final long serialVersionUID = -1561066618221153898L;
 
 	// TAD respectivo
-	private LinkedBinaryTree<Object> binaryTree = new LinkedBinaryTree<Object>();
+	private LinkedBinaryTree<Object> binaryTree;
 
 	// Campos
 	private JComboBox<Object> whereUser;
@@ -36,6 +36,7 @@ public class LinkedBinaryTreePanel extends StandartPanel {
 
 	// Renderiza��o padr�o
 	public void renderComponents() {
+		binaryTree = new LinkedBinaryTree<Object>();
 		tables = new Tables(5);
 		instanceButton();
 		buttonEvents(binaryTree);

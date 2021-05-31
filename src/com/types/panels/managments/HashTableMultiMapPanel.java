@@ -19,7 +19,7 @@ public class HashTableMultiMapPanel extends StandartPanel {
 
 	private static final long serialVersionUID = -6158057641919924862L;
 
-	private HashTableMultiMap<Object, Object> dictionary = new HashTableMultiMap<Object, Object>();
+	private HashTableMultiMap<Object, Object> dictionary;
 
 	private JTextField keyUser, valueUser;
 	private JComboBox<Object> keys;
@@ -30,6 +30,7 @@ public class HashTableMultiMapPanel extends StandartPanel {
 	}
 
 	public void renderComponents() {
+		dictionary = new HashTableMultiMap<Object, Object>();
 		tables = new Tables(8);
 		instanceButton();
 		buttonEvents(dictionary);

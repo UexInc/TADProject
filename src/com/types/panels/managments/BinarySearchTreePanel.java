@@ -19,7 +19,7 @@ public class BinarySearchTreePanel extends StandartPanel {
 
 	private static final long serialVersionUID = 7079469686451647009L;
 	
-	private BinarySearchTree<Object, Object> ABB = new BinarySearchTree<Object, Object>();
+	private BinarySearchTree<Object, Object> ABB;
 	
 	private JTextField keyUser, valueUser;
 	private JComboBox<Object> keys;
@@ -30,6 +30,7 @@ public class BinarySearchTreePanel extends StandartPanel {
 	}
 	
 	public void renderComponents() {
+		ABB = new BinarySearchTree<Object, Object>();
 		tables = new Tables(9);
 		instanceButton();
 		buttonEvents(ABB);

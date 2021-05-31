@@ -25,7 +25,7 @@ public class LinkedTreePanel extends StandartPanel {
 	private static final long serialVersionUID = -6010080224840864656L;
 
 	// TAD respectivo
-	private LinkedTree<Object> tree = new LinkedTree<Object>();
+	private LinkedTree<Object> tree;
 
 	// Campos
 	private JComboBox<Object> whereUser;
@@ -39,6 +39,7 @@ public class LinkedTreePanel extends StandartPanel {
 
 	// Renderiza��o padr�o
 	public void renderComponents() {
+		tree = new LinkedTree<Object>();
 		tables = new Tables(4);
 		instanceButton();
 		remotionButton = null;
