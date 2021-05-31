@@ -14,7 +14,7 @@ public class AboutPanel extends StandartPanel {
 	}
 	
 	public void renderComponents() {
-		Descriptions.descriptionGraph(this);
+		Descriptions.descriptionAbout(this);
 		instanceButton();
 		buttonEvents(null);
 		generateLateral(false);
