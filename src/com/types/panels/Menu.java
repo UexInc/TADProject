@@ -8,15 +8,14 @@ import java.awt.Insets;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import com.types.controllers.Options;
 import com.types.design.Styles;
 import com.types.interfaces.IRender;
 import com.types.main.Layout;
 import com.types.main.Main;
+import com.types.util.ImagePanel;
 
-public class Menu extends JPanel implements IRender {
+public class Menu extends ImagePanel implements IRender {
 
 	// ID da janela
 	private static final long serialVersionUID = -2293778474706031002L;
@@ -41,7 +40,8 @@ public class Menu extends JPanel implements IRender {
 	};
 	
 	// Construtor
-	public Menu() {
+	public Menu(String path) {
+		super(path);
 		init();
 		renderComponents();
 	}
@@ -54,7 +54,7 @@ public class Menu extends JPanel implements IRender {
 	
 	// Inicializando janela
 	public void init() {
-		setBackground(Color.orange);
+		setBackground(Color.black);
 		setLayout(new GridBagLayout());
 		setVisible(true);
 	}
@@ -64,7 +64,7 @@ public class Menu extends JPanel implements IRender {
 		JLabel title = new JLabel("Tipos Abstratos de Dados");
 		int fontSize = (Main.SIZE.width - Main.SIZE.height) / 10;
 		title.setFont(new Font("Arial", Font.BOLD, fontSize));
-		title.setForeground(new Color(181, 101, 167));
+		title.setForeground(Styles.colorThemeLight);
 		layout.setConstraints(0, 0, 2, 1, 
 				GridBagConstraints.CENTER, GridBagConstraints.VERTICAL);
 		layout.insets = new Insets(0, 0, 5 * texts.length, 0);
@@ -104,6 +104,7 @@ public class Menu extends JPanel implements IRender {
 				GridBagConstraints.CENTER, GridBagConstraints.VERTICAL);
 		Styles.setButtonMenu(button);
 		layout.insets = new Insets(5 * texts.length, 0, 0, 0);
+		button.addActionListener(new Options());
 		add(button, layout);
 		
 		// Opção de sair

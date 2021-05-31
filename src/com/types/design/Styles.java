@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 
 import com.types.main.Main;
 import com.types.panels.Menu;
+import com.types.util.RoundedBorder;
 
 public final class Styles {
 
@@ -24,6 +25,10 @@ public final class Styles {
 				new Dimension(Main.SIZE.width / (Menu.texts.length / 4), Main.SIZE.height / Menu.texts.length));
 		button.setBackground(new Color(91, 94, 166));
 		button.setForeground(new Color(255, 255, 255));
+		button.setOpaque(false);
+		button.setContentAreaFilled(false);
+		button.setBorder(new RoundedBorder(50));
+		button.setBorderPainted(true);
 	}
 
 	// Cores TEMA - fundo

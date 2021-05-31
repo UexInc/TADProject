@@ -7,6 +7,7 @@ import javax.swing.JComponent;
 
 import com.types.main.Main;
 import com.types.panels.managments.AVLTreeMapPanel;
+import com.types.panels.managments.AboutPanel;
 import com.types.panels.managments.ArrayIndexListPanel;
 import com.types.panels.managments.ArrayQueuePanel;
 import com.types.panels.managments.ArrayStackPanel;
@@ -74,7 +75,10 @@ public class Options implements ActionListener {
 				disableMenu(); 
 				Main.mainFrame.add(new GraphPanel()); 
 				break;
-			case "Sobre": break;
+			case "Sobre":
+				disableMenu(); 
+				Main.mainFrame.add(new AboutPanel()); 
+				break;
 			case "Sair": 
 				Main.mainFrame.dispose(); 
 				break;

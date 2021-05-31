@@ -1,12 +1,13 @@
 package com.types.util;
 
+import java.awt.Color;
 import java.awt.Component;
-
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
+import com.types.design.Styles;
 import com.types.panels.Menu;
 
 public class Tables implements TableCellRenderer {
@@ -98,7 +99,7 @@ public class Tables implements TableCellRenderer {
 		int preferredHeight = text.getPreferredSize().height;
 
 		if (table.getRowHeight(row) != preferredHeight) {
-			table.setRowHeight(row, preferredHeight);
+			table.setRowHeight(row, preferredHeight + table.getIntercellSpacing().height);
 		}
 		
 		table.setShowGrid(false);
@@ -106,6 +107,13 @@ public class Tables implements TableCellRenderer {
 		table.setShowVerticalLines(false);
 		
 		table.setGridColor(text.getForeground());
+		if (isSelected) {
+			text.setBackground(Styles.colorThemeTooDark);
+			text.setForeground(Color.white);
+		} else {
+			text.setBackground(Styles.colorThemeDark);
+			text.setForeground(Color.white);
+		}
 		return text;
 	}
 }

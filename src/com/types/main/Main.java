@@ -30,7 +30,7 @@ public class Main extends JFrame implements IRender {
 	
 	// Renderiza��o padr�o
 	public void renderComponents() {
-		menu = new Menu();
+		menu = new Menu("gif_frame.gif");
 		add(menu);
 	}
 
