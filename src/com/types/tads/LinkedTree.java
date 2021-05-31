@@ -12,47 +12,47 @@ import com.types.interfaces.Tree;
 import com.types.interfaces.TreePosition;
 import com.types.nodes.TreeNode;
 
-// Um classe para a árvore ligada onde os nodos têm um número arbitrário de filhos.
+// Um classe para a ï¿½rvore ligada onde os nodos tï¿½m um nï¿½mero arbitrï¿½rio de filhos.
 public class LinkedTree<T> implements Tree<T> {
 
-	protected TreePosition<T> root; // Referência para a raíz
-	protected int size; // Número de Nodos
+	protected TreePosition<T> root; // Referï¿½ncia para a raï¿½z
+	protected int size; // Nï¿½mero de Nodos
 
-	// Cria uma árvore vazia
+	// Cria uma ï¿½rvore vazia
 	public LinkedTree() {
-		root = null; // Inicia uma árvore vazia
+		root = null; // Inicia uma ï¿½rvore vazia
 		size = 0;
 	}
 
-	// Retorna um número de nodos da árvore
+	// Retorna um nï¿½mero de nodos da ï¿½rvore
 	public int size() {
 		return size;
 	}
 
-	// Retorna se a árvore está vazia
+	// Retorna se a ï¿½rvore estï¿½ vazia
 	public boolean isEmpty() {
 		return (size == 0);
 	}
 
-	// Retorna se um nodo é interno
+	// Retorna se um nodo ï¿½ interno
 	public boolean isInternal(Position<T> v) throws InvalidPositionException {
 		return !isExternal(v);
 	}
 
-	// Retorna se um nodo é externo
+	// Retorna se um nodo ï¿½ externo
 	public boolean isExternal(Position<T> v) throws InvalidPositionException {
 
 		TreePosition<T> vv = checkPosition(v);
 		return (vv.getChildren() == null) || vv.getChildren().isEmpty();
 	}
 
-	// Retorna se um nodo é a raíz
+	// Retorna se um nodo ï¿½ a raï¿½z
 	public boolean isRoot(Position<T> v) throws InvalidPositionException {
 		checkPosition(v);
 		return (v == root());
 	}
 
-	// Retorna a raíz da árvore
+	// Retorna a raï¿½z da ï¿½rvore
 	public TreePosition<T> root() throws EmptyTreeException {
 		if (root == null)
 			throw new EmptyTreeException("The tree is empty");
@@ -68,13 +68,13 @@ public class LinkedTree<T> implements Tree<T> {
 		return parentPos;
 	}
 
-	// Retorna uma coleção iterável dos filhos de um nodo
+	// Retorna uma coleï¿½ï¿½o iterï¿½vel dos filhos de um nodo
 	public Iterable<Position<T>> children(Position<T> v) throws InvalidPositionException {
 		TreePosition<T> vv = checkPosition(v);
 		return vv.getChildren();
 	}
 
-	// Retorna uma coleção iterável dos nodos da árvore.
+	// Retorna uma coleï¿½ï¿½o iterï¿½vel dos nodos da ï¿½rvore.
 	public Iterable<Position<T>> positions() {
 		PositionList<Position<T>> positions = new NodePositionList<Position<T>>();
 		if (size != 0)
@@ -99,8 +99,8 @@ public class LinkedTree<T> implements Tree<T> {
 		return temp;
 	}
 
-	// Métodos de atualização adicionais
-	// Adiciona um nodo raíz para uma árvore vazia
+	// Mï¿½todos de atualizaï¿½ï¿½o adicionais
+	// Adiciona um nodo raï¿½z para uma ï¿½rvore vazia
 	public TreePosition<T> addRoot(T e) throws NonEmptyTreeException {
 		if (!isEmpty())
 			throw new NonEmptyTreeException("Tree already has a root");
@@ -118,22 +118,22 @@ public class LinkedTree<T> implements Tree<T> {
 		vv.setElement(temp);
 	}
 
-	// Métodos auxiliares
-	// Se v é um bom nodo da árvore, cast para TreePosition, caso contrário, lança
-	// exceção
+	// Mï¿½todos auxiliares
+	// Se v ï¿½ um bom nodo da ï¿½rvore, cast para TreePosition, caso contrï¿½rio, lanï¿½a
+	// exceï¿½ï¿½o
 	protected TreePosition<T> checkPosition(Position<T> v) throws InvalidPositionException {
 		if (v == null || !(v instanceof TreePosition))
 			throw new InvalidPositionException("The position is invalid");
 		return (TreePosition<T>) v;
 	}
 
-	// Cria um novo nodo da árvore
+	// Cria um novo nodo da ï¿½rvore
 	protected TreePosition<T> createNode(T element, TreePosition<T> parent, PositionList<Position<T>> children) {
 		return new TreeNode<T>(element, parent, children);
 	}
 
-	// Cria uma lista armazenando os nodos das subárvore de um nodo
-	// ordenado de acordo com a travessia das subárvores
+	// Cria uma lista armazenando os nodos das subï¿½rvore de um nodo
+	// ordenado de acordo com a travessia das subï¿½rvores
 	protected void preorderPositions(Position<T> v, PositionList<Position<T>> pos) throws InvalidPositionException {
 		pos.addLast(v);
 		if (children(v) != null)
@@ -152,11 +152,11 @@ public class LinkedTree<T> implements Tree<T> {
 //		}
 //		s = (s.length() == 0 ? s : s.substring(2));
 //		return "[" + s + "]";
-//		return this.parentheticRepresentation(this, root);
-		String s = "";
-		for (E i : T) { s += ", " + i; }
-		s = (s.length() == 0 ? s : s.substring(2));
-		return "[" + s + "]";
+		return this.parentheticRepresentation(this, root);
+//		String s = "";
+//		for (E i : T) { s += ", " + i; }
+//		s = (s.length() == 0 ? s : s.substring(2));
+//		return "[" + s + "]";
 	}
 
 	// depth
@@ -200,7 +200,7 @@ public class LinkedTree<T> implements Tree<T> {
 	public String parentheticRepresentation(Tree<T> T, Position<T> v) {
 		if (v == null)
 			return "()";
-		String s = v.element().toString();
+		String s = "\"" + v.element().toString() + "\"";
 		String tabs = "";
 		int contTabs = depth(T, v);
 		if (T.isInternal(v)) {
@@ -208,16 +208,16 @@ public class LinkedTree<T> implements Tree<T> {
 			for (Position<T> w : T.children(v)) {
 				if (firstTime) {
 					for (int i = 0; i <= contTabs; i++) {
-						tabs += "\t";
+						tabs += " ";
 					}
-					s += " (\n" + tabs + parentheticRepresentation(T, w);
+					s += ": {\n" + tabs + parentheticRepresentation(T, w);
 					firstTime = false;
 				} else {
-					s += "\n" + tabs + parentheticRepresentation(T, w);
+					s += ",\n" + tabs + parentheticRepresentation(T, w);
 				}
 			}
 			if (!firstTime)
-				s += "\n" + tabs.substring(0, tabs.length() - 1) + ")";
+				s += "\n" + tabs.substring(0, tabs.length() - 1) + "}";
 		}
 		return s;
 	}

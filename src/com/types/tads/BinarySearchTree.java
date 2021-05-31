@@ -13,27 +13,27 @@ import com.types.interfaces.Position;
 import com.types.interfaces.PositionList;
 import com.types.util.BinaryPrinter;
 
-//Implementação de um dicionário com uma árvore binária de pesquisa
+//Implementaï¿½ï¿½o de um dicionï¿½rio com uma ï¿½rvore binï¿½ria de pesquisa
 
 public class BinarySearchTree<K, V> extends LinkedBinaryTree<Entry<K, V>> implements Map<K, V> {
 
 	protected Comparator<K> C; // comparador
 	protected Position<Entry<K, V>> actionPos; // pai do nodo inserido ou removido
-	protected int numEntries = 0; // número de elementos
+	protected int numEntries = 0; // nï¿½mero de elementos
 
-	// Cria uma BinarySearchTreeMap com um comparador padrão.
+	// Cria uma BinarySearchTreeMap com um comparador padrï¿½o.
 	public BinarySearchTree() {
 		C = new DefaultComparator<K>();
 		addRoot(null);
 	}
 	
-	// Cria uma BinarySearchTreeMap com um comparador padrão.
+	// Cria uma BinarySearchTreeMap com um comparador padrï¿½o.
 	public BinarySearchTree(Comparator<K> c) {
 		C = c;
 		addRoot(null);
 	}
 
-	// Classe aninhada para as entradas conscientes de localização da árvore binária
+	// Classe aninhada para as entradas conscientes de localizaï¿½ï¿½o da ï¿½rvore binï¿½ria
 	// de pesquisa.
 	protected static class BSTEntry<K, V> implements Entry<K, V> {
 		protected K key;
@@ -41,7 +41,7 @@ public class BinarySearchTree<K, V> extends LinkedBinaryTree<Entry<K, V>> implem
 		protected Position<Entry<K, V>> pos;
 
 		BSTEntry() {
-		} /* construtor padrão */
+		} /* construtor padrï¿½o */
 
 		BSTEntry(K k, V v, Position<Entry<K, V>> p) {
 			key = k;
@@ -60,43 +60,47 @@ public class BinarySearchTree<K, V> extends LinkedBinaryTree<Entry<K, V>> implem
 		public Position<Entry<K, V>> position() {
 			return pos;
 		}
+		
+		public String toString() {
+			return "(" + getKey() + ", " + getValue() + ")";
+		}
 	}
 
-	// Retorna a chave do elemento de um dado nodo da árvore.
+	// Retorna a chave do elemento de um dado nodo da ï¿½rvore.
 	protected K key(Position<Entry<K, V>> position) {
 		return position.element().getKey();
 	}
 
-	// Retorna o valor do elemento de um dado nodo da árvore.
+	// Retorna o valor do elemento de um dado nodo da ï¿½rvore.
 	protected V value(Position<Entry<K, V>> position) {
 		return position.element().getValue();
 	}
 
-	// Retorna o elemento de um dado nodo da árvore.
+	// Retorna o elemento de um dado nodo da ï¿½rvore.
 	protected Entry<K, V> entry(Position<Entry<K, V>> position) {
 		return position.element();
 	}
 
-	// Substitui um elemento por um novo elemento (e inicializa a localização do
+	// Substitui um elemento por um novo elemento (e inicializa a localizaï¿½ï¿½o do
 	// elementos)
 	protected V replaceEntry(Position<Entry<K, V>> pos, Entry<K, V> ent) {
 		((BSTEntry<K, V>) ent).pos = pos;
 		return replace(pos, ent).getValue();
 	}
 
-	// Verifica se uma determinada chave é válida.
+	// Verifica se uma determinada chave ï¿½ vï¿½lida.
 	protected void checkKey(K key) throws InvalidKeyException {
 		if (key == null) // um teste simples
 			throw new InvalidKeyException("chave nula");
 	}
 
-	// Verifica se um determinado elemento é válido.
+	// Verifica se um determinado elemento ï¿½ vï¿½lido.
 	protected void checkEntry(Entry<K, V> ent) throws InvalidEntryException {
 		if (ent == null || !(ent instanceof BSTEntry))
-			throw new InvalidEntryException("elemento inválido");
+			throw new InvalidEntryException("elemento invï¿½lido");
 	}
 
-	// Método auxiliar para inserir um elemento em um nodo externo
+	// Mï¿½todo auxiliar para inserir um elemento em um nodo externo
 	protected Entry<K, V> insertAtExternal(Position<Entry<K, V>> v, Entry<K, V> e) {
 		expandExternal(v, null, null);
 		replace(v, e);
@@ -104,28 +108,28 @@ public class BinarySearchTree<K, V> extends LinkedBinaryTree<Entry<K, V>> implem
 		return e;
 	}
 
-	// Método auxiliar para remover um nodo externo e seu pai
+	// Mï¿½todo auxiliar para remover um nodo externo e seu pai
 	protected void removeExternal(Position<Entry<K, V>> v) {
 		removeAboveExternal(v);
 		numEntries--;
 	}
 
-	// Método auxiliar usado para pesquisar, inserir e remover.
+	// Mï¿½todo auxiliar usado para pesquisar, inserir e remover.
 	protected Position<Entry<K, V>> treeSearch(K key, Position<Entry<K, V>> pos) {
 		if (isExternal(pos))
-			return pos; // chave não encontrada; retorna o nodo externo
+			return pos; // chave nï¿½o encontrada; retorna o nodo externo
 		else {
 			K curKey = key(pos);
 			int comp = C.compare(key, curKey);
 			if (comp < 0)
-				return treeSearch(key, left(pos)); // pesquisa na subárvore à esquerda
+				return treeSearch(key, left(pos)); // pesquisa na subï¿½rvore ï¿½ esquerda
 			else if (comp > 0)
-				return treeSearch(key, right(pos)); // pesquisa na subárvore à direita
+				return treeSearch(key, right(pos)); // pesquisa na subï¿½rvore ï¿½ direita
 			return pos; // retorna o nodo interno onde a chave foi encontrada
 		}
 	}
 
-	// métodos do TAD
+	// mï¿½todos do TAD
 	public int size() {
 		return numEntries;
 	}
@@ -135,7 +139,7 @@ public class BinarySearchTree<K, V> extends LinkedBinaryTree<Entry<K, V>> implem
 	}
 
 	public V get(K key) throws InvalidKeyException {
-		checkKey(key); // pode lançar uma exceção InvalidKeyException
+		checkKey(key); // pode lanï¿½ar uma exceï¿½ï¿½o InvalidKeyException
 		Position<Entry<K, V>> curPos = treeSearch(key, root());
 		actionPos = curPos; // nodo onde a pesquisa finalizou
 		if (isInternal(curPos))
@@ -144,36 +148,36 @@ public class BinarySearchTree<K, V> extends LinkedBinaryTree<Entry<K, V>> implem
 	}
 
 	public V put(K k, V x) throws InvalidKeyException {
-		checkKey(k); // pode lançar uma exceção InvalidKeyException
+		checkKey(k); // pode lanï¿½ar uma exceï¿½ï¿½o InvalidKeyException
 		Position<Entry<K, V>> insPos = treeSearch(k, root());
 		BSTEntry<K, V> e = new BSTEntry<K, V>(k, x, insPos);
-		actionPos = insPos; // nodo onde a entrada está sendo inserida
-		if (isExternal(insPos)) { // necessita de um nodo novo, a chave é nova
+		actionPos = insPos; // nodo onde a entrada estï¿½ sendo inserida
+		if (isExternal(insPos)) { // necessita de um nodo novo, a chave ï¿½ nova
 			insertAtExternal(insPos, e);
 			return null;
 		}
-		return replaceEntry(insPos, e); // a chave já existe
+		return replaceEntry(insPos, e); // a chave jï¿½ existe
 	}
 
 	public V remove(K k) throws InvalidEntryException {
-		checkKey(k); // pode lançar uma InvalidKeyException
+		checkKey(k); // pode lanï¿½ar uma InvalidKeyException
 		Position<Entry<K, V>> remPos = treeSearch(k, root());
 		if (isExternal(remPos))
-			return null; // chave não encontrada
+			return null; // chave nï¿½o encontrada
 		Entry<K, V> toReturn = entry(remPos); // entrada existente
 		if (isExternal(left(remPos)))
-			remPos = left(remPos); // caso fácil pela esquerda
+			remPos = left(remPos); // caso fï¿½cil pela esquerda
 		else if (isExternal(right(remPos)))
-			remPos = right(remPos); // caso fácil pela direita
-		else { // a entrada está em nodo com filho interno
-			Position<Entry<K, V>> swapPos = remPos; // encontra o nodo para a entrada que está sendo movida
+			remPos = right(remPos); // caso fï¿½cil pela direita
+		else { // a entrada estï¿½ em nodo com filho interno
+			Position<Entry<K, V>> swapPos = remPos; // encontra o nodo para a entrada que estï¿½ sendo movida
 			remPos = right(swapPos);
 			do
 				remPos = left(remPos);
 			while (isInternal(remPos));
 			replaceEntry(swapPos, (Entry<K, V>) parent(remPos).element());
 		}
-		actionPos = sibling(remPos); // irmão da folha que está sendo removida
+		actionPos = sibling(remPos); // irmï¿½o da folha que estï¿½ sendo removida
 		removeExternal(remPos);
 		return toReturn.getValue();
 	}
@@ -186,7 +190,7 @@ public class BinarySearchTree<K, V> extends LinkedBinaryTree<Entry<K, V>> implem
 		insertRight(v, r);
 	}
 
-	// Remove um nodo externo v e troca seu pai com o irmão de v
+	// Remove um nodo externo v e troca seu pai com o irmï¿½o de v
 	public void removeAboveExternal(Position<Entry<K, V>> v) throws InvalidPositionException {
 		if (!isExternal(v))
 			throw new InvalidPositionException("Node is not external");
@@ -199,7 +203,7 @@ public class BinarySearchTree<K, V> extends LinkedBinaryTree<Entry<K, V>> implem
 		}
 	}
 
-	// Retorna uma coleção iterable contendo todas as chaves da árvore
+	// Retorna uma coleï¿½ï¿½o iterable contendo todas as chaves da ï¿½rvore
 	public Iterable<K> keySet() {
 		PositionList<K> keys = new NodePositionList<K>();
 		Iterable<Position<Entry<K, V>>> positer = positionsInorder();
@@ -209,7 +213,7 @@ public class BinarySearchTree<K, V> extends LinkedBinaryTree<Entry<K, V>> implem
 		return keys;
 	}
 
-	// Retorna uma coleção iterable contendo todos os valores da árvore
+	// Retorna uma coleï¿½ï¿½o iterable contendo todos os valores da ï¿½rvore
 	public Iterable<V> values() {
 		PositionList<V> vals = new NodePositionList<V>();
 		Iterable<Position<Entry<K, V>>> positer = positionsInorder();
@@ -219,7 +223,7 @@ public class BinarySearchTree<K, V> extends LinkedBinaryTree<Entry<K, V>> implem
 		return vals;
 	}
 
-	// Retorna uma coleção iterável com todas as entradas da árvore
+	// Retorna uma coleï¿½ï¿½o iterï¿½vel com todas as entradas da ï¿½rvore
 	public Iterable<Entry<K, V>> entrySet() {
 		PositionList<Entry<K, V>> entries = new NodePositionList<Entry<K, V>>();
 		Iterable<Position<Entry<K, V>>> positer = positionsInorder();
@@ -229,7 +233,7 @@ public class BinarySearchTree<K, V> extends LinkedBinaryTree<Entry<K, V>> implem
 		return entries;
 	}
 
-	// Exibe a expressão parentizada da árvore
+	// Exibe a expressï¿½o parentizada da ï¿½rvore
 	public String printExpression(Position<Entry<K, V>> v) {
 		String s = "";
 		if (isInternal(v))
@@ -292,23 +296,23 @@ public class BinarySearchTree<K, V> extends LinkedBinaryTree<Entry<K, V>> implem
 		}
 
 		// Passo 2:
-		// Substitua a subárvore enraizada em z por uma nova subárvore enraizada em b.
+		// Substitua a subï¿½rvore enraizada em z por uma nova subï¿½rvore enraizada em b.
 		if (isRoot(z)) {
 			root = b;
 			b.setParent(null);
 		} else {
 			BTPosition<Entry<K, V>> zParent = (BTPosition<Entry<K, V>>) parent(z);
-			if (z == left(zParent)) { // z é filho esquerdo
+			if (z == left(zParent)) { // z ï¿½ filho esquerdo
 				b.setParent(zParent);
 				zParent.setLeft(b);
-			} else { // z é filho direito
+			} else { // z ï¿½ filho direito
 				b.setParent(zParent);
 				zParent.setRight(b);
 			}
 		}
 
 		// Passo 3:
-		// Faça a o filho esquerdo de b e T0 e T1 as subárvores esquerda e direita de a,
+		// Faï¿½a a o filho esquerdo de b e T0 e T1 as subï¿½rvores esquerda e direita de a,
 		// respectivamente.
 		b.setLeft(a);
 		a.setParent(b);
@@ -318,7 +322,7 @@ public class BinarySearchTree<K, V> extends LinkedBinaryTree<Entry<K, V>> implem
 		t1.setParent(a);
 
 		// Passo 4:
-		// Faça c o filho direito de b e T2 e T3 as subárvores esquerda e direita de c,
+		// Faï¿½a c o filho direito de b e T2 e T3 as subï¿½rvores esquerda e direita de c,
 		// respectivamente.
 		b.setRight(c);
 		c.setParent(b);
@@ -327,11 +331,11 @@ public class BinarySearchTree<K, V> extends LinkedBinaryTree<Entry<K, V>> implem
 		c.setRight(t3);
 		t3.setParent(c);
 
-		// Redefine a entradas conscientes de localização
+		// Redefine a entradas conscientes de localizaï¿½ï¿½o
 		((BSTEntry<K, V>) a.element()).pos = a;
 		((BSTEntry<K, V>) b.element()).pos = b;
 		((BSTEntry<K, V>) c.element()).pos = c;
-		return b; // a nova raiz desta subárvore
+		return b; // a nova raiz desta subï¿½rvore
 	}
 	
 	public String toString() {

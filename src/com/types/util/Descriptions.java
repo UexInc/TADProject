@@ -76,14 +76,14 @@ public final class Descriptions {
 	
 	public static void descriptionDictionary(JPanel panel) {
 		setDescription(
-			"<style> h1 { text-align: center; } </style><h1>TAD - Dicionário</h1>", 
+			"<style> h1 { text-align: center; } </style><h1>TAD - Dicionario</h1>", 
 			panel
 		);
 	}
 	
 	public static void descriptionABB(JPanel panel) {
 		setDescription(
-			"<style> h1 { text-align: center; } </style><h1>TAD - Mapa Ordenado – ABB</h1>", 
+			"<style> h1 { text-align: center; } </style><h1>TAD - Mapa Ordenado - ABB</h1>", 
 			panel
 		);
 	}
@@ -91,7 +91,14 @@ public final class Descriptions {
 
 	public static void descriptionAVL(JPanel panel) {
 		setDescription(
-			"<style> h1 { text-align: center; } </style><h1>TAD - Mapa Ordenado – AVL</h1>", 
+			"<style> h1 { text-align: center; } </style><h1>TAD - Mapa Ordenado - AVL</h1>", 
+			panel
+		);
+	}
+	
+	public static void descriptionGraph(JPanel panel) {
+		setDescription(
+			"<style> h1 { text-align: center; } </style><h1>TAD - Grafo</h1>", 
 			panel
 		);
 	}

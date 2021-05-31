@@ -37,7 +37,7 @@ public class LinkedTreePanel extends StandartPanel {
 		renderComponents();
 	}
 
-	// Renderização padrão
+	// Renderizaï¿½ï¿½o padrï¿½o
 	public void renderComponents() {
 		tables = new Tables(4);
 		instanceButton();
@@ -46,11 +46,11 @@ public class LinkedTreePanel extends StandartPanel {
 		Descriptions.descriptionGenericTree(this);
 		generateLateral(true);
 		
-		whereUser = UserEntries.createComboBox("Nó raiz", generateList());
-		valueUser = UserEntries.createField("Nó folha:", 20, JTextField.CENTER, Object.class);
+		whereUser = UserEntries.createComboBox("Nodo raiz", generateList());
+		valueUser = UserEntries.createField("Nodo folha:", 20, JTextField.CENTER, Object.class);
 	}
 
-	// Gerar entrada de inserção
+	// Gerar entrada de inserï¿½ï¿½o
 	protected Entry insertEntry() {
 		whereUser.setModel(new DefaultComboBoxModel<Object>(generateList()));
 		return new Entry(new JComponent[] { whereUser, valueUser });
@@ -81,7 +81,7 @@ public class LinkedTreePanel extends StandartPanel {
 	protected Entry removeEntry() { return null; }
 	protected void removeEvent() { }
 
-	// Pegar posição com base no elemento
+	// Pegar posiï¿½ï¿½o com base no elemento
 	private TreeNode<Object> getPos(Object element) {
 		for (Position<Object> child : tree.positions()) {
 			if (child.element().toString().equalsIgnoreCase(element.toString()))
@@ -90,12 +90,12 @@ public class LinkedTreePanel extends StandartPanel {
 		return null;
 	}
 
-	// Criar folha com base na posição
+	// Criar folha com base na posiï¿½ï¿½o
 	private TreeNode<Object> createLeaf(TreeNode<Object> p, String n) {
 		PositionList<Position<Object>> filhos;
 		TreeNode<Object> aux;
 
-		// Obtém os Filhos de p
+		// Obtï¿½m os Filhos de p
 		filhos = p.getChildren();
 
 		// Cria um novo filho
@@ -108,7 +108,7 @@ public class LinkedTreePanel extends StandartPanel {
 		return aux;
 	}
 
-	// Gerar a lista de folhas para seleção
+	// Gerar a lista de folhas para seleï¿½ï¿½o
 	private String[] generateList() {
 		String[] list = new String[tree.size()];
 		int c = 0;

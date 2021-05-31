@@ -34,7 +34,7 @@ public class NodePositionListPanel extends StandartPanel {
 		renderComponents();
 	}
 
-	// Renderização padrão
+	// Renderizaï¿½ï¿½o padrï¿½o
 	public void renderComponents() {
 		tables = new Tables(3);
 		instanceButton();
@@ -42,9 +42,9 @@ public class NodePositionListPanel extends StandartPanel {
 		Descriptions.descriptionNodePositionList(this);
 		generateLateral(true);
 		
-		listNodes = UserEntries.createComboBox("Do nó:", generateList());
+		listNodes = UserEntries.createComboBox("Do nodo:", generateList());
 		
-		String[] options = { "No ínicio", "No final", 
+		String[] options = { "No inicio", "No final", 
 				"Antes (" + listNodes.getName().substring(0, listNodes.getName().length() - 1) + ")", 
 				"Depois (" + listNodes.getName().substring(0, listNodes.getName().length() - 1)  + ")" };
 		whereUser = UserEntries.createComboBox("Colocar:", options);
@@ -52,7 +52,7 @@ public class NodePositionListPanel extends StandartPanel {
 		valueUser = UserEntries.createField("Valor:", 20, JTextField.CENTER, Object.class);
 	}
 
-	// Gerar entrada de inserção
+	// Gerar entrada de inserï¿½ï¿½o
 	protected Entry insertEntry() {
 		listNodes.setModel(new DefaultComboBoxModel<Object>(generateList()));
 		return new Entry(new JComponent[] { whereUser, listNodes, valueUser });
@@ -93,7 +93,7 @@ public class NodePositionListPanel extends StandartPanel {
 		});
 	}
 	
-	// Seleciona e insere com base na opção
+	// Seleciona e insere com base na opï¿½ï¿½o
 	private void selectAndInsert() {
 		int index = whereUser.getSelectedIndex();
 		switch (index) {
@@ -124,7 +124,7 @@ public class NodePositionListPanel extends StandartPanel {
 		}
 	}
 	
-	// Seleciona e remove com base na opção
+	// Seleciona e remove com base na opï¿½ï¿½o
 	private void selectAndRemove() {
 		tables.getRemoveModel().addRow(new Object[] {
 				"remove(" + listNodes.getSelectedItem() + ")", 
@@ -132,7 +132,7 @@ public class NodePositionListPanel extends StandartPanel {
 		});
 	}
 	
-	// Pegar posição com base no elemento
+	// Pegar posiï¿½ï¿½o com base no elemento
 	private Position<Object> getPos(Object element) {
 		Position<Object> pos = nodesList.first();
 		for (@SuppressWarnings("unused") Object node : nodesList) {
@@ -145,7 +145,7 @@ public class NodePositionListPanel extends StandartPanel {
 		return null;
 	}
 
-	// Gerar a lista de nodos para seleção
+	// Gerar a lista de nodos para seleï¿½ï¿½o
 	private String[] generateList() {
 		String[] list = new String[nodesList.size()];
 		int i = 0;

@@ -20,13 +20,13 @@ public class Tables implements TableCellRenderer {
 	private DefaultTableModel viewModel;
 
 	public Tables(int option) {
-		insertModel = createModelTable(new String[] { "Entrada", "Saída" });
-		removeModel = createModelTable(new String[] { "Entrada", "Saída" });
+		insertModel = createModelTable(new String[] { "Entrada", "Saï¿½da" });
+		removeModel = createModelTable(new String[] { "Entrada", "Saï¿½da" });
 		viewModel = createModelTable(new String[] { Menu.texts[option].substring(4, Menu.texts[option].length()) });
 
 		insertTable = new JTable(insertModel);
 
-		if (Menu.texts[option] == "TAD-Árvore Genérica")
+		if (Menu.texts[option] == "TAD-ï¿½rvore Genï¿½rica")
 			removeTable = null;
 		else
 			removeTable = new JTable(removeModel);
@@ -90,7 +90,7 @@ public class Tables implements TableCellRenderer {
 		text.setLineWrap(true);
 		text.setWrapStyleWord(true);
 		
-		text.setText(value.toString());
+		text.setText(value == null ? "" : value.toString());
 		text.setSize(table.getColumnModel().getColumn(column).getWidth(), table.getRowHeight(row));
 		
 		int preferredHeight = text.getPreferredSize().height;

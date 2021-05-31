@@ -21,22 +21,22 @@ public class Menu extends JPanel implements IRender {
 	// ID da janela
 	private static final long serialVersionUID = -2293778474706031002L;
 	
-	// Layout para renderizaÁ„o
+	// Layout para renderizando
 	public Layout layout = new Layout();
 	
-	// Texto das opÁıes
+	// Texto das op√ß√µes
 	public static final String[] texts = {
 		"TAD-Lista Arranjo",
 		"TAD-Pilha",
 		"TAD-Fila",
 		"TAD-Lista de Nodos",
-		"TAD-¡rvore GenÈrica",
-		"TAD-¡rvore Bin·ria",
+		"TAD-√Årvore Gen√©rica",
+		"TAD-√Årvore Bin√°ria",
 		"TAD-Fila de Prioridade",
 		"TAD-Mapa",
-		"TAD-Dicion·rio",
-		"TAD-Mapa Ordenado ñ ABB",
-		"TAD-Mapa Ordenado ñ AVL",
+		"TAD-Dicion√°rio",
+		"TAD-Mapa Ordenado - ABB",
+		"TAD-Mapa Ordenado - AVL",
 		"TAD-Grafos"
 	};
 	
@@ -46,7 +46,7 @@ public class Menu extends JPanel implements IRender {
 		renderComponents();
 	}
 	
-	// RenderizaÁ„o padr„o
+	// Renderiza√ß√£o padr√£o
 	public void renderComponents() {
 		createTitle();
 		generateOptions();
@@ -71,10 +71,10 @@ public class Menu extends JPanel implements IRender {
 		add(title, layout);
 	}
 	
-	// GeraÁ„o dos botıes
+	// Gera√ß√£o dos bot√µes
 	private void generateOptions() {
 		
-		// OpÁıes dos TADs
+		// Op√ß√µes dos TADs
 		for (int i = 0; i < texts.length / 2; i++) {			
 			JButton button = new JButton(texts[i]);
 			button.setName(texts[i]);
@@ -97,7 +97,7 @@ public class Menu extends JPanel implements IRender {
 			add(button, layout);
 		}
 		
-		// OpÁ„o sobre o projeto
+		// Op√ß√£o sobre o projeto
 		JButton button = new JButton("Sobre");
 		button.setName(button.getText());
 		layout.setConstraints(0, 5 * texts.length, 1, 1, 
@@ -106,7 +106,7 @@ public class Menu extends JPanel implements IRender {
 		layout.insets = new Insets(5 * texts.length, 0, 0, 0);
 		add(button, layout);
 		
-		// OpÁ„o de sair
+		// Op√ß√£o de sair
 		button = new JButton("Sair");
 		button.setName(button.getText());
 		layout.setConstraints(1, 5 * texts.length, 1, 1, 

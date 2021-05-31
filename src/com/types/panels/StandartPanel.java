@@ -26,10 +26,10 @@ public abstract class StandartPanel extends JPanel implements IRender {
 	// ID da janela
 	private static final long serialVersionUID = 4531711490629253031L;
 
-	// Layout para renderização
+	// Layout para renderizaï¿½ï¿½o
 	protected Layout layout = new Layout();
 
-	// Botões na coluna lateral
+	// Botï¿½es na coluna lateral
 	protected static JButton insertButton;
 	protected static JButton remotionButton;
 	protected static JButton viewButton;
@@ -42,7 +42,7 @@ public abstract class StandartPanel extends JPanel implements IRender {
 	protected Entry insertEntry;
 	protected Entry removeEntry;
 
-	// Metódo de adição dos components na coluna lateral
+	// Metï¿½do de adiï¿½ï¿½o dos components na coluna lateral
 	protected void createLateralComponent(Component c, JPanel lateral) {
 
 		layout.setConstraints(GridBagConstraints.RELATIVE, GridBagConstraints.RELATIVE, 1, 1, GridBagConstraints.CENTER,
@@ -67,7 +67,7 @@ public abstract class StandartPanel extends JPanel implements IRender {
 
 	}
 
-	// Renderização da coluna lateral
+	// Renderizaï¿½ï¿½o da coluna lateral
 	protected void generateLateral(boolean renderAll) {
 		JPanel lateral = new JPanel(new GridBagLayout());
 
@@ -93,7 +93,7 @@ public abstract class StandartPanel extends JPanel implements IRender {
 		add(lateral, layout);
 	}
 
-	// Inicilizar os botões
+	// Inicilizar os botï¿½es
 	protected void instanceButton() {
 		insertButton = new JButton("Inserir");
 		remotionButton = new JButton("Remover");
@@ -111,7 +111,7 @@ public abstract class StandartPanel extends JPanel implements IRender {
 			}
 		});
 
-		// Evento de inserção
+		// Evento de inserï¿½ï¿½o
 		if (insertButton != null) {
 			insertButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -122,7 +122,7 @@ public abstract class StandartPanel extends JPanel implements IRender {
 			});
 		}
 
-		// Evento de remoção
+		// Evento de remoï¿½ï¿½o
 		if (remotionButton != null) {
 			remotionButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -143,11 +143,11 @@ public abstract class StandartPanel extends JPanel implements IRender {
 		}
 	}
 	
-	// Habilitar/Desabilitar botões
+	// Habilitar/Desabilitar botï¿½es
 	public static void disableButtons(boolean status) {
-		insertButton.setEnabled(status);
-		remotionButton.setEnabled(status);
-		viewButton.setEnabled(status);
+		if (insertButton != null) insertButton.setEnabled(status);
+		if (remotionButton != null) remotionButton.setEnabled(status);
+		if (viewButton != null) viewButton.setEnabled(status);
 		backButton.setEnabled(status);
 	}
 
@@ -158,7 +158,7 @@ public abstract class StandartPanel extends JPanel implements IRender {
 		setVisible(true);
 	}
 
-	// Renderização padrão
+	// Renderizaï¿½ï¿½o padrï¿½o
 	public void renderComponents() {
 		generateLateral(false);
 	}

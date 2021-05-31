@@ -34,7 +34,7 @@ public class LinkedBinaryTreePanel extends StandartPanel {
 		renderComponents();
 	}
 
-	// Renderização padrão
+	// Renderizaï¿½ï¿½o padrï¿½o
 	public void renderComponents() {
 		tables = new Tables(5);
 		instanceButton();
@@ -42,17 +42,17 @@ public class LinkedBinaryTreePanel extends StandartPanel {
 		Descriptions.descriptionBinaryTree(this);
 		generateLateral(true);
 
-		whereUser = UserEntries.createComboBox("Nó:", generateList());
+		whereUser = UserEntries.createComboBox("Raiz:", generateList());
 		valueUser = UserEntries.createField("Valor:", 20, JTextField.CENTER, Object.class);
 	}
 
-	// Gerar entrada de inserção
+	// Gerar entrada de inserï¿½ï¿½o
 	protected Entry insertEntry() {
 		whereUser.setModel(new DefaultComboBoxModel<Object>(generateList()));
 		return new Entry(new JComponent[] { whereUser, valueUser });
 	}
 
-	// Gerar entrada de remoção
+	// Gerar entrada de remoï¿½ï¿½o
 	protected Entry removeEntry() {
 		whereUser.setModel(new DefaultComboBoxModel<Object>(generateList()));
 		return new Entry(new JComponent[] { whereUser });
@@ -109,7 +109,7 @@ public class LinkedBinaryTreePanel extends StandartPanel {
 		}
 	}
 
-	// Pegar posição com base no elemento
+	// Pegar posiï¿½ï¿½o com base no elemento
 	private Position<Object> getPos(Object element) {
 		for (Position<Object> child : binaryTree.positions()) {
 			if (child.element().toString().equalsIgnoreCase(element.toString()))
@@ -118,7 +118,7 @@ public class LinkedBinaryTreePanel extends StandartPanel {
 		return null;
 	}
 
-	// Gerar a lista de folhas para seleção
+	// Gerar a lista de folhas para seleï¿½ï¿½o
 	private String[] generateList() {
 		String[] list = new String[binaryTree.size()];
 		int c = 0;
