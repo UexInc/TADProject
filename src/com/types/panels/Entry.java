@@ -30,11 +30,11 @@ public class Entry extends JFrame implements IRender {
 	// Components da entrada
 	private JComponent[] components;
 
-	// Opção padrão das entradas
+	// Opï¿½ï¿½o padrï¿½o das entradas
 	private JButton cancel;
 	private JButton send;
 
-	// Layout padrão
+	// Layout padrï¿½o
 	private Layout layout;
 
 	// Contrutor
@@ -59,7 +59,7 @@ public class Entry extends JFrame implements IRender {
 		setVisible(true);
 	}
 
-	// Renderização padrão
+	// Renderizaï¿½ï¿½o padrï¿½o
 	public void renderComponents() {
 		cancel = new JButton("Cancelar");
 		send = new JButton("Enviar");
@@ -91,7 +91,7 @@ public class Entry extends JFrame implements IRender {
 			layout.gridy += 1;
 		}
 
-		// Renderizando botões padrões
+		// Renderizando botï¿½es padrï¿½es
 		layout.gridx = 0;
 		Styles.setStyleButton(cancel);
 		panel.add(cancel, layout);
@@ -106,13 +106,13 @@ public class Entry extends JFrame implements IRender {
 	protected void buttonEvents() {
 		cancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { 
-				StandartPanel.disableButtons(true); 
+				StandartPanel.buttonStatus(true); 
 				dispose(); 
 			} 
 		});
 		send.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StandartPanel.disableButtons(true);
+				StandartPanel.buttonStatus(true);
 				for (JComponent comp : components) {
 					if (comp instanceof JTextField) ((JTextField) comp).setText("");
 				}

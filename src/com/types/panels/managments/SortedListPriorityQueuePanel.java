@@ -67,6 +67,7 @@ public class SortedListPriorityQueuePanel extends StandartPanel {
 
 	protected void removeEvent() {
 		try {
+			buttonStatus(true);
 			tables.getRemoveModel().addRow(new Object[] { "removeMin()", priorityQueue.removeMin() });
 		} catch (Exception ex) {
 			

@@ -67,6 +67,7 @@ public class ArrayQueuePanel extends StandartPanel {
 	protected void removeEvent() {
 		try {
 			tables.getRemoveModel().addRow(new Object[] { "dequeue()", queue.dequeue() });
+			buttonStatus(true);
 		} catch (Exception ex) {
 			showError("Erro na remo��o (Fila vazia)");
 		}

@@ -118,7 +118,7 @@ public abstract class StandartPanel extends JPanel implements IRender {
 		if (insertButton != null) {
 			insertButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					disableButtons(false);
+					buttonStatus(false);
 					insertEntry = insertEntry();
 					insertEvent();
 				}
@@ -129,7 +129,7 @@ public abstract class StandartPanel extends JPanel implements IRender {
 		if (remotionButton != null) {
 			remotionButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					disableButtons(false);
+					buttonStatus(false);
 					removeEntry = removeEntry();
 					removeEvent();
 				}
@@ -147,7 +147,7 @@ public abstract class StandartPanel extends JPanel implements IRender {
 	}
 	
 	// Habilitar/Desabilitar bot�es
-	public static void disableButtons(boolean status) {
+	public static void buttonStatus(boolean status) {
 		if (insertButton != null) insertButton.setEnabled(status);
 		if (remotionButton != null) remotionButton.setEnabled(status);
 		if (viewButton != null) viewButton.setEnabled(status);

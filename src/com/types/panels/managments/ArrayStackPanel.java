@@ -68,6 +68,7 @@ public class ArrayStackPanel extends StandartPanel {
 	protected void removeEvent() {
 		try {
 			tables.getRemoveModel().addRow(new Object[] { "pop()", stack.pop() });
+			buttonStatus(true);
 		} catch (Exception ex) {
 			showError("Erro na remo��o (Pilha vazia)");
 		}
