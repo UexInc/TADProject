@@ -60,7 +60,7 @@ public class HashTableMultiMapPanel extends StandartPanel {
 							.addRow(new Object[] { "put(" + keyUser.getText() + ", " + valueUser.getText() + ")",
 									dictionary.put(keyUser.getText(), valueUser.getText()) });
 				} catch (Exception ex) {
-
+					showError(ex.getMessage());
 				} finally {
 					insertEntry.dispose();
 				}
@@ -77,7 +77,7 @@ public class HashTableMultiMapPanel extends StandartPanel {
 							dictionary.remove(dictionary.get(keys.getSelectedItem()))
 					});
 				} catch (Exception ex) {
-
+					showError(ex.getMessage());
 				} finally {
 					removeEntry.dispose();
 				}

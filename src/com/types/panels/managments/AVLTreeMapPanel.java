@@ -78,7 +78,7 @@ public class AVLTreeMapPanel extends StandartPanel {
 							AVL.remove(keys.getSelectedItem())
 					});
 				} catch (Exception ex) {
-
+					showError(ex.getMessage());
 				} finally {
 					removeEntry.dispose();
 				}

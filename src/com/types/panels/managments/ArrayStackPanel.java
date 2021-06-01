@@ -56,7 +56,7 @@ public class ArrayStackPanel extends StandartPanel {
 					tables.getInsertModel().addRow(
 							new Object[] { "push(" + valueUser.getText()  + ")", null });
 				} catch (Exception ex) {
-					
+					showError(ex.getMessage());
 				} finally {
 					insertEntry.dispose();
 				}
@@ -70,7 +70,7 @@ public class ArrayStackPanel extends StandartPanel {
 			tables.getRemoveModel().addRow(new Object[] { "pop()", stack.pop() });
 			buttonStatus(true);
 		} catch (Exception ex) {
-			showError("Erro na remo��o (Pilha vazia)");
+			showError(ex.getMessage());
 		}
 	}
 

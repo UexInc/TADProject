@@ -70,7 +70,7 @@ public class LinkedBinaryTreePanel extends StandartPanel {
 						tables.getInsertModel().addRow(new Object[] { "addRoot(" + valueUser.getText() + ")",
 								binaryTree.addRoot(valueUser.getText()).element() });
 				} catch (Exception ex) {
-
+					showError(ex.getMessage());
 				} finally {
 					insertEntry.dispose();
 				}
@@ -88,7 +88,7 @@ public class LinkedBinaryTreePanel extends StandartPanel {
 							binaryTree.remove(getPos(whereUser.getSelectedItem()))
 					});
 				} catch (Exception ex) {
-
+					showError(ex.getMessage());
 				} finally {
 					removeEntry.dispose();
 				}

@@ -71,7 +71,7 @@ public class LinkedTreePanel extends StandartPanel {
 						tree.root().setChildren(new NodePositionList<Position<Object>>());
 					}
 				} catch (Exception ex) {
-
+					showError(ex.getMessage());
 				} finally {
 					insertEntry.dispose();
 				}

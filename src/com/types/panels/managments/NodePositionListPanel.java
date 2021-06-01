@@ -71,7 +71,7 @@ public class NodePositionListPanel extends StandartPanel {
 				try {
 					selectAndInsert();
 				} catch (Exception ex) {
-					
+					showError(ex.getMessage());
 				} finally {
 					insertEntry.dispose();
 				}
@@ -86,7 +86,7 @@ public class NodePositionListPanel extends StandartPanel {
 				try {
 					selectAndRemove();
 				} catch(Exception ex) {
-					
+					showError(ex.getMessage());
 				} finally {
 					removeEntry.dispose();
 				}

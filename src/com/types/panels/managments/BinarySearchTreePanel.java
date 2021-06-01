@@ -61,7 +61,7 @@ public class BinarySearchTreePanel extends StandartPanel {
 											valueUser.getText() + ")", 
 											ABB.put(keyUser.getText(), valueUser.getText()) });
 				} catch(Exception ex) {
-					
+					showError(ex.getMessage());
 				} finally {
 					insertEntry.dispose();
 				}
@@ -78,7 +78,7 @@ public class BinarySearchTreePanel extends StandartPanel {
 							ABB.remove(keys.getSelectedItem())
 					});
 				} catch (Exception ex) {
-
+					showError(ex.getMessage());
 				} finally {
 					removeEntry.dispose();
 				}

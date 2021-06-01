@@ -61,7 +61,7 @@ public class HashTableMapPanel extends StandartPanel {
 											valueUser.getText() + ")", 
 											map.put(keyUser.getText(), valueUser.getText()) });
 				} catch(Exception ex) {
-					
+					showError(ex.getMessage());
 				} finally {
 					insertEntry.dispose();
 				}
@@ -78,7 +78,7 @@ public class HashTableMapPanel extends StandartPanel {
 							map.remove(keys.getSelectedItem())
 					});
 				} catch (Exception ex) {
-
+					showError(ex.getMessage());
 				} finally {
 					removeEntry.dispose();
 				}

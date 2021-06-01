@@ -57,7 +57,7 @@ public class SortedListPriorityQueuePanel extends StandartPanel {
 											valueUser.getText() + ")", 
 											priorityQueue.insert(keyUser.getText(), valueUser.getText()) });
 				} catch(Exception ex) {
-					
+					showError(ex.getMessage());
 				} finally {
 					insertEntry.dispose();
 				}
@@ -70,7 +70,7 @@ public class SortedListPriorityQueuePanel extends StandartPanel {
 			buttonStatus(true);
 			tables.getRemoveModel().addRow(new Object[] { "removeMin()", priorityQueue.removeMin() });
 		} catch (Exception ex) {
-			
+			showError(ex.getMessage());
 		}
 	}
 	

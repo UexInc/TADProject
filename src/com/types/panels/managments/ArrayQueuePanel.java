@@ -55,7 +55,7 @@ public class ArrayQueuePanel extends StandartPanel {
 					queue.enqueue(valueUser.getText());
 					tables.getInsertModel().addRow(new Object[] { "enqueue(" + valueUser.getText() + ")", null });
 				} catch (Exception ex) {
-
+					showError(ex.getMessage());
 				} finally {
 					insertEntry.dispose();
 				}
@@ -69,7 +69,7 @@ public class ArrayQueuePanel extends StandartPanel {
 			tables.getRemoveModel().addRow(new Object[] { "dequeue()", queue.dequeue() });
 			buttonStatus(true);
 		} catch (Exception ex) {
-			showError("Erro na remo��o (Fila vazia)");
+			showError(ex.getMessage());
 		}
 	}
 
