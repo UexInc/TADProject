@@ -12,47 +12,47 @@ import com.types.interfaces.Tree;
 import com.types.interfaces.TreePosition;
 import com.types.nodes.TreeNode;
 
-// Um classe para a �rvore ligada onde os nodos t�m um n�mero arbitr�rio de filhos.
+// Um classe para a árvore ligada onde os nodos têm um Número arbitrário de filhos.
 public class LinkedTree<T> implements Tree<T> {
 
-	protected TreePosition<T> root; // Refer�ncia para a ra�z
-	protected int size; // N�mero de Nodos
+	protected TreePosition<T> root; // Referência para a raíz
+	protected int size; // Número de Nodos
 
-	// Cria uma �rvore vazia
+	// Cria uma árvore vazia
 	public LinkedTree() {
-		root = null; // Inicia uma �rvore vazia
+		root = null; // Inicia uma árvore vazia
 		size = 0;
 	}
 
-	// Retorna um n�mero de nodos da �rvore
+	// Retorna um Número de nodos da árvore
 	public int size() {
 		return size;
 	}
 
-	// Retorna se a �rvore est� vazia
+	// Retorna se a árvore está vazia
 	public boolean isEmpty() {
 		return (size == 0);
 	}
 
-	// Retorna se um nodo � interno
+	// Retorna se um nodo é interno
 	public boolean isInternal(Position<T> v) throws InvalidPositionException {
 		return !isExternal(v);
 	}
 
-	// Retorna se um nodo � externo
+	// Retorna se um nodo é externo
 	public boolean isExternal(Position<T> v) throws InvalidPositionException {
 
 		TreePosition<T> vv = checkPosition(v);
 		return (vv.getChildren() == null) || vv.getChildren().isEmpty();
 	}
 
-	// Retorna se um nodo � a ra�z
+	// Retorna se um nodo é a raíz
 	public boolean isRoot(Position<T> v) throws InvalidPositionException {
 		checkPosition(v);
 		return (v == root());
 	}
 
-	// Retorna a ra�z da �rvore
+	// Retorna a raíz da árvore
 	public TreePosition<T> root() throws EmptyTreeException {
 		if (root == null)
 			throw new EmptyTreeException("The tree is empty");
@@ -68,13 +68,13 @@ public class LinkedTree<T> implements Tree<T> {
 		return parentPos;
 	}
 
-	// Retorna uma cole��o iter�vel dos filhos de um nodo
+	// Retorna uma coleção iterável dos filhos de um nodo
 	public Iterable<Position<T>> children(Position<T> v) throws InvalidPositionException {
 		TreePosition<T> vv = checkPosition(v);
 		return vv.getChildren();
 	}
 
-	// Retorna uma cole��o iter�vel dos nodos da �rvore.
+	// Retorna uma coleção iterável dos nodos da árvore.
 	public Iterable<Position<T>> positions() {
 		PositionList<Position<T>> positions = new NodePositionList<Position<T>>();
 		if (size != 0)
@@ -99,8 +99,8 @@ public class LinkedTree<T> implements Tree<T> {
 		return temp;
 	}
 
-	// M�todos de atualiza��o adicionais
-	// Adiciona um nodo ra�z para uma �rvore vazia
+	// Métodos de atualização adicionais
+	// Adiciona um nodo raíz para uma árvore vazia
 	public TreePosition<T> addRoot(T e) throws NonEmptyTreeException {
 		if (!isEmpty())
 			throw new NonEmptyTreeException("Tree already has a root");
@@ -118,22 +118,22 @@ public class LinkedTree<T> implements Tree<T> {
 		vv.setElement(temp);
 	}
 
-	// M�todos auxiliares
-	// Se v � um bom nodo da �rvore, cast para TreePosition, caso contr�rio, lan�a
-	// exce��o
+	// Métodos auxiliares
+	// Se v é um bom nodo da árvore, cast para TreePosition, caso contrário, lança
+	// exceção
 	protected TreePosition<T> checkPosition(Position<T> v) throws InvalidPositionException {
 		if (v == null || !(v instanceof TreePosition))
 			throw new InvalidPositionException("The position is invalid");
 		return (TreePosition<T>) v;
 	}
 
-	// Cria um novo nodo da �rvore
+	// Cria um novo nodo da árvore
 	protected TreePosition<T> createNode(T element, TreePosition<T> parent, PositionList<Position<T>> children) {
 		return new TreeNode<T>(element, parent, children);
 	}
 
-	// Cria uma lista armazenando os nodos das sub�rvore de um nodo
-	// ordenado de acordo com a travessia das sub�rvores
+	// Cria uma lista armazenando os nodos das subárvore de um nodo
+	// ordenado de acordo com a travessia das subárvores
 	protected void preorderPositions(Position<T> v, PositionList<Position<T>> pos) throws InvalidPositionException {
 		pos.addLast(v);
 		if (children(v) != null)
@@ -222,6 +222,7 @@ public class LinkedTree<T> implements Tree<T> {
 		return s;
 	}
 
+	// Aumenta o tamanho com base na adição de um filho
 	public void increaseSize() {
 		this.size += 1;
 	}

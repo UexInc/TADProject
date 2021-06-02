@@ -44,7 +44,7 @@ public class HashTableMap<K, V> implements Map<K, V> {
 			return (ent.getKey() == key) && (ent.getValue() == value);
 		}
 
-		// VisualizaÁ„o da Entrada
+		// Visualiza√ß√£o da Entrada
 		public String toString() {
 			return "(" + key + "," + value + ")";
 		}
@@ -52,7 +52,7 @@ public class HashTableMap<K, V> implements Map<K, V> {
 
 	protected Entry<K, V> AVAILABLE = new HashEntry<K, V>(null, null);
 
-	protected int n = 0; // n˙mero de entradas no mapa
+	protected int n = 0; // n√∫mero de entradas no mapa
 
 	protected int prime, capacity; // fator primo e capacidade do array de buckets
 
@@ -81,23 +81,23 @@ public class HashTableMap<K, V> implements Map<K, V> {
 		shift = rand.nextInt(prime);
 	}
 
-	// Determina se uma chave È v·lida
+	// Determina se uma chave √© v√°lida
 	protected void checkKey(K k) {
 		if (k == null)
 			throw new InvalidKeyException("Invalid key: null.");
 	}
 
-	// A funÁ„o hash aplica o mÈtodo MAD para o cÛdigo hash padr„o
+	// A fun√ß√£o hash aplica o m√©todo MAD para o c√≥digo hash padr√£o
 	public int hashValue(K key) {
 		return (int) ((Math.abs(key.hashCode() * scale + shift) % prime) % capacity);
 	}
 
-	// Retorna o n˙mero de entradas da tabela hash
+	// Retorna o n√∫mero de entradas da tabela hash
 	public int size() {
 		return n;
 	}
 
-	// Retorna se a tabela est· vaiz ou n„o
+	// Retorna se a tabela est√° vaiz ou n√£o
 	public boolean isEmpty() {
 		return (n == 0);
 	}
@@ -111,8 +111,8 @@ public class HashTableMap<K, V> implements Map<K, V> {
 		return keys;
 	}
 
-	// MÈtodo de busca auxiliar - Retorna o Ìndice da chave encontrada ou -(a+1),
-	// onde a È o Ìndice do primeiro slot vazio ou disponÌvel encontrado
+	// m√©todo de busca auxiliar - Retorna o √≠ndice da chave encontrada ou -(a+1),
+	// onde a √© o √≠ndice do primeiro slot vazio ou dispon√≠vel encontrado
 	protected int findEntry(K key) throws InvalidKeyException {
 		int avail = -1;
 		checkKey(key);
@@ -122,25 +122,25 @@ public class HashTableMap<K, V> implements Map<K, V> {
 			Entry<K, V> e = bucket[i];
 			if (e == null) {
 				if (avail < 0)
-					avail = i; // a chave n„o est· na tabela
+					avail = i; // a chave n√£o est√° na tabela
 				break;
 			}
 			if (key.equals(e.getKey())) // encontramos a chave
 				return i; // chave encontrada
-			if (e == AVAILABLE) { // bucket est· desativado
+			if (e == AVAILABLE) { // bucket est√° desativado
 				if (avail < 0)
-					avail = i; // lembrar que este slot est· disponÌvel
+					avail = i; // lembrar que este slot est√° dispon√≠vel
 			}
 			i = (i + 1) % capacity; // continuar a busca
 		} while (i != j);
-		return -(avail + 1); // primeiro vazio ou slot disponÌvel
+		return -(avail + 1); // primeiro vazio ou slot dispon√≠vel
 	}
 
-	// Retorna o volor associado ‡ chave
+	// Retorna o valor associado √° chave
 	public V get(K key) throws InvalidKeyException {
-		int i = findEntry(key); // mÈtodo auxiliar para encontrar uma chave
+		int i = findEntry(key); // m√©todo auxiliar para encontrar uma chave
 		if (i < 0)
-			return null; // n„o existe valor para esta chave, ent„o retorna null
+			return null; // n√£o existe valor para esta chave, ent√£o retorna null
 		return bucket[i].getValue(); // retorna o valor encontrado neste caso
 	}
 
@@ -153,9 +153,9 @@ public class HashTableMap<K, V> implements Map<K, V> {
 			rehash(); // rehash para manter o faltor de carga <= 0.5
 			i = findEntry(key); // encontrar o local apropriado novamente para esta entrada
 		}
-		bucket[-i - 1] = new HashEntry<K, V>(key, value); // converte para o Ìndice apropriado
+		bucket[-i - 1] = new HashEntry<K, V>(key, value); // converte para o √≠ndice apropriado
 		n++;
-		return null; // n„o existia um valor anterior
+		return null; // n√£o existia um valor anterior
 	}
 
 	// Dobra o tamanho da tabela hash e rehashes todas as entradas
@@ -163,14 +163,14 @@ public class HashTableMap<K, V> implements Map<K, V> {
 	protected void rehash() {
 		capacity = 2 * capacity;
 		Entry<K, V>[] old = bucket;
-		bucket = (Entry<K, V>[]) new Entry[capacity]; // novo bucket È duas vezes maior
+		bucket = (Entry<K, V>[]) new Entry[capacity]; // novo bucket √© duas vezes maior
 		java.util.Random rand = new java.util.Random();
 		scale = rand.nextInt(prime - 1) + 1; // novo fator de escala do hash
 		shift = rand.nextInt(prime); // novo fator de deslocamento do hash
 		for (int i = 0; i < old.length; i++) {
 			Entry<K, V> e = old[i];
-			if ((e != null) && (e != AVAILABLE)) { // uma entrada v·lida
-				int j = -1 - findEntry(e.getKey()); // o mÈtodo retorna -(i+1)
+			if ((e != null) && (e != AVAILABLE)) { // uma entrada v√°lida
+				int j = -1 - findEntry(e.getKey()); // o m√©todo retorna -(i+1)
 				bucket[j] = e;
 			}
 		}

@@ -12,18 +12,18 @@ import com.types.util.ElementIterator;
 
 public class NodePositionList<T> implements PositionList<T> {
 
-	protected int numElts; // Número de elementos na lista
+	protected int numElts; // NÃºmero de elementos na lista
 	protected DNode<T> header, trailer; // Sentinelas especiais
 	
 	// Construtor que cria uma lista vazia
 	public NodePositionList() {
 		numElts = 0;
-		header = new DNode<T>(null, null, null); // cria a cabeça
+		header = new DNode<T>(null, null, null); // cria a cabeÃ§a
 		trailer = new DNode<T>(header, null, null); // cria a cauda
-		header.setNext(trailer); // faz a cabeça e a cauda apontarem uma para a outra
+		header.setNext(trailer); // faz a cabeÃ§a e a cauda apontarem uma para a outra
 	}
 	
-	// Verifica se a posição é válida para esta lista e a converte para DNode se for válida
+	// Verifica se a posiÃ§Ã£o Ã© vÃ¡lida para esta lista e a converte para DNode se for vÃ¡lida
 	protected DNode<T> checkPosition(Position<T> p) throws InvalidPositionException {
 		if (p == null) throw new InvalidPositionException("Null position passed to NodeList");
 		if (p == header) throw new InvalidPositionException("The header node is not a valid position");
@@ -45,13 +45,13 @@ public class NodePositionList<T> implements PositionList<T> {
 	// Retorna quando a lista esta vazia
 	public boolean isEmpty() { return (numElts == 0); }
 
-	// Retorna a primeira posição da lista
+	// Retorna a primeira posiÃ§Ã£o da lista
 	public Position<T> first() throws EmptyListException {
 		if (isEmpty()) throw new EmptyListException("List is empty");
 		return header.getNext();
 	}
 
-	// Retorna a posição que antecede a fornecida
+	// Retorna a posiÃ§Ã£o que antecede a fornecida
 	public Position<T> prev(Position<T> p) throws InvalidPositionException, BoundaryViolationException {
 		DNode<T> v = checkPosition(p);
 		DNode<T> prev = v.getPrev();
@@ -59,7 +59,7 @@ public class NodePositionList<T> implements PositionList<T> {
 		return prev;
 	}
 
-	// Insere o elemento antes da posição fornecida, retornando a nova posição
+	// Insere o elemento antes da posiÃ§Ã£o fornecida, retornando a nova posiÃ§Ã£o
 	public void addBefore(Position<T> p, T element) throws InvalidPositionException {
 		DNode<T> v = checkPosition(p);
 		numElts++;
@@ -68,7 +68,7 @@ public class NodePositionList<T> implements PositionList<T> {
 		v.setPrev(newNode);
 	}
 
-	// Insere o elemento dado no início da lista, retornando a nova posição
+	// Insere o elemento dado no inÃ­cio da lista, retornando a nova posiÃ§Ã£o
 	public void addFirst(T element) {
 		numElts++;
 		DNode<T> newNode = new DNode<T>(header, header.getNext(), element);
@@ -76,7 +76,7 @@ public class NodePositionList<T> implements PositionList<T> {
 		header.setNext(newNode);
 	}
 
-	// Remove da lista a posição fornecida
+	// Remove da lista a posiÃ§Ã£o fornecida
 	public T remove(Position<T> p) throws InvalidPositionException {
 		DNode<T> v = checkPosition(p);
 		numElts--;
@@ -86,13 +86,13 @@ public class NodePositionList<T> implements PositionList<T> {
 		vNext.setPrev(vPrev);
 		T vElem = v.element();
 		
-		// Desconecta a posição da lista e marca-a como inválida
+		// Desconecta a posiÃ§Ã£o da lista e marca-a como invÃ¡lida
 		v.setNext(null);
 		v.setPrev(null);
 		return vElem;
 	}
 
-	// Substitui o elemento da posição fornecida por um novo e retorna o elemento velho
+	// Substitui o elemento da posiÃ§Ã£o fornecida por um novo e retorna o elemento velho
 	public T set(Position<T> p, T element) throws InvalidPositionException {
 		DNode<T> v = checkPosition(p);
 		T oldElt = v.element();
@@ -100,7 +100,7 @@ public class NodePositionList<T> implements PositionList<T> {
 		return oldElt;
 	}
 
-	// Retorna o último nodo da lista.
+	// Retorna o Ãºltimo nodo da lista.
 	public Position<T> last() {
 		if (isEmpty()) throw new EmptyListException("List is empty");
 		return trailer.getPrev();
@@ -114,7 +114,7 @@ public class NodePositionList<T> implements PositionList<T> {
 		return next;
 	}
 
-	// Insere um elemento na última posição, retornando uma posição nova.
+	// Insere um elemento na Ãºltima posiÃ§Ã£o, retornando uma posiÃ§Ã£o nova.
 	public void addLast(T e) {
 		numElts++;
 		DNode<T> newNode = new DNode<T>(trailer.getPrev(), trailer, e);
@@ -122,7 +122,7 @@ public class NodePositionList<T> implements PositionList<T> {
 		trailer.setPrev(newNode);
 	}
 
-	// Insere um elemento após um dado elemento da lista.
+	// Insere um elemento apÃ³s um dado elemento da lista.
 	public void addAfter(Position<T> p, T e) throws InvalidPositionException {
 		DNode<T> v = checkPosition(p);
 		numElts++;
@@ -131,7 +131,7 @@ public class NodePositionList<T> implements PositionList<T> {
 		v.setNext(newNode);
 	}
 
-	// Retorna a representação textual de uma lista de nodos
+	// Retorna a representaÃ§Ã£o textual de uma lista de nodos
 	public static <E> String toString(PositionList<E> l) {
 		String s = "";
 		for (E i: l) { s += ", " + i; }

@@ -13,33 +13,33 @@ import com.types.interfaces.PositionList;
 import com.types.nodes.BTNode;
 import com.types.util.BinaryPrinter;
 
-//* ImplementaÁ„o da interface BinaryTree usando uma estrutura encadeada.
+//* Implementa√ß√£o da interface BinaryTree usando uma estrutura encadeada.
 
 public class LinkedBinaryTree<T> implements BinaryTree<T> {
 
-	protected BTPosition<T> root; // referÍncia para a raiz
+	protected BTPosition<T> root; // refer√™ncia para a raiz
 
-	protected int size; // n˙mero de nodos
+	protected int size; // n√∫mero de nodos
 
-	// Cria uma ·rvore bin·ria vazia.
+	// Cria uma √°rvore bin√°ria vazia.
 	public LinkedBinaryTree() {
-		root = null; // inicia com uma ·rvore vazia
+		root = null; // inicia com uma √°rvore vazia
 		size = 0;
 	}
 
-	// Retorna o n˙mero de nodos da ·rvore.
+	// Retorna o n√∫mero de nodos da √°rvore.
 	public int size() {
 		return size;
 	}
 
-	// Retorna se um nodo È interno.
+	// Retorna se um nodo √© interno.
 	public boolean isInternal(Position<T> v) throws InvalidPositionException {
-		checkPosition(v); // mÈtodo auxiliar
+		checkPosition(v); // M√©todo auxiliar
 		return (hasLeft(v) || hasRight(v));
 
 	}
 
-	// Retorna se um nodo È a raiz.
+	// Retorna se um nodo √© a raiz.
 	public boolean isRoot(Position<T> v) throws InvalidPositionException {
 		checkPosition(v);
 		return (v == root());
@@ -51,7 +51,7 @@ public class LinkedBinaryTree<T> implements BinaryTree<T> {
 		return (vv.getLeft() != null);
 	}
 
-	// Retorna a raiz da ·rvore.
+	// Retorna a raiz da √°rvore.
 	public Position<T> root() throws EmptyTreeException {
 		if (root == null) throw new EmptyTreeException("The tree is empty");
 		return root;
@@ -75,7 +75,7 @@ public class LinkedBinaryTree<T> implements BinaryTree<T> {
 		return parentPos;
 	}
 
-	// Retorna uma coleÁ„o iter·vel contendo os filhos de um nodo.
+	// Retorna uma cole√ß√£o iter√°vel contendo os filhos de um nodo.
 	public Iterable<Position<T>> children(Position<T> v) throws InvalidPositionException {
 		PositionList<Position<T>> children = new NodePositionList<Position<T>>();
 		if (hasLeft(v))
@@ -85,11 +85,11 @@ public class LinkedBinaryTree<T> implements BinaryTree<T> {
 		return children;
 	}
 
-	// Retorna uma coleÁ„o iter·vel (inorder) contendo os nodos da ·rvore.
+	// Retorna uma cole√ß√£o iter√°vel (inorder) contendo os nodos da √°rvore.
 	public Iterable<Position<T>> positionsInorder() {
 		PositionList<Position<T>> positions = new NodePositionList<Position<T>>();
 		if (size != 0)
-			inorderPositions(root(), positions); // atribui as posiÁıes usando caminhamento prefixado
+			inorderPositions(root(), positions); // atribui as posi√ß√µes usando caminhamento prefixado
 		return positions;
 	}
 
@@ -102,11 +102,11 @@ public class LinkedBinaryTree<T> implements BinaryTree<T> {
 	}
 	
 
-	// Retorna uma coleÁ„o iter·vel (desorder) contendo os nodos da ·rvore.
+	// Retorna uma cole√ß√£o iter√°vel (desorder) contendo os nodos da √°rvore.
 	public Iterable<Position<T>> positionsDesorder() {
 		PositionList<Position<T>> positions = new NodePositionList<Position<T>>();
 		if (size != 0)
-			desorderPositions(root(), positions); // atribui as posiÁıes usando caminhamento prefixado
+			desorderPositions(root(), positions); // atribui as posi√ß√µes usando caminhamento prefixado
 		return positions;
 	}
 
@@ -118,11 +118,11 @@ public class LinkedBinaryTree<T> implements BinaryTree<T> {
 			inorderPositions(left(v), pos);
 	}
 
-	// Retorna uma coleÁ„o iter·vel contendo os nodos da ·rvore.
+	// Retorna uma cole√ß√£o iter√°vel contendo os nodos da √°rvore.
 	public Iterable<Position<T>> positions() {
 		PositionList<Position<T>> positions = new NodePositionList<Position<T>>();
 		if (size != 0)
-			preorderPositions(root(), positions); // atribui as posiÁıes usando caminhamento prefixado
+			preorderPositions(root(), positions); // atribui as posi√ß√£es usando caminhamento prefixado
 		return positions;
 	}
 
@@ -143,8 +143,8 @@ public class LinkedBinaryTree<T> implements BinaryTree<T> {
 		return temp;
 	}
 
-	// MÈtodo de acesso adicional
-	// Retorna o irm„o de um nodo
+	// M√©todo de acesso adicional
+	// Retorna o irm√£o de um nodo
 	public Position<T> sibling(Position<T> v) throws InvalidPositionException, BoundaryViolationException {
 		BTPosition<T> vv = checkPosition(v);
 		BTPosition<T> parentPos = vv.getParent();
@@ -161,8 +161,8 @@ public class LinkedBinaryTree<T> implements BinaryTree<T> {
 		throw new BoundaryViolationException("No sibling");
 	}
 
-	// MÈtodos de acesso adicionais
-	// Insere a raiz em uma ·rvore vazia
+	// M√©todos de acesso adicionais
+	// Insere a raiz em uma √°rvore vazia
 	public Position<T> addRoot(T e) throws NonEmptyTreeException {
 		if (!isEmpty())
 			throw new NonEmptyTreeException("Tree already has a root");
@@ -202,18 +202,18 @@ public class LinkedBinaryTree<T> implements BinaryTree<T> {
 		BTPosition<T> rightPos = vv.getRight();
 		if (leftPos != null && rightPos != null)
 			throw new InvalidPositionException("Cannot remove node with two children");
-		BTPosition<T> ww; // o ˙nico filho de v, se houver
+		BTPosition<T> ww; // o √∫nico filho de v, se houver
 		if (leftPos != null)
 			ww = leftPos;
 		else if (rightPos != null)
 			ww = rightPos;
-		else // v È folha
+		else // v √© folha
 			ww = null;
-		if (vv == root) { // v È a raiz
+		if (vv == root) { // v √© a raiz
 			if (ww != null)
 				ww.setParent(null);
 			root = ww;
-		} else { // v n„o È a raiz
+		} else { // v n√£o √© a raiz
 			BTPosition<T> uu = vv.getParent();
 			if (vv == uu.getLeft())
 				uu.setLeft(ww);
@@ -226,7 +226,7 @@ public class LinkedBinaryTree<T> implements BinaryTree<T> {
 		return v.element();
 	}
 
-	// Conecta duas ·rvores para serem sub·rvores de um nodo externo.
+	// Conecta duas √°rvores para serem sub√°rvores de um nodo externo.
 	public void attach(Position<T> v, LinkedBinaryTree<T> T1, LinkedBinaryTree<T> T2) throws InvalidPositionException {
 		BTPosition<T> vv = checkPosition(v);
 		if (isInternal(v))
@@ -245,28 +245,28 @@ public class LinkedBinaryTree<T> implements BinaryTree<T> {
 		}
 	}
 
-	// Se v È um nodo de ·rvore bin·ria, converte para BTPosition, caso contr·rio
-	// lanÁa exceÁ„o
+	// Se v √© um nodo de √°rvore bin√°ria, converte para BTPosition, caso contr√°rio
+	// lan√ßa exce√ß√£o
 	protected BTPosition<T> checkPosition(Position<T> v) throws InvalidPositionException {
 		if (v == null || !(v instanceof BTPosition))
 			throw new InvalidPositionException("The position is invalid");
 		return (BTPosition<T>) v;
 	}
 
-	// Cria um novo nodo de ·rvore bin·ria
+	// Cria um novo nodo de √°rvore bin√°ria
 	protected BTPosition<T> createNode(T element, BTPosition<T> parent, BTPosition<T> left, BTPosition<T> right) {
 		return new BTNode<T>(element, parent, left, right);
 	}
 
-	// Cria uma lista que armazena os nodos da sub·rvore de um nodo ordenados de
+	// Cria uma lista que armazena os nodos da sub√°rvore de um nodo ordenados de
 	// acordo com o
-	// caminhamento prefixado da sub·rvore.
+	// caminhamento prefixado da sub√°rvore.
 	protected void preorderPositions(Position<T> v, PositionList<Position<T>> pos) throws InvalidPositionException {
 		pos.addLast(v);
 		if (hasLeft(v))
-			preorderPositions(left(v), pos); // recurs„o sobre o filho da esquerda
+			preorderPositions(left(v), pos); // recurs√£o sobre o filho da esquerda
 		if (hasRight(v))
-			preorderPositions(right(v), pos); // recurs„o sobre o filho da direita
+			preorderPositions(right(v), pos); // recurs√£o sobre o filho da direita
 	}
 
 	public boolean isEmpty() {
@@ -293,7 +293,7 @@ public class LinkedBinaryTree<T> implements BinaryTree<T> {
 	// 5. b) binaryPreorder conforme slide 31.
 	public void binaryPreorder(LinkedBinaryTree<T> T, BTNode<T> v) {
 		BTNode<T> temp = (BTNode<T>) this.checkPosition(v);
-		// SaÌda dos dados
+		// Sa√≠da dos dados
 		String s = temp.element().toString();
 		System.out.print(s);
 		if (this.hasLeft(temp)) {
@@ -313,7 +313,7 @@ public class LinkedBinaryTree<T> implements BinaryTree<T> {
 			binaryPostorder(T, (BTNode<T>) v.getRight());
 		}
 		BTNode<T> temp = (BTNode<T>) this.checkPosition(v);
-		// SaÌda dos dados
+		// Sa√≠da dos dados
 		String s = temp.element().toString();
 		System.out.print(s);
 	}
@@ -339,7 +339,7 @@ public class LinkedBinaryTree<T> implements BinaryTree<T> {
 		System.out.println(s.substring(0, s.length() - 2));
 	}
 
-	// 5. g) MÈtodo que desenhe a ·rvore bin·ria de express„o conforme slide 47.
+	// 5. g) M√©todo que desenhe a √°rvore bin√°ria de express√£o conforme slide 47.
 	protected int toDraw(T m[][], Position<T> v, int lin, int col) {
 		if (hasLeft(v))
 			col = toDraw(m, left(v), lin + 1, col);
@@ -367,7 +367,7 @@ public class LinkedBinaryTree<T> implements BinaryTree<T> {
 		}
 	}
 	
-	// Desenha a ·rvore. (exercÌcio 5 letra g)
+	// Desenha a √°rvore. (exerc√≠cio 5 letra g)
 	public String drawBinaryTree(LinkedBinaryTree<T> a, Position<T> p) {
 		if (isEmpty())
 			return "";
@@ -426,7 +426,7 @@ public class LinkedBinaryTree<T> implements BinaryTree<T> {
 			System.out.print(")");
 	}
 
-	// 5. j) MÈtodo para contar os nodos esquerdos e externos de uma ·rvore bin·ria.
+	// 5. j) M√©todo para contar os nodos esquerdos e externos de uma √°rvore bin√°ria.
 	public int countLeftExternalNodes(LinkedBinaryTree<T> T) {
 		int c = 0;
 		for (Position<T> temp : positionsInorder()) {
@@ -438,7 +438,7 @@ public class LinkedBinaryTree<T> implements BinaryTree<T> {
 		return c;
 	}
 
-	// 5. k) MÈtodo para contar os nodos direitos e externos de uma ·rvore bin·ria.
+	// 5. k) M√©todo para contar os nodos direitos e externos de uma √°rvore bin√°ria.
 	public int countRightExternalNodes(LinkedBinaryTree<T> T) {
 		int c = 0;
 		for (Position<T> temp : positionsDesorder()) {

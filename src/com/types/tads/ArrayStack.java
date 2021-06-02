@@ -7,12 +7,15 @@ import com.types.interfaces.Stack;
 public class ArrayStack<T> implements Stack<T> {
 
 	protected int capacity; // capacidade real do arranjo da pilha
+
 	public static final int CAPACITY = 1000; // capacidade default
+
 	protected T S[]; // Arranjo usado para implementar a pilha
-	protected int top = -1; // indice para o topo da pilha
+
+	protected int top = -1; // índice para o topo da pilha
 
 	public ArrayStack() {
-		// Se a Pilha for criada sem um quantidade m�xima definida,
+		// Se a Pilha for criada sem um quantidade máxima definida,
 		// faz com que a capacidade seja 1000, default.
 		this(CAPACITY);
 	}
@@ -20,7 +23,7 @@ public class ArrayStack<T> implements Stack<T> {
 	@SuppressWarnings("unchecked")
 	public ArrayStack(int cap) {
 		capacity = cap;
-		// o compilador deve gerar um aviso, mas est� ok
+		// o compilador deve gerar um aviso, mas está ok
 		S = (T[]) new Object[capacity];
 	}
 
@@ -49,7 +52,7 @@ public class ArrayStack<T> implements Stack<T> {
 		if (isEmpty())
 			throw new EmptyStackException("Stack is empty.");
 		element = S[top];
-		// desreferencia S[top] para o sistema de coleta de lixo
+		// desreferência S[top] para o sistema de coleta de lixo
 		S[top--] = null;
 		return element;
 	}
@@ -66,5 +69,4 @@ public class ArrayStack<T> implements Stack<T> {
 		}
 		return s + "]";
 	}
-
 }

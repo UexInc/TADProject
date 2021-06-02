@@ -44,7 +44,7 @@ public class SortedListPriorityQueue<K, V> implements PriorityQueue<K, V> {
 		}
 	}
 
-	// Cria a fila de prioridades com o comparador padr„o
+	// Cria a fila de prioridades com o comparador padr√£o
 	public SortedListPriorityQueue() {
 		entries = new NodePositionList<Entry<K, V>>();
 		compa = new DefaultComparator<K>();
@@ -57,7 +57,7 @@ public class SortedListPriorityQueue<K, V> implements PriorityQueue<K, V> {
 	}
 
 	// Cria a fila de prioridade com um comparador informado e lista.
-	// Assume-se que a lista È ordenada em ordem n„o-decrescente
+	// Assume-se que a lista √© ordenada em ordem n√£o-decrescente
 	public SortedListPriorityQueue(PositionList<Entry<K, V>> list, Comparator<K> comp) {
 		entries = list;
 		compa = comp;
@@ -66,23 +66,23 @@ public class SortedListPriorityQueue<K, V> implements PriorityQueue<K, V> {
 	// Configura o comparador para a fila de prioridade.
 	//* @throws IllegalStateException se fila de prioridade estiver vazia
 	public void setComparator(Comparator<K> comp) throws IllegalStateException {
-		// sÛ È permitido se a fila de prioridade estiver vazia
+		// s√≥ √© permitido se a fila de prioridade estiver vazia
 		if (!isEmpty())
 			throw new IllegalStateException("Priority queue is not empty");
 		compa = comp;
 	}
 	
-	// Retorna o n˙mero de elementos da fila de propridade
+	// Retorna o n√∫mero de elementos da fila de propridade
 	public int size() {
 		return entries.size();
 	}
 
-	// Retorna se a fila de prioridade est· vazia.
+	// Retorna se a fila de prioridade est√° vazia.
 	public boolean isEmpty() {
 		return entries.isEmpty();
 	}
 
-	// Retorna mas n„o remove uma entrada com a chave mÌnima.
+	// Retorna mas n√£o remove uma entrada com a chave m√≠nima.
 	public Entry<K, V> min() throws EmptyPriorityQueueException {
 		if (entries.isEmpty())
 			throw new EmptyPriorityQueueException("priority queue is empty");
@@ -98,21 +98,21 @@ public class SortedListPriorityQueue<K, V> implements PriorityQueue<K, V> {
 		return entry;
 	}
 
-	// MÈtodo auxiliar usado para inserÁ„o.
+	// M√©todo auxiliar usado para inser√ß√£o.
 	protected void insertEntry(Entry<K, V> e) {
 		if (entries.isEmpty()) {
 			entries.addFirst(e); // insere na lista vazia
-			actionPos = entries.first(); // posiÁ„o de inserÁ„o
+			actionPos = entries.first(); // posi√ß√£o de inser√ß√£o
 		} else if (compa.compare(e.getKey(), entries.last().element().getKey()) > 0) {
 			entries.addLast(e); // insere no final da lista
-			actionPos = entries.last(); // posiÁ„o de inserÁ„o
+			actionPos = entries.last(); // posi√ß√£o de inser√ß√£o
 		} else {
 			Position<Entry<K, V>> curr = entries.first();
 			while (compa.compare(e.getKey(), curr.element().getKey()) > 0) {
-				curr = entries.next(curr); // avanÁa para encontrar a posiÁ„o de inserÁ„o
+				curr = entries.next(curr); // avan√ßa para encontrar a posi√ß√£o de inser√ß√£o
 			}
 			entries.addBefore(curr, e);
-			actionPos = entries.prev(curr); // posiÁ„o de inserÁ„o
+			actionPos = entries.prev(curr); // posi√ß√£o de inser√ß√£o
 		}
 	}
 
@@ -124,7 +124,7 @@ public class SortedListPriorityQueue<K, V> implements PriorityQueue<K, V> {
 			return entries.remove(entries.first());
 	}
 
-	// Determina se a chave È v·lida.
+	// Determina se a chave √© v√°lida.
 	protected boolean checkKey(K key) throws InvalidKeyException {
 		boolean result;
 		try { // verifica se a chave pode ser comparada
@@ -135,7 +135,7 @@ public class SortedListPriorityQueue<K, V> implements PriorityQueue<K, V> {
 		return result;
 	}
 
-	// Sebrescreve toString, ˙til para a depuraÁ„o.
+	// Sebrescreve toString, √∫til para a depura√ß√£o.
 	public String toString() {
 		return entries.toString();
 	}

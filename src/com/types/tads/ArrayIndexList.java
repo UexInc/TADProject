@@ -2,37 +2,41 @@ package com.types.tads;
 
 import com.types.interfaces.IndexList;
 
+//Implementação de uma lista encadeada usando um arranjo cujo tamanho
+
+//é duplicado quando o tamanho da lista indexada excede a capacidade do arranjo./
+
 public class ArrayIndexList<T> implements IndexList<T> {
 
 	private T[] A; // arranjo que armazena os elementos da lista
 
 	private int capacity = 16; // tamanho inicial do arranjo A
 
-	private int size = 0; // numero de elementos armazenados na lista
+	private int size = 0; // número de elementos armazenados na lista
 
 	// Cria a lista indexada com capacidade de 16 elementos
 	@SuppressWarnings("unchecked")
 	public ArrayIndexList() {
-		A = (T[]) new Object[capacity]; // o compilador pode gerar alerta aqui, mas esta tudo ok.
+		A = (T[]) new Object[capacity]; // o comiplador pode gerar alerta aqui, mas está tudo ok.
 	}
 
-	// Retorna o numero de elementos da lista
+	// Retorna o número de elementos da lista
 	public int size() {
 		return size;
 	}
 
-	// Retorna se a lista esta vazia
+	// Retorna se a lista está vazia
 	public boolean isEmpty() {
 		return size() == 0;
 	}
 
-	// Retorna o elemento armazenado num dado indice
+	// Retorna o elemento armazenado num dado índice
 	public T get(int r) throws IndexOutOfBoundsException {
 		checkIndex(r, size());
 		return A[r];
 	}
 
-	// Troca o elemento armazenado no indice
+	// Troca o elemento armazenado no índice
 	public T set(int r, T e) throws IndexOutOfBoundsException {
 		checkIndex(r, size());
 		T temp = A[r];
@@ -40,7 +44,7 @@ public class ArrayIndexList<T> implements IndexList<T> {
 		return temp;
 	}
 
-	// Insere um elemento num dado indice
+	// Insere um elemento num dado índice
 	public void add(int r, T e) throws IndexOutOfBoundsException {
 		checkIndex(r, size() + 1);
 		if (size == capacity) { // an overflow
@@ -57,7 +61,7 @@ public class ArrayIndexList<T> implements IndexList<T> {
 		size++;
 	}
 
-	// Remove o elemento armazenado num dado indice
+	// Remove o elemento armazenado num dado índice
 	public T remove(int r) throws IndexOutOfBoundsException {
 		checkIndex(r, size());
 		T temp = A[r];
@@ -67,7 +71,7 @@ public class ArrayIndexList<T> implements IndexList<T> {
 		return temp;
 	}
 
-	// Verifica se o indice pertence ao intervalo [0, n - 1]
+	// Verifica se o índice pertence ao intervalo [0, n - 1]
 	protected void checkIndex(int r, int n) throws IndexOutOfBoundsException {
 		if (r < 0 || r >= n)
 			throw new IndexOutOfBoundsException("Illegal index: " + r);
@@ -82,13 +86,4 @@ public class ArrayIndexList<T> implements IndexList<T> {
 		return toReturn.substring(0, toReturn.length() - 2) + ")";
 	}
 
-	@Override
-	public int indexOf(T e) throws IndexOutOfBoundsException {
-		for (int i = 0; i < A.length; i++) {
-			if (A[i] == e) {
-				return i;
-			}
-		}
-		return -1;
-	}
 }

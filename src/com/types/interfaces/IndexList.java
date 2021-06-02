@@ -8,6 +8,5 @@ public interface IndexList<T> {
 	public T get(int i) throws IndexOutOfBoundsException;
 	public T remove(int i) throws IndexOutOfBoundsException;
 	public T set(int i, T e) throws IndexOutOfBoundsException;
-	public int indexOf(T e) throws IndexOutOfBoundsException;
 
 }
