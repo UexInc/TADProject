@@ -5,6 +5,9 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+/*
+ * Painel customizado para colocar imagens de fundo
+ */
 @SuppressWarnings("serial")
 public class ImagePanel extends JPanel{
 

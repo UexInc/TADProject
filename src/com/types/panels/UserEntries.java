@@ -7,8 +7,12 @@ import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 
+/*
+ * Classe responsável por gerar os campos de input
+ */
 public final class UserEntries {
 
+	// Cria um campo de opções
 	public static JComboBox<Object> createComboBox(String labelName, Object[] list) {
 		DefaultListCellRenderer listRenderer = new DefaultListCellRenderer();
 		listRenderer.setHorizontalAlignment(DefaultListCellRenderer.CENTER);
@@ -21,6 +25,7 @@ public final class UserEntries {
 		return combo;
 	}
 
+	// Gera uma entrada de input do usuário
 	public static JTextField createField(String labelName, int limit, int align, Class<?> filter) {
 		JTextField field = new JTextField();
 		field.setName(labelName);
@@ -29,6 +34,7 @@ public final class UserEntries {
 		return field;
 	}
 
+	// Limitador de caracteres
 	@SuppressWarnings("serial")
 	public static class JTextFieldLimit extends PlainDocument {
 		private int limit;

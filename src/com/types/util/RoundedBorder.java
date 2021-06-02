@@ -6,6 +6,9 @@ import java.awt.Insets;
 
 import javax.swing.border.Border;
 
+/*
+ * Estilo de borda customizada
+ */
 public class RoundedBorder implements Border {
 
     private int radius;

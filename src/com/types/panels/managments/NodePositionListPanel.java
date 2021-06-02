@@ -18,23 +18,18 @@ import com.types.util.Tables;
 
 public class NodePositionListPanel extends StandartPanel {
 
-	// ID da janela
 	private static final long serialVersionUID = 5046594777285996932L;
 
-	// TAD respectivo
 	private NodePositionList<Object> nodesList;
 
-	// Campos
 	private JComboBox<Object> whereUser, listNodes;
 	private JTextField valueUser;
 
-	// Construtor
 	public NodePositionListPanel() {
 		init();
 		renderComponents();
 	}
 
-	// Renderiza��o padr�o
 	public void renderComponents() {
 		nodesList = new NodePositionList<Object>();
 		tables = new Tables(3);
@@ -53,7 +48,6 @@ public class NodePositionListPanel extends StandartPanel {
 		valueUser = UserEntries.createField("Valor:", 20, JTextField.CENTER, Object.class);
 	}
 
-	// Gerar entrada de inser��o
 	protected Entry insertEntry() {
 		listNodes.setModel(new DefaultComboBoxModel<Object>(generateList()));
 		return new Entry(new JComponent[] { whereUser, listNodes, valueUser });
@@ -64,7 +58,6 @@ public class NodePositionListPanel extends StandartPanel {
 		return new Entry(new JComponent[] { listNodes });
 	}
 
-	// Adicionado no TAD
 	protected void insertEvent() {
 		insertEntry.getSend().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -79,7 +72,6 @@ public class NodePositionListPanel extends StandartPanel {
 		});
 	}
 
-	// Removendo no TAD
 	protected void removeEvent() {
 		removeEntry.getSend().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -94,7 +86,6 @@ public class NodePositionListPanel extends StandartPanel {
 		});
 	}
 	
-	// Seleciona e insere com base na op��o
 	private void selectAndInsert() {
 		int index = whereUser.getSelectedIndex();
 		switch (index) {
@@ -125,7 +116,7 @@ public class NodePositionListPanel extends StandartPanel {
 		}
 	}
 	
-	// Seleciona e remove com base na op��o
+	// Seleciona e remove com base na opção
 	private void selectAndRemove() {
 		tables.getRemoveModel().addRow(new Object[] {
 				"remove(" + listNodes.getSelectedItem() + ")", 
@@ -133,7 +124,7 @@ public class NodePositionListPanel extends StandartPanel {
 		});
 	}
 	
-	// Pegar posi��o com base no elemento
+	// Pegar posição com base no elemento
 	private Position<Object> getPos(Object element) {
 		Position<Object> pos = nodesList.first();
 		for (@SuppressWarnings("unused") Object node : nodesList) {
@@ -146,7 +137,7 @@ public class NodePositionListPanel extends StandartPanel {
 		return null;
 	}
 
-	// Gerar a lista de nodos para sele��o
+	// Gerar a lista de nodos para seleção
 	private String[] generateList() {
 		String[] list = new String[nodesList.size()];
 		int i = 0;

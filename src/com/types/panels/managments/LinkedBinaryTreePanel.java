@@ -18,23 +18,18 @@ import com.types.util.Tables;
 
 public class LinkedBinaryTreePanel extends StandartPanel {
 
-	// ID da janela
 	private static final long serialVersionUID = -1561066618221153898L;
 
-	// TAD respectivo
 	private LinkedBinaryTree<Object> binaryTree;
 
-	// Campos
 	private JComboBox<Object> whereUser;
 	private JTextField valueUser;
 
-	// Construtor
 	public LinkedBinaryTreePanel() {
 		init();
 		renderComponents();
 	}
 
-	// Renderiza��o padr�o
 	public void renderComponents() {
 		binaryTree = new LinkedBinaryTree<Object>();
 		tables = new Tables(5);
@@ -47,19 +42,16 @@ public class LinkedBinaryTreePanel extends StandartPanel {
 		valueUser = UserEntries.createField("Valor:", 20, JTextField.CENTER, Object.class);
 	}
 
-	// Gerar entrada de inser��o
 	protected Entry insertEntry() {
 		whereUser.setModel(new DefaultComboBoxModel<Object>(generateList()));
 		return new Entry(new JComponent[] { whereUser, valueUser });
 	}
 
-	// Gerar entrada de remo��o
 	protected Entry removeEntry() {
 		whereUser.setModel(new DefaultComboBoxModel<Object>(generateList()));
 		return new Entry(new JComponent[] { whereUser });
 	}
 
-	// Adicionado no TAD
 	protected void insertEvent() {
 		insertEntry.getSend().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -78,7 +70,6 @@ public class LinkedBinaryTreePanel extends StandartPanel {
 		});
 	}
 
-	// Removendo no TAD
 	protected void removeEvent() {
 		removeEntry.getSend().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -110,7 +101,6 @@ public class LinkedBinaryTreePanel extends StandartPanel {
 		}
 	}
 
-	// Pegar posi��o com base no elemento
 	private Position<Object> getPos(Object element) {
 		for (Position<Object> child : binaryTree.positions()) {
 			if (child.element().toString().equalsIgnoreCase(element.toString()))
@@ -119,7 +109,6 @@ public class LinkedBinaryTreePanel extends StandartPanel {
 		return null;
 	}
 
-	// Gerar a lista de folhas para sele��o
 	private String[] generateList() {
 		String[] list = new String[binaryTree.size()];
 		int c = 0;

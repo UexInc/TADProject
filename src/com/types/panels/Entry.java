@@ -27,14 +27,15 @@ public class Entry extends JFrame implements IRender {
 
 	// Painel da entrada
 	private JPanel panel;
+	
 	// Components da entrada
 	private JComponent[] components;
 
-	// Op��o padr�o das entradas
+	// Opção padrão das entradas
 	private JButton cancel;
 	private JButton send;
 
-	// Layout padr�o
+	// Layout padrão
 	private Layout layout;
 
 	// Contrutor
@@ -59,7 +60,7 @@ public class Entry extends JFrame implements IRender {
 		setVisible(true);
 	}
 
-	// Renderiza��o padr�o
+	// Renderização padrão
 	public void renderComponents() {
 		cancel = new JButton("Cancelar");
 		send = new JButton("Enviar");
@@ -91,7 +92,7 @@ public class Entry extends JFrame implements IRender {
 			layout.gridy += 1;
 		}
 
-		// Renderizando bot�es padr�es
+		// Renderizando botões
 		layout.gridx = 0;
 		Styles.setStyleButton(cancel);
 		panel.add(cancel, layout);

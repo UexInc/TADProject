@@ -6,9 +6,9 @@ import java.util.NoSuchElementException;
 import com.types.interfaces.Position;
 import com.types.interfaces.PositionList;
 
-/* Uma classe iterator Simples para listas. Os elementos da clise s„o retornados por
-* este iterator. Nenhuma cÛpia da lista È realizada, de forma que qualquer mudanÁa
-* na lista È refletida por este iterator. */
+/* Uma classe iterator Simples para listas. Os elementos da clise s√£o retornados por
+* este iterator. Nenhuma c√≥pia da lista √© realizada, de forma que qualquer mudan√ßa
+* na lista  refletida por este iterator. */
 public class ElementIterator<T> implements Iterator<T> {
 
 	protected PositionList<T> list;
@@ -20,12 +20,12 @@ public class ElementIterator<T> implements Iterator<T> {
 		cursor = (list.isEmpty()) ? null : list.first();
 	}
 
-	// Retorna se o iterator tem ou n„o um prÛximo objeto.
+	// Retorna se o iterator tem ou n√£o um pr√≥ximo objeto.
 	public boolean hasNext() {
 		return (cursor != null);
 	}
 
-	// Retorna o prÛximo objeto do iterator.
+	// Retorna o pr√≥ximo objeto do iterator.
 	public T next() throws NoSuchElementException {
 		if (cursor == null)
 			throw new NoSuchElementException("No next element");
@@ -35,7 +35,7 @@ public class ElementIterator<T> implements Iterator<T> {
 	}
 
 	// Dispara um {@link UnsupportedOperationException} para todos os casos, porque
-	// a remoÁ„o n„o È uma operaÁ„o suportada por este iterator.
+	// a remo√ß√£o n√£o √© uma opera√ß√£o suportada por este iterator.
 	public void remove() throws UnsupportedOperationException {
 		throw new UnsupportedOperationException("remove");
 	}

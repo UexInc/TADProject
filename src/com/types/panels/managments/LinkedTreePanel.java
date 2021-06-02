@@ -21,23 +21,18 @@ import com.types.util.Tables;
 
 public class LinkedTreePanel extends StandartPanel {
 
-	// ID da janela
 	private static final long serialVersionUID = -6010080224840864656L;
 
-	// TAD respectivo
 	private LinkedTree<Object> tree;
 
-	// Campos
 	private JComboBox<Object> whereUser;
 	private JTextField valueUser;
 
-	// Construtor
 	public LinkedTreePanel() {
 		init();
 		renderComponents();
 	}
 
-	// Renderiza��o padr�o
 	public void renderComponents() {
 		tree = new LinkedTree<Object>();
 		tables = new Tables(4);
@@ -51,13 +46,11 @@ public class LinkedTreePanel extends StandartPanel {
 		valueUser = UserEntries.createField("Nodo folha:", 20, JTextField.CENTER, Object.class);
 	}
 
-	// Gerar entrada de inser��o
 	protected Entry insertEntry() {
 		whereUser.setModel(new DefaultComboBoxModel<Object>(generateList()));
 		return new Entry(new JComponent[] { whereUser, valueUser });
 	}
 
-	// Adicionado no TAD
 	protected void insertEvent() {
 		insertEntry.getSend().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -82,7 +75,6 @@ public class LinkedTreePanel extends StandartPanel {
 	protected Entry removeEntry() { return null; }
 	protected void removeEvent() { }
 
-	// Pegar posi��o com base no elemento
 	private TreeNode<Object> getPos(Object element) {
 		for (Position<Object> child : tree.positions()) {
 			if (child.element().toString().equalsIgnoreCase(element.toString()))
@@ -91,12 +83,12 @@ public class LinkedTreePanel extends StandartPanel {
 		return null;
 	}
 
-	// Criar folha com base na posi��o
+	// Criar folha com base na posição
 	private TreeNode<Object> createLeaf(TreeNode<Object> p, String n) {
 		PositionList<Position<Object>> filhos;
 		TreeNode<Object> aux;
 
-		// Obt�m os Filhos de p
+		// Obtem os Filhos de p
 		filhos = p.getChildren();
 
 		// Cria um novo filho
@@ -109,7 +101,7 @@ public class LinkedTreePanel extends StandartPanel {
 		return aux;
 	}
 
-	// Gerar a lista de folhas para sele��o
+	// Gera a lista de posições da árvore
 	private String[] generateList() {
 		String[] list = new String[tree.size()];
 		int c = 0;

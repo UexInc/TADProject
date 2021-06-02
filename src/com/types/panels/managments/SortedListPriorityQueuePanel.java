@@ -15,7 +15,6 @@ import com.types.util.Tables;
 
 public class SortedListPriorityQueuePanel extends StandartPanel {
 
-	// ID da janela
 	private static final long serialVersionUID = 4389064271814175535L;
 
 	private SortedListPriorityQueue<Object, Object> priorityQueue;

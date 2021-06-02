@@ -20,6 +20,9 @@ import com.types.panels.managments.LinkedTreePanel;
 import com.types.panels.managments.NodePositionListPanel;
 import com.types.panels.managments.SortedListPriorityQueuePanel;
 
+/*
+ * Usado para controlar o direcionamento das respectivas janelas
+ */
 public class Options implements ActionListener {
 
 	@Override
@@ -85,6 +88,7 @@ public class Options implements ActionListener {
 		}
 	}
 	
+	// Desabilitar o menu principal
 	private void disableMenu() {
 		Main.menu.setVisible(false);
 	}

@@ -15,22 +15,17 @@ import com.types.util.Tables;
 
 public class ArrayStackPanel extends StandartPanel {
 
-	// ID da janela
 	private static final long serialVersionUID = -189390063017820972L;
 
-	// TAD respectivo
 	private ArrayStack<Object> stack;
 
-	// Campos
 	private JTextField valueUser;
 
-	// Contrutor
 	public ArrayStackPanel() {
 		init();
 		renderComponents();
 	}
 
-	// Renderiza��o padr�o
 	public void renderComponents() {
 		stack = new ArrayStack<Object>();
 		tables = new Tables(1);
@@ -42,12 +37,10 @@ public class ArrayStackPanel extends StandartPanel {
 		valueUser = UserEntries.createField("Empilhar:", 20, JTextField.CENTER, Object.class);
 	}
 
-	// Gerar entrada de inser��o
 	protected Entry insertEntry() {
 		return new Entry(new JComponent[] { valueUser });
 	}
 
-	// Adicionado no TAD
 	protected void insertEvent() {
 		insertEntry.getSend().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -64,7 +57,6 @@ public class ArrayStackPanel extends StandartPanel {
 		});
 	}
 
-	// Removendo no TAD
 	protected void removeEvent() {
 		try {
 			tables.getRemoveModel().addRow(new Object[] { "pop()", stack.pop() });
@@ -74,6 +66,5 @@ public class ArrayStackPanel extends StandartPanel {
 		}
 	}
 
-	// Gerar entrada de remo��o
 	protected Entry removeEntry() { return null; }
 }

@@ -15,23 +15,18 @@ import com.types.util.Tables;
 
 public class ArrayIndexListPanel extends StandartPanel {
 
-	// ID da janela
 	private static final long serialVersionUID = 1515352884479601080L;
 
-	// TAD respectivo
 	ArrayIndexList<Object> arrayList;
 
-	// Campos
 	private JTextField posUser;
 	private JTextField valueUser;
 
-	// Contrutor
 	public ArrayIndexListPanel() {
 		init();
 		renderComponents();
 	}
 
-	// Renderiza��o padr�o
 	public void renderComponents() {
 		arrayList = new ArrayIndexList<Object>();
 		tables = new Tables(0);
@@ -44,7 +39,6 @@ public class ArrayIndexListPanel extends StandartPanel {
 		valueUser = UserEntries.createField("Elemento:", 20, JTextField.CENTER, Object.class);
 	}
 
-	// Adicionado no TAD
 	protected void insertEvent() {
 		insertEntry.getSend().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -63,7 +57,6 @@ public class ArrayIndexListPanel extends StandartPanel {
 		});
 	}
 
-	// Removendo no TAD
 	protected void removeEvent() {
 		removeEntry.getSend().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -80,12 +73,10 @@ public class ArrayIndexListPanel extends StandartPanel {
 		});
 	}
 
-	// Gerar entrada de inser��o
 	public Entry insertEntry() {
 		return new Entry(new JComponent[] { posUser, valueUser });
 	}
 
-	// Gerar entrada de remo��o
 	public Entry removeEntry() {
 		return new Entry(new JComponent[] { posUser });
 	}

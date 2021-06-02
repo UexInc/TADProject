@@ -8,31 +8,31 @@ public class ArrayIndexList<T> implements IndexList<T> {
 
 	private int capacity = 16; // tamanho inicial do arranjo A
 
-	private int size = 0; // número de elementos armazenados na lista
+	private int size = 0; // numero de elementos armazenados na lista
 
 	// Cria a lista indexada com capacidade de 16 elementos
 	@SuppressWarnings("unchecked")
 	public ArrayIndexList() {
-		A = (T[]) new Object[capacity]; // o compilador pode gerar alerta aqui, mas está tudo ok.
+		A = (T[]) new Object[capacity]; // o compilador pode gerar alerta aqui, mas esta tudo ok.
 	}
 
-	// Retorna o número de elementos da lista
+	// Retorna o numero de elementos da lista
 	public int size() {
 		return size;
 	}
 
-	// Retorna se a lista está vazia
+	// Retorna se a lista esta vazia
 	public boolean isEmpty() {
 		return size() == 0;
 	}
 
-	// Retorna o elemento armazenado num dado índice
+	// Retorna o elemento armazenado num dado indice
 	public T get(int r) throws IndexOutOfBoundsException {
 		checkIndex(r, size());
 		return A[r];
 	}
 
-	// Troca o elemento armazenado no índice
+	// Troca o elemento armazenado no indice
 	public T set(int r, T e) throws IndexOutOfBoundsException {
 		checkIndex(r, size());
 		T temp = A[r];
@@ -40,7 +40,7 @@ public class ArrayIndexList<T> implements IndexList<T> {
 		return temp;
 	}
 
-	// Insere um elemento num dado índice
+	// Insere um elemento num dado indice
 	public void add(int r, T e) throws IndexOutOfBoundsException {
 		checkIndex(r, size() + 1);
 		if (size == capacity) { // an overflow
@@ -57,7 +57,7 @@ public class ArrayIndexList<T> implements IndexList<T> {
 		size++;
 	}
 
-	// Remove o elemento armazenado num dado índice
+	// Remove o elemento armazenado num dado indice
 	public T remove(int r) throws IndexOutOfBoundsException {
 		checkIndex(r, size());
 		T temp = A[r];
@@ -67,7 +67,7 @@ public class ArrayIndexList<T> implements IndexList<T> {
 		return temp;
 	}
 
-	// Verifica se o índice pertence ao intervalo [0, n - 1]
+	// Verifica se o indice pertence ao intervalo [0, n - 1]
 	protected void checkIndex(int r, int n) throws IndexOutOfBoundsException {
 		if (r < 0 || r >= n)
 			throw new IndexOutOfBoundsException("Illegal index: " + r);

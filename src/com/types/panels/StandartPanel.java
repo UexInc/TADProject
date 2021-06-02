@@ -27,10 +27,10 @@ public abstract class StandartPanel extends JPanel implements IRender {
 	// ID da janela
 	private static final long serialVersionUID = 4531711490629253031L;
 
-	// Layout para renderiza��o
+	// Layout para renderização
 	protected Layout layout = new Layout();
 
-	// Bot�es na coluna lateral
+	// Botões na coluna lateral
 	protected static JButton insertButton;
 	protected static JButton remotionButton;
 	protected static JButton viewButton;
@@ -43,7 +43,7 @@ public abstract class StandartPanel extends JPanel implements IRender {
 	protected Entry insertEntry;
 	protected Entry removeEntry;
 
-	// Met�do de adi��o dos components na coluna lateral
+	// Metodo de adição dos components na coluna lateral
 	protected void createLateralComponent(Component c, JPanel lateral) {
 		defaultLayout();
 		if (c instanceof JButton) {
@@ -96,7 +96,7 @@ public abstract class StandartPanel extends JPanel implements IRender {
 		layout.weighty = 0;
 	}
 
-	// Inicilizar os bot�es
+	// Inicilizar os botões
 	protected void instanceButton() {
 		insertButton = new JButton("Inserir");
 		remotionButton = new JButton("Remover");
@@ -114,7 +114,7 @@ public abstract class StandartPanel extends JPanel implements IRender {
 			}
 		});
 
-		// Evento de inser��o
+		// Evento de inserção
 		if (insertButton != null) {
 			insertButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -125,7 +125,7 @@ public abstract class StandartPanel extends JPanel implements IRender {
 			});
 		}
 
-		// Evento de remo��o
+		// Evento de remoção
 		if (remotionButton != null) {
 			remotionButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -146,7 +146,7 @@ public abstract class StandartPanel extends JPanel implements IRender {
 		}
 	}
 	
-	// Habilitar/Desabilitar bot�es
+	// Habilitar/Desabilitar botões
 	public static void buttonStatus(boolean status) {
 		if (insertButton != null) insertButton.setEnabled(status);
 		if (remotionButton != null) remotionButton.setEnabled(status);
@@ -161,11 +161,12 @@ public abstract class StandartPanel extends JPanel implements IRender {
 		setVisible(true);
 	}
 
-	// Renderiza��o padr�o
+	// Renderização padrão
 	public void renderComponents() {
 		generateLateral(true);
 	}
 
+	// Para renderizar os erros
 	protected void showError(String msg) {
 		JOptionPane optionPane = new JOptionPane(msg, JOptionPane.ERROR_MESSAGE);
 		JDialog dialog = optionPane.createDialog("Erro");

@@ -20,14 +20,14 @@ public class AVLTreeMap<K, V> extends BinarySearchTree<K, V> implements Map<K, V
 		super();
 	}
 
-	// Classe aninhada para os nodos da árvore AVL
+	// Classe aninhada para os nodos da arvore AVL
 	protected static class AVLNode<K, V> extends BTNode<Entry<K, V>> {
 
 		protected int height; // campo altura para BTNode
 
 		AVLNode() {
 			super();
-		} // construtor padrão
+		} // construtor padrao
 
 		// Construtor preferido
 		@SuppressWarnings("unchecked")
@@ -41,7 +41,7 @@ public class AVLTreeMap<K, V> extends BinarySearchTree<K, V> implements Map<K, V
 				height = Math.max(height, 1 + ((AVLNode<K, V>) right).getHeight());
 		}
 
-		// assume que o pai irá revisar a altura se necessário
+		// assume que o pai ira revisar a altura se necessario
 		public void setHeight(int h) {
 			height = h;
 		}
@@ -51,7 +51,7 @@ public class AVLTreeMap<K, V> extends BinarySearchTree<K, V> implements Map<K, V
 		}
 	}
 
-	// Cria um novo nodo da árvore binária de busca (sobrescreve a versão herdada)
+	// Cria um novo nodo da arvore binaria de busca (sobrescreve a versao herdada)
 	protected BTPosition<Entry<K, V>> createNode(Entry<K, V> element, BTPosition<Entry<K, V>> parent,
 			BTPosition<Entry<K, V>> left, BTPosition<Entry<K, V>> right) {
 		return new AVLNode<K, V>(element, parent, left, right); // agora usa nodos AVL
@@ -81,27 +81,27 @@ public class AVLTreeMap<K, V> extends BinarySearchTree<K, V> implements Map<K, V
 			return left(p);
 		else if (height(left(p)) < height(right(p)))
 			return right(p);
-		// alturas dos filhos são iguais - retorna o filho conforme o tipo do seu pai
+		// alturas dos filhos sao iguais - retorna o filho conforme o tipo do seu pai
 		if (isRoot(p))
 			return left(p); // Se p for raiz, retorna o filho esquerdo.
 		if (p == left(parent(p)))
-			return left(p); // se p é filho esquerdo , retorna filho esquerdo de p.
+			return left(p); // se p e filho esquerdo , retorna filho esquerdo de p.
 		else
-			return right(p); // caso contrário, o filho direito.
+			return right(p); // caso contrario, o filho direito.
 	}
 
-	// Chamado para inserir e remover. Percorre de zPos até a raiz.
+	// Chamado para inserir e remover. Percorre de zPos ate a raiz.
 	// Para cada nodo encontrado, recomputamos a sua altura e
-	// executamos a reestruturação trinode se desbalanceado
+	// executamos a reestruturacao trinode se desbalanceado
 	protected void rebalance(Position<Entry<K, V>> zPos) {
 		if (isInternal(zPos))
 			setHeight(zPos);
 
-		while (!isRoot(zPos)) { // percorre a árvore em direção à raizt
+		while (!isRoot(zPos)) { // percorre a arvore em direcao ï¿½ raizt
 			zPos = parent(zPos);
 			setHeight(zPos);
 			if (!isBalanced(zPos)) {
-				// realiza a reestruturação trinode no filho mais alto de zPos
+				// realiza a reestruturacao trinode no filho mais alto de zPos
 				Position<Entry<K, V>> xPos = tallerChild(tallerChild(zPos));
 				zPos = restructure(xPos); // reestrutura (a partir da classe pai
 				// recomputa alturas
@@ -112,19 +112,19 @@ public class AVLTreeMap<K, V> extends BinarySearchTree<K, V> implements Map<K, V
 		}
 	}
 
-	// Sobrescreve os métodos do TAD Mapa
+	// Sobrescreve os metodos do TAD Mapa
 	// Insere um item no mapa e retorna numa nova entrada criada
 	public V put(K k, V v) throws InvalidKeyException {
-		V toReturn = super.put(k, v); // Chama nosso método createNode se k é novo
-		rebalance(actionPos); // rebalanceia a partir do ponto de inserção
+		V toReturn = super.put(k, v); // Chama nosso metodo createNode se k e novo
+		rebalance(actionPos); // rebalanceia a partir do ponto de insercao
 		return toReturn;
 	}
 	
 	// Remove e returna uma entrada do mapa
 	public V remove(K k) throws InvalidKeyException {
 		V toReturn = super.remove(k);
-		if (toReturn != null) // nós realmente removemos algo
-			rebalance(actionPos); // rebalanceia a árvore
+		if (toReturn != null) // nos realmente removemos algo
+			rebalance(actionPos); // rebalanceia a arvore
 		return toReturn;
 	}
 	

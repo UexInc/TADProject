@@ -13,27 +13,27 @@ import com.types.interfaces.Position;
 import com.types.interfaces.PositionList;
 import com.types.util.BinaryPrinter;
 
-//Implementa��o de um dicion�rio com uma �rvore bin�ria de pesquisa
+//Implementacao de um dicionario com uma arvore binaria de pesquisa
 
 public class BinarySearchTree<K, V> extends LinkedBinaryTree<Entry<K, V>> implements Map<K, V> {
 
 	protected Comparator<K> C; // comparador
 	protected Position<Entry<K, V>> actionPos; // pai do nodo inserido ou removido
-	protected int numEntries = 0; // n�mero de elementos
+	protected int numEntries = 0; // numero de elementos
 
-	// Cria uma BinarySearchTreeMap com um comparador padr�o.
+	// Cria uma BinarySearchTreeMap com um comparador padrao.
 	public BinarySearchTree() {
 		C = new DefaultComparator<K>();
 		addRoot(null);
 	}
 	
-	// Cria uma BinarySearchTreeMap com um comparador padr�o.
+	// Cria uma BinarySearchTreeMap com um comparador padrao.
 	public BinarySearchTree(Comparator<K> c) {
 		C = c;
 		addRoot(null);
 	}
 
-	// Classe aninhada para as entradas conscientes de localiza��o da �rvore bin�ria
+	// Classe aninhada para as entradas conscientes de localizacao da arvore binaria
 	// de pesquisa.
 	protected static class BSTEntry<K, V> implements Entry<K, V> {
 		protected K key;
@@ -41,7 +41,7 @@ public class BinarySearchTree<K, V> extends LinkedBinaryTree<Entry<K, V>> implem
 		protected Position<Entry<K, V>> pos;
 
 		BSTEntry() {
-		} /* construtor padr�o */
+		} /* construtor padrao */
 
 		BSTEntry(K k, V v, Position<Entry<K, V>> p) {
 			key = k;

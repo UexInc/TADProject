@@ -15,22 +15,17 @@ import com.types.util.Tables;
 
 public class ArrayQueuePanel extends StandartPanel {
 
-	// ID na janela
 	private static final long serialVersionUID = 7000372001620939944L;
 
-	// TAD respectivo
 	private ArrayQueue<Object> queue;
 
-	// Campos
 	private JTextField valueUser;
 	
-	// Construtor
 	public ArrayQueuePanel() {
 		init();
 		renderComponents();
 	}
 
-	// Renderiza��o padr�o
 	public void renderComponents() {
 		queue = new ArrayQueue<Object>();
 		tables = new Tables(2);
@@ -42,12 +37,10 @@ public class ArrayQueuePanel extends StandartPanel {
 		valueUser = UserEntries.createField("Adicionar:", 20, JTextField.CENTER, Object.class);
 	}
 
-	// Gerar entrada de inser��o
 	protected Entry insertEntry() {
 		return new Entry(new JComponent[] { valueUser });
 	}
 
-	// Adicionado no TAD
 	protected void insertEvent() {
 		insertEntry.getSend().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -63,7 +56,6 @@ public class ArrayQueuePanel extends StandartPanel {
 		});
 	}
 
-	// Removendo no TAD
 	protected void removeEvent() {
 		try {
 			tables.getRemoveModel().addRow(new Object[] { "dequeue()", queue.dequeue() });

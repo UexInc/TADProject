@@ -7,6 +7,9 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
+/*
+ * Renderizador modificado do cabeçalho das tabelas
+ */
 @SuppressWarnings("serial")
 public class HeaderRenderer extends JLabel implements TableCellRenderer {
 
