@@ -1,11 +1,9 @@
 package com.types.exceptions;
 
+/* ExceÃ§Ã£o lanÃ§ada se a lista estiver vazia e tentar, por exemplo,
+* obter o primeiro elemento da lista usando o mÃ©todo first. */
+
 @SuppressWarnings("serial")
 public class EmptyListException extends RuntimeException {
-	/* Exceção lançada se a lista estiver vazia e tentar, por
-	* exemplo, obter o primeiro elemento da lista usando o método
-	* first. */
-	public EmptyListException(String err) {
-		super(err);
-	}
+	public EmptyListException(String err) { super(err); }
 }

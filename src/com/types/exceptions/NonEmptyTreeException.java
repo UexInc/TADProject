@@ -1,7 +1,8 @@
 package com.types.exceptions;
 
-/* Retorna uma exceÁ„o quando se tenta criar uma raÌz de
-* uma ·rvore que n„o est· vazia. */
+// Retorna uma exce√ß√£o quando se tenta criar uma ra√≠z
+// de uma √°rvore que n√£o est√° vazia.
+
 @SuppressWarnings("serial")
 public class NonEmptyTreeException extends RuntimeException {
 	public NonEmptyTreeException(String err) {
