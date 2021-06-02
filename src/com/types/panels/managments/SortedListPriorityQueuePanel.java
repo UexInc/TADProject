@@ -58,6 +58,7 @@ public class SortedListPriorityQueuePanel extends StandartPanel {
 				} catch(Exception ex) {
 					showError(ex.getMessage());
 				} finally {
+					buttonStatus(true);
 					insertEntry.dispose();
 				}
 			}
@@ -70,6 +71,8 @@ public class SortedListPriorityQueuePanel extends StandartPanel {
 			tables.getRemoveModel().addRow(new Object[] { "removeMin()", priorityQueue.removeMin() });
 		} catch (Exception ex) {
 			showError(ex.getMessage());
+		} finally {
+			buttonStatus(true);
 		}
 	}
 	

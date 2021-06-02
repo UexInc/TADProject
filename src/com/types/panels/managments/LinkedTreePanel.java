@@ -66,6 +66,7 @@ public class LinkedTreePanel extends StandartPanel {
 				} catch (Exception ex) {
 					showError(ex.getMessage());
 				} finally {
+					buttonStatus(true);
 					insertEntry.dispose();
 				}
 			}

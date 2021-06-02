@@ -50,6 +50,7 @@ public class ArrayQueuePanel extends StandartPanel {
 				} catch (Exception ex) {
 					showError(ex.getMessage());
 				} finally {
+					buttonStatus(true);
 					insertEntry.dispose();
 				}
 			}
@@ -61,6 +62,7 @@ public class ArrayQueuePanel extends StandartPanel {
 			tables.getRemoveModel().addRow(new Object[] { "dequeue()", queue.dequeue() });
 			buttonStatus(true);
 		} catch (Exception ex) {
+			buttonStatus(true);
 			showError(ex.getMessage());
 		}
 	}
