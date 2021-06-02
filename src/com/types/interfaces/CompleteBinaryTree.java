@@ -1,16 +1,16 @@
 package com.types.interfaces;
 
-// Uma interface para a árvore binária completa. Uma árvore binária com altura h
-// é completa se os níveis 0,1,2,...,h-1 tiverem o número máximo de nodos possíveis
-// (isto é, o nível i tem 2^i nodos, para 0 <= i <= h-1).
+// Uma interface para a Ã¡rvore binÃ¡ria completa. Uma Ã¡rvore binÃ­ria com altura h
+// Ã completa se os nÃ­veis 0,1,2,...,h-1 tiverem o nÃºmero mÃ¡ximo de nodos possÃ­veis
+// (isto Ã©, o nÃ­vel i tem 2^i nodos, para 0 <= i <= h-1).
 
 public interface CompleteBinaryTree<T> extends BinaryTree<T> {
 
-	// Adiciona um elemento à árvore após o último nodo. Retorna a nova posição criada.
+	// Adiciona um elemento Ã¡ Ã¡rvore apÃ³s o Ãºltimo nodo. Retorna a nova posiÃ§Ã£o criada.
 
 	public Position<T> add(T elem);
 
-	// Remove e retorna o elemento armazenado no último nodo da árvoere.
+	// Remove e retorna o elemento armazenado no Ãºltimo nodo da Ã¡rvore.
 
 	public T remove();
 

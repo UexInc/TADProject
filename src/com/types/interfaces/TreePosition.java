@@ -2,22 +2,22 @@ package com.types.interfaces;
 
 public interface TreePosition<T> extends Position<T> {
 
-	// Define o elemento a ser armazenado nesta posição
+	// Define o elemento a ser armazenado nesta posiÃ§Ã£o
 	public void setElement(T o);
 
-	// Retorna o elemento armazenado nesta posição
+	// Retorna o elemento armazenado nesta posiÃ§Ã£o
 	public T getElement();
 
-	// Retorna os filhos desta posição
+	// Retorna os filhos desta posiÃ§Ã£o
 	public PositionList<Position<T>> getChildren();
 
-	// Define os filhos desta posição
+	// Define os filhos desta posiÃ§Ã£o
 	public void setChildren(PositionList<Position<T>> c);
 
-	// Retorna o pai desta posição
+	// Retorna o pai desta posiÃ§Ã£o
 	public TreePosition<T> getParent();
 
-	// Define o pai desta posição
+	// Define o pai desta posiÃ§Ã£o
 	public void setParent(TreePosition<T> v);
 
 }

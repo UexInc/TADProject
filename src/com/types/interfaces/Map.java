@@ -4,11 +4,11 @@ import com.types.exceptions.InvalidKeyException;
 
 public interface Map<K,V> {
 
-	// Retorna o número de itens do mapa
+	// Retorna o nÃºmero de itens do mapa
 
 	public int size();
 
-	// Retorna se o mapa está vazio
+	// Retorna se o mapa estÃ¡ vazio
 
 	public boolean isEmpty();
 

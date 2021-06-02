@@ -2,27 +2,27 @@ package com.types.interfaces;
 
 public interface BTPosition<T> extends Position<T>{
 
-	// Retorna o elemento armazenado nesta posição
+	// Retorna o elemento armazenado nesta posiÃ§Ã£o
 	public T element();
 
-	// Define o elemento armazenado nesta posição
+	// Define o elemento armazenado nesta posiÃ§Ã£o
 	public void setElement(T o);
 
-	// Retorna o filho da esquerda desta posição
+	// Retorna o filho da esquerda desta posiÃ§Ã£o
 	public BTPosition<T> getLeft();
 
-	// Define o filho da esquerda desta posição
+	// Define o filho da esquerda desta posiÃ§Ã£o
 	public void setLeft(BTPosition<T> v);
 
-	// Retorna o filho da direita desta posição
+	// Retorna o filho da direita desta posiÃ§Ã£o
 	public BTPosition<T> getRight();
 
-	// Define o filho da direita desta posição
+	// Define o filho da direita desta posiÃ§Ã£o
 	public void setRight(BTPosition<T> v);
 
-	// Retorna o pai desta posição
+	// Retorna o pai desta posiÃ§Ã£o
 	public BTPosition<T> getParent();
 
-	// Define o pai desta posição
+	// Define o pai desta posiÃ§Ã£o
 	public void setParent(BTPosition<T> v);
 }

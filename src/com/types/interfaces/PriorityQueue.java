@@ -9,11 +9,11 @@ public interface PriorityQueue<K,V> {
 
 	public int size( );
 
-	// Retorna se a fila de prioridade est· vazia
+	// Retorna se a fila de prioridade est√° vazia
 
 	public boolean isEmpty( );
 
-	// Retorna mas n„o remove uma entrada com chave mÌnima
+	// Retorna mas n√£o remove uma entrada com chave m√≠nima
 
 	public Entry<K,V> min() throws EmptyPriorityQueueException;
 
@@ -21,7 +21,7 @@ public interface PriorityQueue<K,V> {
 
 	public Entry<K,V> insert(K key, V value) throws InvalidKeyException;
 
-	// Remove e retorna uma entrada com chave mÌnima
+	// Remove e retorna uma entrada com chave m√≠nima
 
 	public Entry<K,V> removeMin( ) throws EmptyPriorityQueueException;
 
