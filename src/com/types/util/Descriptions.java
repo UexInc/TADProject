@@ -934,7 +934,20 @@ public final class Descriptions {
 	// Descrição do painel Mapa ABB
 	public static void descriptionABB(JPanel panel) {
 		setDescription(
-			"<style> h1 { text-align: center; } </style><h1>TAD - Mapa Ordenado - ABB</h1>", 
+			"<section>\r\n" + 
+			"    <h1>TAD - Mapa Ordenado - Árvore Binária de Busca</h1>\r\n" + 
+			"</section>\r\n" + 
+			"\r\n" + 
+			"<section>\r\n" + 
+			"    <h2>Definição</h2>\r\n" + 
+			"    <p>\r\n" + 
+			"        Implementa árvores para facilitar a busca por elementos. Herda algumas operações do <strong>TAD Mapa</strong>,\r\n" + 
+			"        que são: get(k), put(k, v) e remove(k).\r\n" + 
+			"    </p>\r\n" + 
+			"    <p>\r\n" + 
+			"        Seu mecanismo de busca envolve os antecessores e os sucessores da chave.\r\n" + 
+			"    </p>\r\n" + 
+			"</section>", 
 			panel
 		);
 	}
